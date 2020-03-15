@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import { LineChart, XAxis, Tooltip, CartesianGrid, Line, YAxis, Legend } from 'recharts';
-
+import Form from './components/Form/Form';
+import Chart from './components/Chart/Chart';
+import EmotionsDisplay from './components/EmotionsDisplay/EmotionsDisplay';
 
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
       name: array.length + ': ' + inputChart,
       pv: numberChart,
     }
-  
+
     const listEmotions = {
       inputChart,
       inputEmotions,
@@ -34,28 +35,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <input type='text' value={inputChart} onChange={(e) => setInputChart(e.target.value)} placeholder="Insert a title..."></input>
-      <input type='text' value={inputEmotions} onChange={(e) => setInputEmotions(e.target.value)} placeholder="Insert a emotion..."></input>
-      <input type='number' min="0" max="5" value={numberChart} onChange={(e) => setNumberChart(e.target.value)}></input>
-      <button onClick={handleChange}>Create</button>
-
-      <LineChart
-        width={array.length * 100}
-        height={300}
-        data={array}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis type="number" domain={[0, 5]} />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-      </LineChart>
-      <h3>{array.length ? arrayEmotions.map(el => el.count + '.-'+ el.inputChart + ': ' + el.inputEmotions + '-----------') : null}</h3>
-
+      <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
+      <Chart array={array}></Chart>
+      <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
     </div>
   );
 }
