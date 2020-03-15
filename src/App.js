@@ -35,9 +35,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
+      <div className="layout-distribution">
+        <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
+        <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
+      </div>
       <Chart array={array}></Chart>
-      <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
     </div>
   );
 }

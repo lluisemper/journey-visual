@@ -1,14 +1,24 @@
 import React from 'react';
 import './Chart.css';
-import { LineChart, XAxis, Tooltip, CartesianGrid, Line, YAxis, Legend } from 'recharts';
+import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, AreaChart, Area, } from 'recharts';
 
 
-const Chart = ({array}) => {
+const Chart = ({ array }) => {
 
- 
+
+  const handleClick = (event) => {
+    console.log('cc', event);
+    console.log('array', array);
+    //array value on that index when click
+    console.log('array[event.index].pv', array[event.index].pv);
+
+  }
+  
+  
   return (
-    <div className="Chart">
-      <LineChart
+    <div className="Chart" id="Chart">
+      {array.length > 1 ?
+        <AreaChart
         width={array.length * 100}
         height={300}
         data={array}
@@ -21,8 +31,10 @@ const Chart = ({array}) => {
         <YAxis type="number" domain={[0, 5]} />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-      </LineChart>
+        <Area type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ onClick: handleClick }} ></Area>
+      </AreaChart>
+      : null
+      }
     </div>
   );
 }

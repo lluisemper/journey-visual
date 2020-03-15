@@ -1,1 +1,4 @@
-.EmotionsDisplay {}
+.EmotionsDisplay {
+  display: flex;
+  flex-direction: row;
+}
