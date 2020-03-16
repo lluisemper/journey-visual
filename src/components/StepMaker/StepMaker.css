@@ -1,0 +1,11 @@
+.StepMaker {
+
+  width: 80%;
+  margin: 0 auto;
+}
+
+.layout-distribution {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
