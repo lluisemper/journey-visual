@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StepMaker.css';
 import Form from '../Form/Form';
 import Chart from '../Chart/Chart';
 import EmotionsDisplay from '../EmotionsDisplay/EmotionsDisplay';
+import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
 
 
@@ -32,8 +33,19 @@ const StepMaker = () => {
     setArrayEmotions([...arrayEmotions, listEmotions])
   }
 
+  const [journey, setJourney] = useState([]);
+
+  useEffect(() => {
+    setJourney([
+      { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
+      { step: 'empty coffee bin', emotion: 'bored', score: 2 },
+      { step: 'make coffee', emotion: 'neutral', score: 3 },
+      { step: 'drink coffee', emotion: 'happy', score: 5 }]);
+  }, []);
+
   return (
     <div className="StepMaker">
+      <StepList journey={journey} />
       <div className="layout-distribution">
         <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
         <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
