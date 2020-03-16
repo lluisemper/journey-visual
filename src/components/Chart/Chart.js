@@ -10,11 +10,7 @@ const Chart = ({ array }) => {
 
   const exportChart = (asSVG) => {  
   
-    // A Recharts component is rendered as a div that contains namely an SVG
-    // which holds the chart. We can access this SVG by calling upon the first child/
-    // let chartSVG = ReactDOM.findDOMNode(component).children[0];
     let chartSVG = myRef.current
-    
   
     if (asSVG) {
       let svgURL = new XMLSerializer().serializeToString(chartSVG);
