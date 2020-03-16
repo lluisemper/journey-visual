@@ -1,6 +1,6 @@
 import React from 'react';
 import './Chart.css';
-import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, AreaChart, Area, } from 'recharts';
+import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
 
 
 const Chart = ({ array }) => {
@@ -18,7 +18,7 @@ const Chart = ({ array }) => {
   return (
     <div className="Chart" id="Chart">
       {array.length > 1 ?
-        <AreaChart
+        <LineChart
         width={array.length * 100}
         height={300}
         data={array}
@@ -31,8 +31,8 @@ const Chart = ({ array }) => {
         <YAxis type="number" domain={[0, 5]} />
         <Tooltip />
         <Legend />
-        <Area type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ onClick: handleClick }} ></Area>
-      </AreaChart>
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ onClick: handleClick }} ></Line>
+      </LineChart>
       : null
       }
     </div>

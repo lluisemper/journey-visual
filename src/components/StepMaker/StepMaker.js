@@ -42,7 +42,7 @@ const StepMaker = () => {
       <Link to="/review">
         <button type="button" className="check-button">
           ✓
-        </button>
+          </button>
       </Link>
     </div>
   );
