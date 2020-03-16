@@ -14,7 +14,11 @@ const App = () => {
   const [journey, setJourney] = useState([]);
 
   useEffect(() => {
-    setJourney([]);
+    setJourney([
+      { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
+      { step: 'empty coffee bin', emotion: 'bored', score: 2 },
+      { step: 'make coffee', emotion: 'neutral', score: 3 },
+      { step: 'drink coffee', emotion: 'happy', score: 5 }]);
   }, []);
 
   return (

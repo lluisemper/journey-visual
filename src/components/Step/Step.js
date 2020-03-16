@@ -1,11 +1,17 @@
 import React from 'react';
 import './Step.css';
 
-const Step = () => {
+const Step = ({ step }) => {
 
   return (
     <div className='Step'>
-      <h1>step works</h1>
+      <button className='addStep'>+</button>
+      <div className='stepContainer'>
+        <h1>{step.step}</h1>
+        <h1>{step.emotion}</h1>
+        <h1>{step.score}</h1>
+      </div>
+      <button className='addStep'>+</button>
     </div>
   )
 }
