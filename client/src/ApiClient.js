@@ -9,7 +9,18 @@ export default {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({loginOrg})
+      body: JSON.stringify(loginOrg)
+    })
+  },
+
+  registerOrg: (loginOrg) => {  
+    return fetchRequest(`/login`, {
+      credentials:'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginOrg)
     })
   },
   postJourney: (journey) => {  
