@@ -10,7 +10,4 @@ const Organization = new Schema({
   users: [User.Schema]
 });
 
-
-
-const model = mongoose.model('Organization', Organization);
-module.exports = model;
+module.exports = {Model: mongoose.model('Organization', Organization), Schema: Organization};

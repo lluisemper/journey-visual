@@ -10,6 +10,10 @@ import ApiClient from '../../ApiClient';
 
 const Main = () => {
 
+  // const[initialState, setInitialState] = ({
+  //   array: '',
+  //   arrayEmotions: ''
+  // })
   const [array, setArray] = useState([]);
   const [arrayEmotions, setArrayEmotions] = useState([]);
   const [inputChart, setInputChart] = useState('')
