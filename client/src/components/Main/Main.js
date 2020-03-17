@@ -9,6 +9,10 @@ import JourneyList from '../JourneyList/JourneyList';
 
 const StepMaker = () => {
 
+  // const[initialState, setInitialState] = ({
+  //   array: '',
+  //   arrayEmotions: ''
+  // })
   const [array, setArray] = useState([]);
   const [arrayEmotions, setArrayEmotions] = useState([]);
   const [inputChart, setInputChart] = useState('')
