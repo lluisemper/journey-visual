@@ -1,8 +1,8 @@
-module.export = class Step {
-  constructor(title) {
-    this.title = title;
-    this.emotion;
-    this.score;
+module.export = class StepClass {
+  constructor() {
+    this.title = null;
+    this.emotion = null;
+    this.score = null;
   }
   setTitle (title) {
     this.title = title;

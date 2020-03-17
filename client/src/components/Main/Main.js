@@ -6,14 +6,16 @@ import EmotionsDisplay from '../EmotionsDisplay/EmotionsDisplay';
 import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
 import JourneyList from '../JourneyList/JourneyList';
+import ApiClient from '../../ApiClient';
 
-const StepMaker = () => {
+const Main = () => {
 
   const [array, setArray] = useState([]);
   const [arrayEmotions, setArrayEmotions] = useState([]);
   const [inputChart, setInputChart] = useState('')
   const [numberChart, setNumberChart] = useState('')
   const [inputEmotions, setInputEmotions] = useState('')
+  const [currentJourney, setCurrentJourney] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -36,21 +38,31 @@ const StepMaker = () => {
   const [journeyList, setJourneyList] = useState([]);
 
   useEffect(() => {
-    setJourneyList([
-      {
-        name: 'making coffee', steps: [
-          { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
-          { step: 'empty coffee bin', emotion: 'bored', score: 2 },
-          { step: 'make coffee', emotion: 'neutral', score: 3 },
-          { step: 'drink coffee', emotion: 'happy', score: 5 }]
-      }
-    ]);
+    const journeys = ApiClient.getJourneys();
+    setJourneyList(journeys);
+    if (journeyList.lenght) {
+      setCurrentJourney(journeyList[0]);
+    }
   }, []);
+
+
+
+  // useEffect(() => {
+  //   setJourneyList([
+  //     {
+  //       name: 'making coffee', steps: [
+  //         { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
+  //         { step: 'empty coffee bin', emotion: 'bored', score: 2 },
+  //         { step: 'make coffee', emotion: 'neutral', score: 3 },
+  //         { step: 'drink coffee', emotion: 'happy', score: 5 }]
+  //     }
+  //   ]);
+  // }, []);
   return (
     <div className="StepMaker">
 
       <h1>My Journey's</h1>
-      <JourneyList journeyList={journeyList} />
+      <JourneyList setCurrentJourney={setCurrentJourney} />
       <div className="border"></div>
       <h1>Steps</h1>
       <StepList journey={journeyList} />
@@ -72,4 +84,4 @@ const StepMaker = () => {
   );
 }
 
-export default StepMaker;
+export default Main;

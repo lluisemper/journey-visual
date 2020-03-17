@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
+import StepClass from '../../StepClass';
+import ApiClient from '../../ApiClient';
 
-const StepList = ({journey}) => {
+const StepList = ({ journey }) => {
+
+  // const [saved, setSaved] = useState(false);
+  const [steps, setSteps] = useState([]);
+
+  useEffect(() => {
+    const steps = getSteps();
+  })
+
+
+  const getSteps = () => {
+    
+  }
+  
+  const createStep = () => {
+    const newStep = new StepClass();
+  }
 
   return (
     <div className='Step'>

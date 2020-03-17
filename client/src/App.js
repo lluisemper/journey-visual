@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import StepMaker from './components/Main/Main';
+import Main from './components/Main/Main';
 import Review from './components/Review/Review';
 import Login from './components/Login/Login';
 
@@ -16,7 +16,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/">
-            <StepMaker></StepMaker>
+            <Main></Main>
           </Route>
           <Route exact path="/review">
             <Review></Review>

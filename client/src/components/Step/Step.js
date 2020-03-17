@@ -1,7 +1,12 @@
 import React from 'react';
 import './Step.css';
 
+
 const Step = ({ step }) => {
+
+  // updateStep
+
+
 
   return (
     <div className='Step'>
