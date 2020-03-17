@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import StepMaker from './components/StepMaker/StepMaker';
+import StepMaker from './components/Main/Main';
 import Review from './components/Review/Review';
 import Login from './components/Login/Login';
 

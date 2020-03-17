@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './StepMaker.css';
+import './Main.css';
 import Form from '../Form/Form';
 import Chart from '../Chart/Chart';
 import EmotionsDisplay from '../EmotionsDisplay/EmotionsDisplay';
