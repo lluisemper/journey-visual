@@ -28,8 +28,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <JourneyList journeyList={journeyList} />
+      <h1>My Journey's</h1>
+      <JourneyList journeyList={journeyList} />git 
+      <div className="border"></div>
+      <h1>Steps</h1>
       <StepList journey={journeyList} />
+      <div className="border"></div>
       <Router>
         <Switch>
           <Route exact path="/">
