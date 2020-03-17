@@ -2,6 +2,7 @@ const Organization = require('./models/model-organization');
 const User = require('./models/model-user');
 const Steps = require('./models/model-steps');
 const Journey = require('./models/model-journey');
+const mongoose = require('mongoose')
 
 exports.loginOrg = async (req, res) => {
   try {    //sort out object user schema
@@ -31,17 +32,19 @@ exports.registerOrg = async (req, res) => {
   }
 }
 
-exports.postSteps = async (req, res) => {
-
-  console.log(req.params.journey);
+exports.postStep = async (req, res) => {
   try {
-    const step = await Steps.Model.create({
-      title: req.body.title,
-      emotion: req.body.emotion,
-      score: req.body.score
-    })
-    res.json(step);
-    res.status(201);
+    const journey = await Journey.Model.findById(req.params.id);
+    console.log('body',req.body)
+    journey.steps.push(
+      {
+        title: req.body.title,
+        emotion: req.body.emotion,
+        score: req.body.score
+      });
+    await journey.save();    
+    res.json(journey);
+     res.status(201);
   } catch (error) {
     console.log(error)
     res.status(500).send();
@@ -69,3 +72,16 @@ exports.getJourneys = async (req, res) => {
     res.status(500).send();
   }
 }
+
+exports.getSteps = async (req, res) => {
+  try {
+    const journey = await Journey.Model.findById(req.params.id)
+    res.status(201);
+    res.json(journey.steps);
+  
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+

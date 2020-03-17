@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Step = require('./model-steps');
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const Journey = new Schema({
   title: { type: String },
@@ -9,4 +9,4 @@ const Journey = new Schema({
   steps: [Step.Schema]
 })
 
-module.exports = {Model: mongoose.model('Journey', Journey), Schema: Journey};
+module.exports = { Model: mongoose.model('Journey', Journey), Schema: Journey };

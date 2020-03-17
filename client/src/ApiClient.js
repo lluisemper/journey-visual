@@ -33,8 +33,8 @@ export default {
       body: JSON.stringify({journey})
     })
   },
-  postStep: (journey, step) => {  
-    return fetchRequest(`:${journey._id}/step`, {
+  postStep: (id, step) => {  
+    return fetchRequest(`/${id}/step`, {
       credentials:'include',
       method: 'POST',
       headers: {
@@ -48,8 +48,8 @@ export default {
       credentials: 'include',
     })
   },
-  getSteps: () => {
-    return fetchRequest(`/:journey/steps`, {
+  getSteps: (id) => {
+    return fetchRequest(`/${id}/steps`, {
       credentials: 'include',
     })
   }
