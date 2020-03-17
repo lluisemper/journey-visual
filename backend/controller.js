@@ -18,19 +18,8 @@ exports.loginOrg = async (req, res) => {
 exports.registerOrg = async (req, res) => {
   try {
     const user = await Organization.Model.create({ name: req.body.name });
-    res.status(201);
     res.json(user);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
-}
-
-exports.postJourney = async (req, res) => {
-  try {
-    const journey = await Journey.Model.create({ name: req.body.name, steps: [req.body.steps] })
     res.status(201);
-    res.json(journey);
   } catch (error) {
     console.log(error)
     res.status(500).send();
@@ -39,7 +28,24 @@ exports.postJourney = async (req, res) => {
 
 exports.postSteps = async (req, res) => {
   try {
+    const step = await Steps.Model.create({
+      title: req.body.title,
+      emotion: req.body.emotion,
+      score: req.body.score
+    })
+    res.json(step);
+    res.status(201);
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
 
+exports.postJourney = async (req, res) => {
+  try {
+    const journey = await Journey.Model.create({ name: req.body.name, steps: [Steps.Schema] })
+    res.json(journey);
+    res.status(201);
   } catch (error) {
     console.log(error)
     res.status(500).send();
