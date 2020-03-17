@@ -63,17 +63,17 @@ const Main = () => {
   //   ]);
   // }, []);
   return (
-    <div className="StepMaker">
+    <div className="Main">
 
       <h1>My Journey's</h1>
-      <JourneyList setCurrentJourney={setCurrentJourney} />
+      {/* <JourneyList setCurrentJourney={setCurrentJourney} /> */}
       <div className="border"></div>
       <h1>Steps</h1>
-      <StepList journey={journeyList} />
+      {/* <StepList journey={journeyList} /> */}
       <div className="border"></div>
 
 
-     
+
       <div className="layout-distribution">
         <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
         <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
