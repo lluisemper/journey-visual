@@ -38,7 +38,7 @@ const Main = () => {
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
-      setJourneys(journeys);
+      setJourneys(journeys)
     });
 
     if (journeys.length) {
@@ -46,12 +46,17 @@ const Main = () => {
     }
   }, []);
 
+  const addJourney = () => {
+    ApiClient.postJourney('new journey').then(newJourney => setJourneys((stateJourneys) => [...stateJourneys, newJourney])
+    );
+}
+
 
   return (
     <div className="Main">
 
       <h1>My Journey's</h1>
-      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} />
+      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney}/>
       <div className="border"></div>
       <h1>Steps</h1>
       <StepList currentJourney={currentJourney} />

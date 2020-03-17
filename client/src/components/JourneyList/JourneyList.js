@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './JourneyList.css';
 import Journey from '../Journey/Journey';
 import ApiClient from '../../ApiClient';
 
-const JourneyList = ({ journeys, setCurrentJourney }) => {
+const JourneyList = ({ journeys, setCurrentJourney, addJourney }) => {
   
-  const addJourney = () => {
-    ApiClient.postJourney('new journey');
-}
 
   return (
     <div className='JourneyList'>
