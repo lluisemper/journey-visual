@@ -1,6 +1,5 @@
-.StepMaker {
+.Main {
   margin: 20px;
-
 }
 
 .layout-distribution {
@@ -11,5 +10,9 @@
 
 .border {
   width: 100%;
-  border: 1px solid black;
+  height: 1px;
+  background-image: linear-gradient(to right, black 33%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 3px 1px;
+  background-repeat: repeat-x;
 }

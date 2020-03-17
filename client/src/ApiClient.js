@@ -12,6 +12,26 @@ export default {
       body: JSON.stringify({loginOrg})
     })
   },
+  postJourney: (journey) => {  
+    return fetchRequest(`/journey`, {
+      credentials:'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(journey)
+    })
+  },
+  postStep: (step) => {  
+    return fetchRequest(`:journey/step`, {
+      credentials:'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(step)
+    })
+  },
   getJourneys: () => {
     return fetchRequest(`/journeys`, {
       credentials: 'include',
