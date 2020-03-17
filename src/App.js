@@ -12,10 +12,10 @@ import JourneyList from './components/JourneyList/JourneyList';
 
 const App = () => {
 
-  const [journeyList, setJourney] = useState([]);
+  const [journeyList, setJourneyList] = useState([]);
 
   useEffect(() => {
-    setJourney([
+    setJourneyList([
       {
         name: 'making coffee', steps: [
           { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="App">
       <JourneyList journeyList={journeyList} />
-      <StepList journey={journeyList[0]} />
+      <StepList journey={journeyList} />
       <Router>
         <Switch>
           <Route exact path="/">

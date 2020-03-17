@@ -6,7 +6,8 @@ const JourneyList = ({ journeyList }) => {
 
   return (
     <div className='Step'>
-      {journeyList.map((journey) => {
+      {console.log(journeyList)}
+      {journeyList.length && journeyList.map((journey) => {
         return <Journey journey={journey} />
       })}
     </div>

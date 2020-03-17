@@ -6,7 +6,7 @@ const StepList = ({journey}) => {
 
   return (
     <div className='Step'>
-      {journey.steps.map((step) => {
+      {journey.length && journey[0].steps.map((step) => {
         return <Step step={step}/>
       })}
     </div>
