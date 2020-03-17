@@ -8,17 +8,17 @@ const Chart = ({ array }) => {
 
   const myRef = React.createRef();
 
-  const exportChart = (asSVG) => {  
-  
+  const exportChart = (asSVG) => {
+
     let chartSVG = myRef.current
-  
+
     if (asSVG) {
       let svgURL = new XMLSerializer().serializeToString(chartSVG);
       let svgBlob = new Blob([svgURL], { type: "image/svg+xml;charset=utf-8" });
-      FileSaver.saveAs(svgBlob,  "fooo.svg");
+      FileSaver.saveAs(svgBlob, "fooo.svg");
     } else {
       let svgBlob = new Blob([chartSVG.outerHTML], { type: "text/html;charset=utf-8" });
-      FileSaver.saveAs(svgBlob,  "fooo.html");
+      FileSaver.saveAs(svgBlob, "fooo.html");
     }
   }
 
@@ -39,7 +39,8 @@ const Chart = ({ array }) => {
             <YAxis type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8"  ></Line>
+            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
+              dot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 2, r: 7, className: "boxShadow" }} ></Line>
           </LineChart>
           : null
         }
