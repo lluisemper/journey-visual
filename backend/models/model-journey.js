@@ -4,7 +4,7 @@ const Step = require('./model-steps');
 const {Schema} = mongoose;
 
 const Journey = new Schema({
-  name: { type: String },
+  title: { type: String },
   order: [],
   steps: [Step.Schema]
 })

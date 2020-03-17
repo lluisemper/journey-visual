@@ -32,6 +32,8 @@ exports.registerOrg = async (req, res) => {
 }
 
 exports.postSteps = async (req, res) => {
+
+  console.log(req.params.journey);
   try {
     const step = await Steps.Model.create({
       title: req.body.title,
@@ -48,7 +50,7 @@ exports.postSteps = async (req, res) => {
 
 exports.postJourney = async (req, res) => {
   try {
-    const journey = await Journey.Model.create({ name: req.body.name, steps: [Steps.Schema] })
+    const journey = await Journey.Model.create({ title: req.body.journey, steps: [Steps.Schema] })
     res.status(201);
     res.json(journey);
   } catch (error) {

@@ -30,11 +30,11 @@ export default {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(journey)
+      body: JSON.stringify({journey})
     })
   },
-  postStep: (step) => {  
-    return fetchRequest(`:journey/step`, {
+  postStep: (journey, step) => {  
+    return fetchRequest(`:${journey._id}/step`, {
       credentials:'include',
       method: 'POST',
       headers: {
