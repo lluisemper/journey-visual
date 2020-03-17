@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Step = require('./model-steps');
+const Journey = require('./model-journey');
 
 const {Schema} = mongoose;
 
@@ -10,7 +10,7 @@ const User = new Schema({
   password: { type: String,
             allowNull: false,
   },
-  journeys: [Step.Schema]
+  journeys: [Journey.Schema]
 });
 
 

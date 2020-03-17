@@ -3,7 +3,7 @@ const User = require('./model-user');
 
 const {Schema} = mongoose;
 
-const Organitzation = new Schema({
+const Organization = new Schema({
   name: { type: String,
             allowNull: false,
   },
@@ -12,5 +12,5 @@ const Organitzation = new Schema({
 
 
 
-const model = mongoose.model('Organitzation', Organitzation);
+const model = mongoose.model('Organization', Organization);
 module.exports = model;
