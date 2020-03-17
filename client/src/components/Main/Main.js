@@ -11,7 +11,7 @@ import ApiClient from '../../ApiClient';
 const Main = () => {
 
   // const[initialState, setInitialState] = ({
-  //   array: '',
+  //   array: [],
   //   arrayEmotions: ''
   // })
   const [array, setArray] = useState([]);

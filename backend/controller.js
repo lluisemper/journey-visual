@@ -16,8 +16,8 @@ exports.loginOrg = async (req, res) => {
 }
 
 exports.registerOrg = async (req, res) => {
-  try {    
-    const user = await Organization.Model.create({name: req.body.name});
+  try {
+    const user = await Organization.Model.create({ name: req.body.name });
     res.status(201);
     res.json(user);
   } catch (error) {
@@ -28,7 +28,9 @@ exports.registerOrg = async (req, res) => {
 
 exports.postJourney = async (req, res) => {
   try {
-
+    const journey = await Journey.Model.create({ name: req.body.name, steps: [req.body.steps] })
+    res.status(201);
+    res.json(journey);
   } catch (error) {
     console.log(error)
     res.status(500).send();
@@ -37,6 +39,17 @@ exports.postJourney = async (req, res) => {
 
 exports.postSteps = async (req, res) => {
   try {
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+
+exports.getJourneys = async (req, res) => {
+  try {
+    const journeys = await Journey.Model.find()
+    res.json(journeys);
 
   } catch (error) {
     console.log(error)
