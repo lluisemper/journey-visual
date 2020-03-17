@@ -11,7 +11,8 @@ const Steps = new Schema({
     },
     score: { type: Number,
               allowNull: false,
-    },
+  },
+    order: {type: Number}
   });
 
 

@@ -1,19 +1,24 @@
-.Step{
-display: flex;
-justify-content: flex-start;
-align-items: center;
-margin: 20px;
+.Step {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px;
 }
 
-.stepContainer{
-  display:flex;
+.stepContainer {
+  display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   border-radius: 7px;
-  width: 200px;
-  height: 300px;
+  width: 15vw;
+  height: 25vh;
 }
 
-.addStep{
+.stepContainer h1{
+  font-size: 16px;
+}
+
+
+.addStep {
   height: 50%;
 }

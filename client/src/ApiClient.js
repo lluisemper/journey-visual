@@ -4,12 +4,22 @@ export default {
 
   checkOrg: (loginOrg) => {  
     return fetchRequest(`/login`, {
-      credentials:"include",
+      credentials:'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({loginOrg})
+    })
+  },
+  getJourneys: () => {
+    return fetchRequest(`/journeys`, {
+      credentials: 'include',
+    })
+  },
+  getSteps: () => {
+    return fetchRequest(`/:journey/steps`, {
+      credentials: 'include',
     })
   }
 }
@@ -22,3 +32,4 @@ const fetchRequest = (url, options) => {
       console.log(`${err.message} while fetching ${BASE_URL}${url}`)
     });
 };
+
