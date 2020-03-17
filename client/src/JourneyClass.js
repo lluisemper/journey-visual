@@ -1,4 +1,4 @@
-module.export = class JourneyClass {
+export default class JourneyClass {
   constructor(title) {
     this.title = title;
   }

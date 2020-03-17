@@ -1,6 +1,14 @@
 .Journey {
   width: 20vw;
-  height: 20vh;
+  height: 10vh;
   background-color: lightgray;
   border-radius: 7px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Journey h1 {
+  font-size: 16px;
 }

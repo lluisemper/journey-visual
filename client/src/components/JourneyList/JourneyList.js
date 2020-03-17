@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './JourneyList.css';
 import Journey from '../Journey/Journey';
 
-const JourneyList = ({ journeyList, setCurrentJourney}) => {
+const JourneyList = ({ journeys, setCurrentJourney }) => {
+  
 
   return (
-    <div className='Step'>
-      {console.log(journeyList)}
-      {journeyList.length && journeyList.map((journey) => {
-        return <Journey journey={journey} setCurrentJourney={setCurrentJourney}/>
+    <div className='JourneyList'>
+      {journeys.length && journeys.map((journey) => {
+        return <Journey key={journey.title} journey={journey} setCurrentJourney={setCurrentJourney} />
       })}
     </div>
   )

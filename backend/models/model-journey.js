@@ -5,6 +5,7 @@ const {Schema} = mongoose;
 
 const Journey = new Schema({
   name: { type: String },
+  order: [],
   steps: [Step.Schema]
 })
 

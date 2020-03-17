@@ -10,13 +10,9 @@ const Step = ({ step }) => {
 
   return (
     <div className='Step'>
-      <button className='addStep'>+</button>
-      <div className='stepContainer'>
-        <h1>{step.step}</h1>
+        <h1>{step.title}</h1>
         <h1>{step.emotion}</h1>
         <h1>{step.score}</h1>
-      </div>
-      <button className='addStep'>+</button>
     </div>
   )
 }

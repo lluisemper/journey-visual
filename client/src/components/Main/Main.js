@@ -19,6 +19,7 @@ const Main = () => {
   const [inputChart, setInputChart] = useState('')
   const [numberChart, setNumberChart] = useState('')
   const [inputEmotions, setInputEmotions] = useState('')
+  const [journeys, setJourneys] = useState([]);
   const [currentJourney, setCurrentJourney] = useState({});
 
   const handleChange = (e) => {
@@ -39,39 +40,30 @@ const Main = () => {
     setArrayEmotions([...arrayEmotions, listEmotions])
   }
 
-  const [journeyList, setJourneyList] = useState([]);
-
   useEffect(() => {
-    const journeys = ApiClient.getJourneys();
-    setJourneyList(journeys);
-    if (journeyList.lenght) {
-      setCurrentJourney(journeyList[0]);
+    setJourneys([
+      {
+        title: 'Coffee'
+      },
+      {
+        title: 'Codeworks'
+      }
+    ])
+    if (journeys.length) {
+      setCurrentJourney(journeys[0]);
     }
   }, []);
 
 
-
-  // useEffect(() => {
-  //   setJourneyList([
-  //     {
-  //       name: 'making coffee', steps: [
-  //         { step: 'wants a cup of coffee', emotion: 'happy', score: 4 },
-  //         { step: 'empty coffee bin', emotion: 'bored', score: 2 },
-  //         { step: 'make coffee', emotion: 'neutral', score: 3 },
-  //         { step: 'drink coffee', emotion: 'happy', score: 5 }]
-  //     }
-  //   ]);
-  // }, []);
   return (
     <div className="Main">
 
       <h1>My Journey's</h1>
-      {/* <JourneyList setCurrentJourney={setCurrentJourney} /> */}
+      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} />
       <div className="border"></div>
       <h1>Steps</h1>
-      {/* <StepList journey={journeyList} /> */}
+      <StepList currentJourney={currentJourney} />
       <div className="border"></div>
-
 
 
       <div className="layout-distribution">
