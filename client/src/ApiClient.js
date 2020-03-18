@@ -52,6 +52,17 @@ export default {
     return fetchRequest(`/${id}/steps`, {
       credentials: 'include',
     })
+  },
+  updateStep: (id, step) => {
+    console.log(step._id)
+    return fetchRequest(`/steps/${id}/update`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(step)
+    })
   }
 }
 

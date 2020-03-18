@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const Steps = new Schema({
+const Step = new Schema({
   title: {
     type: String,
     allowNull: false,
@@ -17,6 +17,5 @@ const Steps = new Schema({
   }
 });
 
-
-
-module.exports = { Model: mongoose.model('Steps', Steps), Schema: Steps };
+const model = mongoose.model('Step', Step);
+module.exports = model;

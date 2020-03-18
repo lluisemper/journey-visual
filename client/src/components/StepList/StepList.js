@@ -9,7 +9,6 @@ const StepList = ({ currentJourney }) => {
 
   useEffect(() => {
     if (currentJourney) {
-      console.log(currentJourney)
       ApiClient.getSteps(currentJourney._id).then(steps => {
         setSteps(steps);
       })
@@ -18,9 +17,6 @@ const StepList = ({ currentJourney }) => {
 
   const createStep = () => {
     const newStep = new StepClass();
-    newStep.title = 'newStep';
-    newStep.emotion = 'happy';
-    newStep.score = 4;
     ApiClient.postStep(currentJourney._id, newStep);
     setSteps([...steps, newStep]);
   }
@@ -34,7 +30,7 @@ const StepList = ({ currentJourney }) => {
               createStep()
             }
             }>+</button>
-            <Step step={step} />
+            <Step step={step} currentJourney={currentJourney} />
             <button className='addStep' onClick={() => {
               createStep()
             }

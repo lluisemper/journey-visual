@@ -6,7 +6,8 @@ const { Schema } = mongoose;
 const Journey = new Schema({
   title: { type: String },
   order: [],
-  steps: [Step.Schema]
+  steps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Step' }]
 })
 
-module.exports = { Model: mongoose.model('Journey', Journey), Schema: Journey };
+const model = mongoose.model('Journey', Journey);
+module.exports = model;
