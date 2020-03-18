@@ -1,3 +1,9 @@
 .JourneyList {
   display: flex;
+  flex-direction: column;
 }
+
+.journeyContainer {
+  display: flex;
+}
+
