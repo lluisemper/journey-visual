@@ -20,8 +20,9 @@ const StepList = ({ currentJourney }) => {
 
   const createStep = () => {
     const newStep = new StepClass();
-    ApiClient.postStep(currentJourney._id, newStep);
-    setSteps([...steps, newStep]);
+    ApiClient.postStep(currentJourney._id, newStep).then((emptyStep) => {
+      setSteps([...steps, emptyStep]);
+    })
   }
 
   return (

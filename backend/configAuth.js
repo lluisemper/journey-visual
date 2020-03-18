@@ -25,8 +25,9 @@ passport.use(new GoogleStrategy({
   function (accessToken, refreshToken, profile, cb) { 
     console.log('profile',profile);
     console.log('cb',cb);
+    console.log('userSchema.Model',userSchema.Model);
        
-    userSchema.findOne({id: profile.id}, function (err, user) {
+    userSchema.Model.findOne({id: profile.id}, function (err, user) {
       if (err) {
         return cb(err);
       }

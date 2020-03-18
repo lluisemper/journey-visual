@@ -48,7 +48,7 @@ const Step = ({ step, currentJourney }) => {
       </div>
     )
   }
-
+  console.log(step);
   return (
     <div className='Step'>
       {step.title ? renderStep() : form()}

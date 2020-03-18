@@ -1,4 +1,6 @@
 module.exports = function (app, passport) {
+  console.log('fooooooooooooo');
+  
   app.get('/auth/google',
     passport.authenticate('google', { scope: ['profile'] }));
 
@@ -8,7 +10,6 @@ module.exports = function (app, passport) {
       console.log('req',req);
       
       res.cookie('cookie', req.user._id);
-      res.redirect(process.env.URL);
+      res.redirect('/');
     });
-
 }

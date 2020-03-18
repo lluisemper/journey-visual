@@ -11,7 +11,7 @@ exports.postStep = async (req, res) => {
     })
     journey.steps.push(step._id);
     await journey.save();
-    // res.json(journey);
+    res.json(step);
     res.status(201);
   } catch (error) {
     console.log(error)
@@ -62,8 +62,8 @@ exports.updateStep = async (req, res) => {
         score: req.body.score
       }
     )
-    res.status(201);
-    res.json(journey.steps);
+    res.status(204);
+    res.json();
   } catch (error) {
     console.log(error)
     res.status(500).send();
