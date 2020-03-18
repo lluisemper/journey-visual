@@ -7,9 +7,6 @@ const User = new Schema({
   name: { type: String,
             allowNull: false,
   },
-  password: { type: String,
-            allowNull: false,
-  },
   journeys: [Journey.Schema]
 });
 
