@@ -1,50 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Step.css';
 import ApiClient from '../../ApiClient';
 
 
-const Step = ({ step }) => {
+const Step = ({ step, setSteps, steps }) => {
+
+  const [initialState, setinitialState] = useState({
+    title:'',
+    emotion:'',
+    score:''
+  })
 
   const submitHandler = (e) => {
     e.preventDefault();
-    step.title = e.target.title.value;
-    step.emotion = e.target.emotion.value;
-    step.score = e.target.score.value;
-<<<<<<< HEAD
-
-=======
->>>>>>> 7671660dbe0b8e1e18c92ee13697350418ec2842
-    ApiClient.updateStep(step._id, step);
+    ApiClient.updateStep(step._id, initialState)
+    .then((emptyStep) => {
+      setSteps([...steps, emptyStep]);
+    })
   }
-
-  const form = () => {
+  
     return (
-      <form className="stepForm" onSubmit={submitHandler}>
-        <h4>Title:</h4>
-        <input type='text' name='title' />
-        <h4>Emotion</h4>
-        <input type='text' name='emotion'/>
-        <h4>Score</h4>
-        <input type='text' name='score'/>
-        <input type='submit'/>
-      </form>
-    )
-  }
-
-  const renderStep = () => {
-    return (
-      <div>
+      <div className='Step'>
+      {step.title ? <div>
         <h1>{step.title}</h1>
         <h1>{step.emotion}</h1>
         <h1>{step.score}</h1>
-      </div>
+      </div> :
+      <form className="stepForm" onSubmit={submitHandler}>
+        <h4>Title:</h4>
+        <input type='text'onChange={(e) => setinitialState({...initialState, title: e.target.value})}/>
+        <h4>Emotion</h4>
+        <input type='text'onChange={(e) => setinitialState({...initialState, emotion: e.target.value})}/>
+        <h4>Score</h4>
+        <input type='text'onChange={(e) => setinitialState({...initialState, score: e.target.value})}/>
+        <input type='submit'/>
+      </form>} 
+     </div>
     )
-  }
-  return (
-    <div className='Step'>
-      {step.title ? renderStep() : form()}
-    </div>
-  )
+  
 }
 
 export default Step

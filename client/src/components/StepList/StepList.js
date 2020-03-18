@@ -31,7 +31,7 @@ const StepList = ({ currentJourney }) => {
               createStep()
             }
             }>+</button>
-            <Step step={step} currentJourney={currentJourney} />
+            <Step step={step} setSteps={setSteps} steps={steps} />
             <button className='addStep' onClick={() => {
               createStep()
             }
