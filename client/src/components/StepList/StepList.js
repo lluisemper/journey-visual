@@ -20,6 +20,17 @@ const StepList = ({ currentJourney }) => {
     })
   }
 
+  const addStep = (id, stepObj) => {
+    ApiClient.updateStep(id, stepObj)
+    .then(() => {
+      const newSteps = steps.slice()
+      const oldStep = newSteps.find(({ _id }) => _id === id);
+      Object.assign(oldStep, stepObj)
+      setSteps(newSteps)
+      
+    })
+  }
+
   return (
     <div className='StepList'>
       {steps !== undefined && steps.length && steps.map((step) => {
@@ -29,7 +40,8 @@ const StepList = ({ currentJourney }) => {
               createStep()
             }
             }>+</button>
-            <Step step={step} setSteps={setSteps} steps={steps} />
+            <Step step={step} addStep={addStep} steps={steps} />
+            {console.log(steps)}
             <button className='addStep' onClick={() => {
               createStep()
             }

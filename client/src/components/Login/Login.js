@@ -7,7 +7,7 @@ const Login = () => {
     <div className="login">
           <div className="breakingSmall"></div>
           <div className="login-text">
-            <a href= {"/auth/google/"}>login</a>
+            <a href= {"http://localhost:4000/auth/google/"}>login</a>
           </div>
         </div>
   );

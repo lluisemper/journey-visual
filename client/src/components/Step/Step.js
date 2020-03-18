@@ -3,7 +3,7 @@ import './Step.css';
 import ApiClient from '../../ApiClient';
 
 
-const Step = ({ step, setSteps, steps }) => {
+const Step = ({ step, addStep }) => {
 
   const [initialState, setinitialState] = useState({
     title:'',
@@ -13,15 +13,8 @@ const Step = ({ step, setSteps, steps }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    ApiClient.updateStep(step._id, initialState)
-    .then((emptyStep) => {
-      setSteps([...steps, emptyStep])
-    })
+    addStep(step._id, initialState)
   }
-
-  console.log('seeetp',step);
-  console.log('initialState',initialState.title);
-  console.log('steps',steps);
   
     return (
       <div className='Step'>
