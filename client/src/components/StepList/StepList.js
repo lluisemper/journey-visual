@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
-import StepClass from '../../StepClass';
 import ApiClient from '../../ApiClient';
 
 const StepList = ({ currentJourney }) => {
@@ -16,8 +15,7 @@ const StepList = ({ currentJourney }) => {
   }, [currentJourney])
 
   const createStep = () => {
-    const newStep = new StepClass();
-    ApiClient.postStep(currentJourney._id, newStep).then((emptyStep) => {
+    ApiClient.postStep(currentJourney._id, {}).then((emptyStep) => {
       setSteps([...steps, emptyStep]);
     })
   }

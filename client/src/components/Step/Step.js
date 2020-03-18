@@ -15,9 +15,13 @@ const Step = ({ step, setSteps, steps }) => {
     e.preventDefault();
     ApiClient.updateStep(step._id, initialState)
     .then((emptyStep) => {
-      setSteps([...steps, emptyStep]);
+      setSteps([...steps, emptyStep])
     })
   }
+
+  console.log('seeetp',step);
+  console.log('initialState',initialState.title);
+  console.log('steps',steps);
   
     return (
       <div className='Step'>
