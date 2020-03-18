@@ -26,6 +26,9 @@ const StepList = ({ currentJourney }) => {
     }
   }, [])
 
+  console.log('steps',steps);
+  
+
   const createStep = () => {
     const newStep = new StepClass();
     newStep.title = 'newStep';
@@ -40,7 +43,7 @@ const StepList = ({ currentJourney }) => {
 
   return (
     <div className='StepList'>
-      {steps.length && steps.map((step) => {
+      {steps !== undefined && steps.length && steps.map((step) => {
         return (
           <div key={step.title} className='stepContainer'>
             <button className='addStep' onClick={() => {
