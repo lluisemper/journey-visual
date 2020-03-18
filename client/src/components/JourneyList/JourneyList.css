@@ -7,3 +7,10 @@
   display: flex;
 }
 
+.wrapper{
+  display: flex;
+}
+
+.wrapper h4{
+  justify-self: flex-start;
+}

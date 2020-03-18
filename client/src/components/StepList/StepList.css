@@ -1,5 +1,7 @@
 .StepList {
   display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
 }
 
 .stepContainer {

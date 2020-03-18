@@ -1,12 +1,13 @@
 .Journey {
   width: 10em;
   height: 5em;
-  background-color: lightgray;
   border-radius: 7px;
+  border: none;
   margin: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* box-shadow: 10px 10px 8px 1px #888888; */
 }
 
 .Journey h1 {
