@@ -1,8 +1,8 @@
 .Step {
-  width: 15vw;
-  min-width: 15vw;
-  height: 15vh;
-  min-height: 20vh;
+  width: 15em;
+  min-width: 15em;
+  height: 12em;
+  min-height: 12em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,4 +11,14 @@
 
 .Step h1 {
   font-size: 16px;
+}
+
+.stepForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepForm h4{
+  margin: 5px;
 }

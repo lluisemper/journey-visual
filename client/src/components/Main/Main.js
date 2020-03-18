@@ -43,12 +43,11 @@ const Main = () => {
         setCurrentJourney(journeys[0]);
       }
     });
-
   }, []);
 
-  const addJourney = () => {
-
-    ApiClient.postJourney('new journey').then(newJourney => {
+  const addJourney = (e) => {
+    e.preventDefault();
+    ApiClient.postJourney(e.target.title.value).then(newJourney => {
       setJourneys((stateJourneys) => [...stateJourneys, newJourney])
       if (!currentJourney) {
         setCurrentJourney(newJourney);

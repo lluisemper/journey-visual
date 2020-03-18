@@ -16,18 +16,18 @@ const Step = ({ step, currentJourney }) => {
 
   const form = () => {
     return (
-      <form onSubmit={submitHandler}>
-        <p>Title:</p>
+      <form className="stepForm" onSubmit={submitHandler}>
+        <h4>Title:</h4>
         <input
           type='text'
           name='title'
         />
-        <p>Emotion</p>
+        <h4>Emotion</h4>
         <input
           type='text'
           name='emotion'
         />
-        <p>Score</p>
+        <h4>Score</h4>
         <input
           type='text'
           name='score'

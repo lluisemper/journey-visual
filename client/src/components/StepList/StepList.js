@@ -15,9 +15,6 @@ const StepList = ({ currentJourney }) => {
     }
   }, [currentJourney])
 
-  console.log('steps',steps);
-  
-
   const createStep = () => {
     const newStep = new StepClass();
     ApiClient.postStep(currentJourney._id, newStep).then((emptyStep) => {
@@ -42,10 +39,11 @@ const StepList = ({ currentJourney }) => {
           </div>
         )
       })}
-      <button onClick={() => {
+      {!steps.length && <button className="plusBtn" onClick={() => {
         createStep()
       }
-      }>add Step</button>
+      }></button>
+    }
     </div>
   )
 }

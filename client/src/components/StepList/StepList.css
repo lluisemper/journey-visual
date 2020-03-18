@@ -1,9 +1,18 @@
-.StepList{
+.StepList {
   display: flex;
 }
 
 .stepContainer {
   display: flex;
   align-items: center;
+  margin: 20px;
+}
+
+.plusBtn{
+  background-image: url('../../assets/iconmonstr-plus-thin-240.png');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border: none;
   margin: 20px;
 }
