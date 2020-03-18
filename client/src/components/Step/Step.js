@@ -3,14 +3,13 @@ import './Step.css';
 import ApiClient from '../../ApiClient';
 
 
-const Step = ({ step, currentJourney }) => {
+const Step = ({ step }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
     step.title = e.target.title.value;
     step.emotion = e.target.emotion.value;
     step.score = e.target.score.value;
-  
     ApiClient.updateStep(step._id, step);
   }
 
