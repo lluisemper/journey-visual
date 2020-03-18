@@ -18,17 +18,22 @@ import ApiClient from '../../ApiClient';
 const StepList = ({ currentJourney }) => {
   const [steps, setSteps] = useState([]);
 
-  // useEffect(() => {
-  //   ApiClient.getSteps(journey).then(steps => {
-  //     setSteps(steps);
-  //   })
-  // }, [steps])
+  useEffect(() => {
+    if (currentJourney) {
+      ApiClient.getSteps(currentJourney._id).then(steps => {
+        setSteps(steps);
+      })
+    }
+  }, [])
 
-console.log(currentJourney)
   const createStep = () => {
     const newStep = new StepClass();
     newStep.title = 'newStep';
-    ApiClient.postStep(currentJourney, newStep);
+    newStep.emotion = 'happy';
+    newStep.score = 4;
+
+    console.log(newStep)
+    ApiClient.postStep(currentJourney._id, newStep);
     setSteps([...steps, newStep]);
   }
 
@@ -42,7 +47,7 @@ console.log(currentJourney)
               createStep()
             }
             }>+</button>
-            <Step step={step}  />
+            <Step step={step} />
             <button className='addStep' onClick={() => {
               createStep()
             }

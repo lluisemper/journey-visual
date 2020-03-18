@@ -39,11 +39,11 @@ const Main = () => {
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
       setJourneys(journeys)
+      if (journeys.length) {
+        setCurrentJourney(journeys[0]);
+      }
     });
 
-    if (journeys.length) {
-      setCurrentJourney(journeys[0]);
-    }
   }, []);
 
   const addJourney = () => {
