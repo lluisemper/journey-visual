@@ -3,12 +3,12 @@ import './Journey.css';
 
 const Journey = ({ journey, setCurrentJourney }) => {
   return (
-    <div className='Journey' onClick={() => {
+    <button className='Journey' onClick={() => {
       setCurrentJourney(journey)
     }
     }>
       <h1>{journey.title}</h1>
-    </div>
+    </button>
   )
 }
 
