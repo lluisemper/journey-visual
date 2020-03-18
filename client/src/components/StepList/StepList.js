@@ -15,6 +15,9 @@ const StepList = ({ currentJourney }) => {
     }
   }, [currentJourney])
 
+  console.log('steps',steps);
+  
+
   const createStep = () => {
     const newStep = new StepClass();
     ApiClient.postStep(currentJourney._id, newStep);
@@ -23,7 +26,7 @@ const StepList = ({ currentJourney }) => {
 
   return (
     <div className='StepList'>
-      {steps.length && steps.map((step) => {
+      {steps !== undefined && steps.length && steps.map((step) => {
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {

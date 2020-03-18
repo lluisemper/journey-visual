@@ -47,6 +47,7 @@ const Main = () => {
   }, []);
 
   const addJourney = () => {
+
     ApiClient.postJourney('new journey').then(newJourney => {
       setJourneys((stateJourneys) => [...stateJourneys, newJourney])
       if (!currentJourney) {
