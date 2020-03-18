@@ -16,7 +16,7 @@ const Main = () => {
   const [numberChart, setNumberChart] = useState('')
   const [inputEmotions, setInputEmotions] = useState('')
   const [journeys, setJourneys] = useState([]);
-  const [currentJourney, setCurrentJourney] = useState({});
+  const [currentJourney, setCurrentJourney] = useState(null);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -47,17 +47,21 @@ const Main = () => {
   }, []);
 
   const addJourney = () => {
-    ApiClient.postJourney('new journey')
-    .then(newJourney => setJourneys((stateJourneys) => [...stateJourneys, newJourney])
-    );
-}
 
+    ApiClient.postJourney('new journey').then(newJourney => {
+      setJourneys((stateJourneys) => [...stateJourneys, newJourney])
+      if (!currentJourney) {
+        setCurrentJourney(newJourney);
+      }
+    }
+    );
+  }
 
   return (
     <div className="Main">
 
       <h1>My Journey's</h1>
-      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney}/>
+      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
       <div className="border"></div>
       <h1>Steps</h1>
       <StepList currentJourney={currentJourney} />

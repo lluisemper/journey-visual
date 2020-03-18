@@ -53,7 +53,7 @@ exports.postStep = async (req, res) => {
 
 exports.postJourney = async (req, res) => {
   try {
-    const journey = await Journey.Model.create({ title: req.body.journey, steps: [Steps.Schema] })
+    const journey = await Journey.Model.create({ title: req.body.journey, steps: [] })
     res.status(201);
     res.json(journey);
   } catch (error) {
