@@ -10,7 +10,7 @@ const Step = ({ step, currentJourney }) => {
     step.title = e.target.title.value;
     step.emotion = e.target.emotion.value;
     step.score = e.target.score.value;
-  
+
     ApiClient.updateStep(step._id, step);
   }
 
@@ -18,23 +18,12 @@ const Step = ({ step, currentJourney }) => {
     return (
       <form className="stepForm" onSubmit={submitHandler}>
         <h4>Title:</h4>
-        <input
-          type='text'
-          name='title'
-        />
+        <input type='text' name='title' />
         <h4>Emotion</h4>
-        <input
-          type='text'
-          name='emotion'
-        />
+        <input type='text' name='emotion'/>
         <h4>Score</h4>
-        <input
-          type='text'
-          name='score'
-        />
-        <input
-          type='submit'
-        />
+        <input type='text' name='score'/>
+        <input type='submit'/>
       </form>
     )
   }
@@ -48,7 +37,6 @@ const Step = ({ step, currentJourney }) => {
       </div>
     )
   }
-  console.log(step);
   return (
     <div className='Step'>
       {step.title ? renderStep() : form()}

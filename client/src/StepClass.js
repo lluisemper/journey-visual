@@ -22,3 +22,4 @@ export default class StepClass {
     this.next = step;
   }
 }
+
