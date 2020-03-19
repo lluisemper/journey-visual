@@ -20,6 +20,7 @@ const StepList = ({ currentJourney, steps, setSteps}) => {
       setSteps(steps);
     })
   }
+ 
 
   if (currentJourney) {
       getSteps();
@@ -60,6 +61,7 @@ const StepList = ({ currentJourney, steps, setSteps}) => {
     </div>
   )
 }
+
 const mapDispatchToProps = {
   setSteps: uiStateActions.setSteps,
   
@@ -69,7 +71,6 @@ const mapStateToProps = (state) => ({
   steps: state.uiState.steps,
   
 });
-
 
 export default connect(
   mapStateToProps,

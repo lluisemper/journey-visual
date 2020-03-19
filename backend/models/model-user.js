@@ -1,19 +1,14 @@
-// const mongoose = require('mongoose');
-// const Journey = require('./model-journey');
+const mongoose = require('mongoose');
 
-// const { Schema } = mongoose;
+const { Schema } = mongoose;
 
-// const User = new Schema({
-//   name: {
-//     type: String,
-//     allowNull: false,
-//   },
-//   password: {
-//     type: String,
-//     allowNull: false,
-//   },
-//   journeys: [Journey.Schema]
-// });
+const User = new Schema({
+  name: {
+    type: String,
+    allowNull: false,
+  },
+  journeys: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Journey' }]
+});
 
-// const model = mongoose.model('User', User);
-// module.exports = model;
+const model = mongoose.model('User', User);
+module.exports = model;
