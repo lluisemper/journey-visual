@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const Journey = new Schema({
   title: { type: String },
-  steps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Step' }]
+  personas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Persona' }]
 })
 
 const model = mongoose.model('Journey', Journey);

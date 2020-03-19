@@ -33,6 +33,16 @@ export default {
       body: JSON.stringify({journey})
     })
   },
+  postJourney: (id, journey) => {  
+    return fetchRequest(`/${id}/journey`, {
+      credentials:'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({journey})
+    })
+  },
   postStep: (id, step, index) => {  
     return fetchRequest(`/${id}/step`, {
       credentials:'include',
@@ -45,6 +55,11 @@ export default {
   },
   getJourneys: () => {
     return fetchRequest(`/journeys`, {
+      credentials: 'include',
+    })
+  },
+  getPersonas: (id) => {
+    return fetchRequest(`/${id}/personas`, {
       credentials: 'include',
     })
   },

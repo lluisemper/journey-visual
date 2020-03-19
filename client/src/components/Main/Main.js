@@ -7,6 +7,7 @@ import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
 import JourneyList from '../JourneyList/JourneyList';
 import ApiClient from '../../ApiClient';
+import PersonaList from '../../components/PersonaList/PersonaList';
 
 const Main = () => {
 
@@ -58,10 +59,13 @@ const Main = () => {
 
   return (
     <div className="Main">
-
       <h1>My Journey's</h1>
       <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
       <div className="border"></div>
+
+      <h1>Persona's</h1>
+      <PersonaList currentJourney={currentJourney}/>
+
       <h1>Steps</h1>
       <StepList currentJourney={currentJourney} />
       <div className="border"></div>

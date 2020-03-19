@@ -1,31 +1,45 @@
 const Step = require('./models/model-steps');
 const Journey = require('./models/model-journey');
+const Persona = require('./models/model-personas');
+
+exports.postJourney = async (req, res) => {
+  try {
+    const journey = await Journey.create({ title: req.body.journey, personas: [] });
+    res.status(201);
+    res.json(journey);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+}
+
+exports.postPersona = async (req, res) => {
+  try {
+    const journey = await Journey.findById(req.params.id);
+    const persona = await Persona.create({ title: req.body.persona, steps: [] });
+    journey.personas.push(persona);
+    res.status(201);
+    res.json(persona);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+}
 
 exports.postStep = async (req, res) => {
   try {
-    const journey = await Journey.findById(req.params.id);
+    const persona = await Persona.findById(req.params.id);
     const step = await Step.create({
       title: req.body.step.title,
       emotion: req.body.step.emotion,
       score: req.body.step.score
     })
-    journey.steps.splice(req.body.index, 0, step._id);
-    await journey.save();
-    res.json(journey.steps);
+    persona.steps.splice(req.body.index, 0, step._id);
+    await persona.save();
+    res.json(persona.steps);
     res.status(201);
   } catch (error) {
     console.log(error)
-    res.status(500).send();
-  }
-}
-
-exports.postJourney = async (req, res) => {
-  try {
-    const journey = await Journey.create({ title: req.body.journey, steps: [] });
-    res.status(201);
-    res.json(journey);
-  } catch (error) {
-    console.log(error);
     res.status(500).send();
   }
 }
@@ -41,10 +55,21 @@ exports.getJourneys = async (req, res) => {
   }
 }
 
-exports.getSteps = async (req, res) => {
+exports.getPersonas = async (req, res) => {
   try {
     const journey = await Journey.findById(req.params.id);
-    const steps = await journey.populate('steps').execPopulate();
+    const personas = await journey.populate('personas').execPopulate();
+    res.status(201);
+    res.json(personas.personas);
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+exports.getSteps = async (req, res) => {
+  try {
+    const persona = await Persona.findById(req.params.id);
+    const steps = await persona.populate('steps').execPopulate();
     res.status(201);
     res.json(steps.steps);
   } catch (error) {
