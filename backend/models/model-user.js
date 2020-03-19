@@ -7,6 +7,10 @@ const User = new Schema({
     type: String,
     allowNull: false,
   },
+  id: {
+    type: String,
+    allowNull: false,
+  },
   journeys: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Journey' }]
 });
 
