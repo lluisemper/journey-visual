@@ -2,9 +2,11 @@ import React from 'react';
 import './Chart.css';
 import FileSaver from 'file-saver';
 import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 
 
-const Chart = ({ array }) => {
+const Chart = ({ array, steps }) => {
 
   const myRef = React.createRef();
 
@@ -25,21 +27,21 @@ const Chart = ({ array }) => {
   return (
     <div>
       <div className="Chart" ref={myRef}>
-        {array.length > 1 ?
+        {steps.length > 1 ?
           <LineChart
-            width={array.length * 100}
+            width={steps.length * 100}
             height={300}
-            data={array}
+            data={steps}
             margin={{
               top: 5, right: 30, left: 20, bottom: 5,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="title" />
             <YAxis type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
+            <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
               dot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 2, r: 7, className: "boxShadow" }} ></Line>
           </LineChart>
           : null
@@ -51,4 +53,13 @@ const Chart = ({ array }) => {
 }
 
 
-export default Chart;
+const mapStateToProps = (state) => ({
+  steps: state.uiState.steps,
+  
+});
+
+
+export default connect(
+  mapStateToProps,
+  null
+)(Chart);

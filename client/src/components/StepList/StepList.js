@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
 import ApiClient from '../../ApiClient';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 
-const StepList = ({ currentJourney }) => {
-  const [steps, setSteps] = useState([]);
 
+
+const StepList = ({ currentJourney, steps, setSteps}) => {
+  
   useEffect(() => {
     if (currentJourney) {
       getSteps();
@@ -59,7 +62,20 @@ const StepList = ({ currentJourney }) => {
     </div>
   )
 }
+const mapDispatchToProps = {
+  setSteps: uiStateActions.setSteps,
+  
+}
 
-export default StepList
+const mapStateToProps = (state) => ({
+  steps: state.uiState.steps,
+  
+});
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StepList);
 
 
