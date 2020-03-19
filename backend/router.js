@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const controller = require('./controller');
+const authorization = require('./middlewares/authorization');
 
 // router.post('/login', controller.loginOrg)
 // router.post('/registerOrg', controller.registerOrg)
