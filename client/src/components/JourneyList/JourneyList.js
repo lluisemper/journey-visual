@@ -22,9 +22,9 @@ const JourneyList = ({ journeys, setCurrentJourney, addJourney }) => {
         />
       </form>
       <div className="journeyContainer">
-        {journeys.length && journeys.map((journey) => {
+        {journeys.length ? journeys.map((journey) => {
           return <Journey key={journey._id} journey={journey} setCurrentJourney={setCurrentJourney} />
-        })}
+        }) : ''}
       </div>
     </div>
   )

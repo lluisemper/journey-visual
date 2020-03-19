@@ -27,7 +27,6 @@ const Chart = ({ array, steps }) => {
   return (
     <div>
       <div className="Chart" ref={myRef}>
-        {steps.length > 1 ?
           <LineChart
             width={steps.length * 100}
             height={300}
@@ -41,11 +40,10 @@ const Chart = ({ array, steps }) => {
             <YAxis type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
+            <Line className="line" type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
               dot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 2, r: 7, className: "boxShadow" }} ></Line>
           </LineChart>
-          : null
-        }
+
       </div>
       <button onClick={exportChart}>save</button>
     </div>

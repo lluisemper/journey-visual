@@ -39,7 +39,7 @@ const StepList = ({ currentJourney, steps, setSteps}) => {
 
   return (
     <div className='StepList'>
-      {steps !== undefined && steps.length && steps.map((step, index) => {
+      {steps !== undefined && steps.length ? steps.map((step, index) => {
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
@@ -53,7 +53,7 @@ const StepList = ({ currentJourney, steps, setSteps}) => {
             }></button>
           </div>
         )
-      })}
+      }) : ''}
       {!steps.length && <button className="plusBtn" onClick={() => {
         createStep()
       }

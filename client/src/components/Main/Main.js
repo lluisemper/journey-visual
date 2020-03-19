@@ -68,7 +68,6 @@ const Main = () => {
 
 
       <div className="layout-distribution">
-        <Form handleChange={handleChange} setInputChart={setInputChart} setInputEmotions={setInputEmotions} setNumberChart={setNumberChart} ></Form>
         <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
       </div>
       <Chart array={array}></Chart>
