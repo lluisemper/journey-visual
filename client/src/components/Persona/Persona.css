@@ -1,15 +1,16 @@
 .Persona {
   width: 15em;
-  height: 10em;
+  height: 20em;
   border-radius: 7px;
   border: none;
   margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: lightsteelblue;
+  /* background-color: lightsteelblue; */
 }
 
 .Persona:focus {
@@ -24,4 +25,8 @@
 
 .Persona h1 {
   font-size: 16px;
+}
+
+.personIcon{
+  width: 5em;
 }

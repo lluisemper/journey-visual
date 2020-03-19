@@ -19,16 +19,22 @@ const Main = () => {
       setJourneys(journeys)
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
-        ApiClient.getPersonas(journeys[0]._id).then(personas => {
-          setPersonas(personas)
-        })
       }
     });
   }, []);
 
+  useEffect(() => {
+    if (currentJourney) {
+      ApiClient.getPersonas(currentJourney._id).then(personas => {
+        setPersonas(personas)
+        setCurrentPersona(personas[0]);
+      })
+    }
+  }, [currentJourney])
 
   const addJourney = (e) => {
     e.preventDefault();
+    console.log('add ')
     ApiClient.postJourney(e.target.title.value).then(newJourney => {
       setJourneys((stateJourneys) => [...stateJourneys, newJourney])
       if (!currentJourney) {
@@ -54,16 +60,15 @@ const Main = () => {
       <h1>My Journey's</h1>
       <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
       <div className="border"></div>
-
       <h1>Persona's</h1>
       <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
-
+      <div className="border"></div>
       <h1>Steps</h1>
-      <StepList currentPersona={currentPersona} />
+      {currentPersona && <StepList currentPersona={currentPersona} />}
       <div className="border"></div>
       <div className="layout-distribution">
       </div>
-      <Chart ></Chart>
+      <Chart></Chart>
       <Link to="/review">
         <button type="button" className="check-button">
           ✓

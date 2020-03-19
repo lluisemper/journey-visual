@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
 import ApiClient from '../../ApiClient';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-
-
-const StepList = ({ currentPersona, steps, setSteps}) => {
+const StepList = ({ currentPersona, steps, setSteps }) => {
+  
+  useEffect(() => {
+    getSteps();
+  }, [currentPersona]);
   
   const createStep = (index) => {
     ApiClient.postStep(currentPersona._id, {}, index).then(() => {
@@ -20,10 +22,6 @@ const StepList = ({ currentPersona, steps, setSteps}) => {
       setSteps(steps);
     })
   }
-
-  if (currentPersona) {
-      getSteps();
-    }
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
