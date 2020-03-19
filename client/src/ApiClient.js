@@ -99,7 +99,7 @@ const fetchRequest = (url, options) => {
       if (err.status === 401) {
         console.log(' window.location', window.location);
         
-        window.location.replace('/login')
+        window.location.replace('/')
       }
       console.log(`${err.message} while fetching ${BASE_URL}${url}`)
     });
