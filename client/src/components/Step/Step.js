@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './Step.css';
-import ApiClient from '../../ApiClient';
-
 
 const Step = ({ step, addStep }) => {
 

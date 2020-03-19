@@ -8,42 +8,44 @@ const StepList = ({ currentJourney }) => {
 
   useEffect(() => {
     if (currentJourney) {
-      ApiClient.getSteps(currentJourney._id).then(steps => {
-        setSteps(steps);
-      })
+      getSteps();
     }
   }, [currentJourney])
 
-  const createStep = () => {
-    ApiClient.postStep(currentJourney._id, {}).then((emptyStep) => {
-      setSteps([...steps, emptyStep]);
+  const createStep = (index) => {
+    ApiClient.postStep(currentJourney._id, {}, index).then(() => {
+      getSteps();
+    })
+  }
+
+  const getSteps = () => {
+    ApiClient.getSteps(currentJourney._id).then(steps => {
+      setSteps(steps);
     })
   }
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
-    .then(() => {
-      const newSteps = steps.slice()
-      const oldStep = newSteps.find(({ _id }) => _id === id);
-      Object.assign(oldStep, stepObj)
-      setSteps(newSteps)
-      
-    })
+      .then(() => {
+        const newSteps = steps.slice()
+        const oldStep = newSteps.find(({ _id }) => _id === id);
+        Object.assign(oldStep, stepObj)
+        setSteps(newSteps)
+      })
   }
 
   return (
     <div className='StepList'>
-      {steps !== undefined && steps.length && steps.map((step) => {
+      {steps !== undefined && steps.length && steps.map((step, index) => {
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
-              createStep()
+              createStep(index)
             }
             }>+</button>
             <Step step={step} addStep={addStep} steps={steps} />
-            {console.log(steps)}
             <button className='addStep' onClick={() => {
-              createStep()
+              createStep(index + 1)
             }
             }>+</button>
           </div>
@@ -53,7 +55,7 @@ const StepList = ({ currentJourney }) => {
         createStep()
       }
       }></button>
-    }
+      }
     </div>
   )
 }

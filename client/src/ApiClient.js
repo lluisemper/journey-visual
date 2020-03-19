@@ -33,14 +33,14 @@ export default {
       body: JSON.stringify({journey})
     })
   },
-  postStep: (id, step) => {  
+  postStep: (id, step, index) => {  
     return fetchRequest(`/${id}/step`, {
       credentials:'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(step)
+      body: JSON.stringify({ step, index})
     })
   },
   getJourneys: () => {
@@ -62,6 +62,16 @@ export default {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(step)
+    })
+  },
+  updateJourney: (journey) => {
+    return fetchRequest(`/journeys/${journey._id}/update`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(journey)
     })
   }
 }

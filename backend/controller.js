@@ -5,13 +5,13 @@ exports.postStep = async (req, res) => {
   try {
     const journey = await Journey.findById(req.params.id);
     const step = await Step.create({
-      title: req.body.title,
-      emotion: req.body.emotion,
-      score: req.body.score
+      title: req.body.step.title,
+      emotion: req.body.step.emotion,
+      score: req.body.step.score
     })
-    journey.steps.push(step._id);
+    journey.steps.splice(req.body.index, 0, step._id);
     await journey.save();
-    res.json(step);
+    res.json(journey.steps);
     res.status(201);
   } catch (error) {
     console.log(error)
