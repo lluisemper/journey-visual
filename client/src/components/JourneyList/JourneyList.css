@@ -7,10 +7,25 @@
   display: flex;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
 }
 
-.wrapper h4{
+.wrapper h4 {
   justify-self: flex-start;
+}
+
+.textInput {
+  border-radius: 7px;
+  height: 2em;
+  width: 12em;
+  margin-right: 10px;
+}
+
+.textInput:focus{
+outline: none;
+}
+
+.submitBtn{
+  height: 2em;
 }

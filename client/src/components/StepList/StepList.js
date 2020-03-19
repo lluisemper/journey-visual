@@ -42,12 +42,12 @@ const StepList = ({ currentJourney }) => {
             <button className='addStep' onClick={() => {
               createStep(index)
             }
-            }>+</button>
+            }></button>
             <Step step={step} addStep={addStep} steps={steps} />
             <button className='addStep' onClick={() => {
               createStep(index + 1)
             }
-            }>+</button>
+            }></button>
           </div>
         )
       })}

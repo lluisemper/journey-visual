@@ -10,13 +10,15 @@ const JourneyList = ({ journeys, setCurrentJourney, addJourney }) => {
         addJourney(e)
       }
      }>
-        <p>Add new Journey</p>
-        <input
+        <p>Create new journey</p>
+        <input className="textInput"
           type='text'
           name='title'
         />
-        <input
+
+        <input className="submitBtn"
           type='submit'
+          value='create'
         />
       </form>
       <div className="journeyContainer">

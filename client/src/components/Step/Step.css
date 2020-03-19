@@ -8,7 +8,9 @@
   align-items: center;
   border: none;
   background-color: white;
-  
+  border-radius: 7px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .Step h1 {

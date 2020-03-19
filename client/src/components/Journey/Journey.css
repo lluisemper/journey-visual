@@ -1,13 +1,25 @@
 .Journey {
-  width: 10em;
-  height: 5em;
+  width: 15em;
+  height: 10em;
   border-radius: 7px;
   border: none;
-  margin: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* box-shadow: 10px 10px 8px 1px #888888; */
+  background-color: lightsteelblue;
+}
+
+.Journey:focus {
+  outline: none;
+  background-color: rgb(141, 178, 226);
+  color: white;
+}
+
+.Journey:hover {
+  background-color: rgb(141, 178, 226);
 }
 
 .Journey h1 {

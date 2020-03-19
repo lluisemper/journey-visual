@@ -10,11 +10,22 @@
   margin: 20px;
 }
 
-.plusBtn{
-  background-image: url('../../assets/iconmonstr-plus-thin.svg');
+.plusBtn {
+  background-image: url('../../assets/plus.png');
+  background-color: transparent;
   background-size: cover;
-  width: 40px;
-  height: 40px;
   border: none;
-  margin: 20px;
+  width: 5em;
+  height: 5em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.addStep {
+  background-image: url('../../assets/plus.png');
+  background-color: transparent;
+  background-size: cover;
+  border: none;
+  width: 3em;
+  height: 3em;
 }
