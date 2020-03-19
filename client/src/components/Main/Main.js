@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Main.css';
-import Form from '../Form/Form';
 import Chart from '../Chart/Chart';
-import EmotionsDisplay from '../EmotionsDisplay/EmotionsDisplay';
 import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
 import JourneyList from '../JourneyList/JourneyList';
@@ -10,31 +8,8 @@ import ApiClient from '../../ApiClient';
 
 const Main = () => {
 
-  const [array, setArray] = useState([]);
-  const [arrayEmotions, setArrayEmotions] = useState([]);
-  const [inputChart, setInputChart] = useState('')
-  const [numberChart, setNumberChart] = useState('')
-  const [inputEmotions, setInputEmotions] = useState('')
   const [journeys, setJourneys] = useState([]);
   const [currentJourney, setCurrentJourney] = useState(null);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: array.length + ': ' + inputChart,
-      pv: numberChart,
-    }
-
-    const listEmotions = {
-      inputChart,
-      inputEmotions,
-      count: array.length
-    }
-
-    setArray([...array, data])
-    setArrayEmotions([...arrayEmotions, listEmotions])
-  }
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
@@ -65,12 +40,9 @@ const Main = () => {
       <h1>Steps</h1>
       <StepList currentJourney={currentJourney} />
       <div className="border"></div>
-
-
       <div className="layout-distribution">
-        <EmotionsDisplay arrayEmotions={arrayEmotions}></EmotionsDisplay>
       </div>
-      <Chart array={array}></Chart>
+      <Chart ></Chart>
       <Link to="/review">
         <button type="button" className="check-button">
           ✓

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
 import ApiClient from '../../ApiClient';
@@ -9,12 +9,6 @@ import * as uiStateActions from '../../action/uiState';
 
 const StepList = ({ currentJourney, steps, setSteps}) => {
   
-  useEffect(() => {
-    if (currentJourney) {
-      getSteps();
-    }
-  }, [currentJourney])
-
   const createStep = (index) => {
     ApiClient.postStep(currentJourney._id, {}, index).then(() => {
       getSteps();
@@ -26,6 +20,10 @@ const StepList = ({ currentJourney, steps, setSteps}) => {
       setSteps(steps);
     })
   }
+
+  if (currentJourney) {
+      getSteps();
+    }
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
