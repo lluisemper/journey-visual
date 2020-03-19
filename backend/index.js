@@ -12,7 +12,7 @@ const PORT = 4000;
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./middlewares")(app, passport)
+require("./middlewares/middlewares")(app, passport)
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser());
