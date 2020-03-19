@@ -1,7 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('passport');
 require('dotenv').config({ path: __dirname + '/.env' })
-const userSchema = require('./models/model-user');
+const User = require('./models/model-user');
 
 
 passport.serializeUser(function (user, cb) {  
@@ -23,16 +23,14 @@ passport.use(new GoogleStrategy({
 },
 
   function (accessToken, refreshToken, profile, cb) { 
-    console.log('profile',profile);
-    console.log('cb',cb);
-    console.log('userSchema.Model',userSchema.Model);
+       console.log('profile', profile);
        
-    userSchema.Model.findOne({id: profile.id}, function (err, user) {
+    User.findOne({id: profile.id}, function (err, user) {
       if (err) {
         return cb(err);
       }
       if(!user) {
-        user = new userSchema({id: profile.id,  displayName: profile.displayName});
+        user = new User({id: profile.id,  name: profile.displayName});
         user.save((err) => {
           if (err) console.log(err);
           return cb(err ,user);

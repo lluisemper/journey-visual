@@ -3,10 +3,9 @@ import './Chart.css';
 import FileSaver from 'file-saver';
 import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
 import { connect } from 'react-redux';
-import * as uiStateActions from '../../action/uiState';
 
 
-const Chart = ({ array, steps }) => {
+const Chart = ({ steps }) => {
 
   const myRef = React.createRef();
 
