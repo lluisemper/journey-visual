@@ -19,9 +19,13 @@ const Main = () => {
       setJourneys(journeys)
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
+        ApiClient.getPersonas(journeys[0]._id).then(personas => {
+          setPersonas(personas)
+        })
       }
     });
   }, []);
+
 
   const addJourney = (e) => {
     e.preventDefault();
@@ -36,7 +40,7 @@ const Main = () => {
 
   const addPersona = (id, e) => {
     e.preventDefault();
-    ApiClient.postPersona(id, e.target.title.value).then(newPersona => {
+    ApiClient.postPersona(id, e.target.title.value).then((newPersona) => {
       setPersonas((personas) => [...personas, newPersona])
       if (!currentPersona) {
         setCurrentPersona(newPersona);
@@ -44,7 +48,6 @@ const Main = () => {
     }
     );
   }
-  console.log(currentPersona)
 
   return (
     <div className="Main">
@@ -53,7 +56,7 @@ const Main = () => {
       <div className="border"></div>
 
       <h1>Persona's</h1>
-      <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona}/>
+      <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
 
       <h1>Steps</h1>
       <StepList currentPersona={currentPersona} />

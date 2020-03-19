@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './PersonaList.css';
-import ApiClient from '../../ApiClient';
 import Persona from '../../components/Persona/Persona';
 
-const PersonaList = ({ currentJourney, addPersona, setCurrentPersona }) => {
-
-  const [personas, setPersonas] = useState([]);
-
-  useEffect(() => {
-    if (currentJourney) {
-      ApiClient.getPersonas(currentJourney._id).then(personas => {
-        setPersonas(personas);
-      });
-    }
-  }, [currentJourney])
+const PersonaList = ({ currentJourney, addPersona, setCurrentPersona, personas }) => {
 
   return (
     <div className='JourneyList'>
