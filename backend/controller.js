@@ -4,6 +4,7 @@ const Persona = require('./models/model-personas');
 
 exports.postJourney = async (req, res) => {
   try {
+    console.log(req.body)
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
     res.status(201);
     res.json(journey);
@@ -18,6 +19,7 @@ exports.postPersona = async (req, res) => {
     const journey = await Journey.findById(req.params.id);
     const persona = await Persona.create({ title: req.body.persona, steps: [] });
     journey.personas.push(persona);
+    await journey.save();
     res.status(201);
     res.json(persona);
   } catch (error) {
@@ -34,6 +36,7 @@ exports.postStep = async (req, res) => {
       emotion: req.body.step.emotion,
       score: req.body.step.score
     })
+    console.log(step)
     persona.steps.splice(req.body.index, 0, step._id);
     await persona.save();
     res.json(persona.steps);

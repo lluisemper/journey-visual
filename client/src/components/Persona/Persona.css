@@ -1,0 +1,27 @@
+.Persona {
+  width: 15em;
+  height: 10em;
+  border-radius: 7px;
+  border: none;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightsteelblue;
+}
+
+.Persona:focus {
+  outline: none;
+  background-color: rgb(141, 178, 226);
+  color: white;
+}
+
+.Persona:hover {
+  background-color: rgb(141, 178, 226);
+}
+
+.Persona h1 {
+  font-size: 16px;
+}

@@ -1,11 +1,14 @@
 import React from 'react';
 import './Persona.css';
 
-const Persona = () => {
+const Persona = ({ persona, setCurrentPersona }) => {
   return (
-    <div className="Persona">
-
-    </div>
+    <button className='Persona' onClick={() => {
+      setCurrentPersona(persona)
+    }
+    }>
+      <h1>{persona.title}</h1>
+    </button>
   )
 }
 

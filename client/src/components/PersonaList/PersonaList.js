@@ -3,7 +3,7 @@ import './PersonaList.css';
 import ApiClient from '../../ApiClient';
 import Persona from '../../components/Persona/Persona';
 
-const PersonaList = ({ currentJourney }) => {
+const PersonaList = ({ currentJourney, addPersona, setCurrentPersona }) => {
 
   const [personas, setPersonas] = useState([]);
 
@@ -18,10 +18,10 @@ const PersonaList = ({ currentJourney }) => {
   return (
     <div className='JourneyList'>
       <form onSubmit={(e) => {
-        // addJourney(e)
+        addPersona(currentJourney._id, e)
       }
       }>
-        <p>Create new journey</p>
+        <p>Create new persona</p>
         <input className="textInput"
           type='text'
           name='title'
@@ -34,7 +34,7 @@ const PersonaList = ({ currentJourney }) => {
       </form>
       <div className="journeyContainer">
         {personas.length ? personas.map((persona) => {
-          return <Persona key={persona._id} persona={persona} 
+          return <Persona key={persona._id} persona={persona} setCurrentPersona={setCurrentPersona}
           />
         }) : ''}
       </div>

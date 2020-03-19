@@ -33,14 +33,14 @@ export default {
       body: JSON.stringify({journey})
     })
   },
-  postJourney: (id, journey) => {  
-    return fetchRequest(`/${id}/journey`, {
+  postPersona: (id, persona) => {  
+    return fetchRequest(`/${id}/persona`, {
       credentials:'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({journey})
+      body: JSON.stringify({persona})
     })
   },
   postStep: (id, step, index) => {  

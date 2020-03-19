@@ -10,7 +10,9 @@ import PersonaList from '../../components/PersonaList/PersonaList';
 const Main = () => {
 
   const [journeys, setJourneys] = useState([]);
+  const [personas, setPersonas] = useState([]);
   const [currentJourney, setCurrentJourney] = useState(null);
+  const [currentPersona, setCurrentPersona] = useState(null);
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
@@ -32,6 +34,18 @@ const Main = () => {
     );
   }
 
+  const addPersona = (id, e) => {
+    e.preventDefault();
+    ApiClient.postPersona(id, e.target.title.value).then(newPersona => {
+      setPersonas((personas) => [...personas, newPersona])
+      if (!currentPersona) {
+        setCurrentPersona(newPersona);
+      }
+    }
+    );
+  }
+  console.log(currentPersona)
+
   return (
     <div className="Main">
       <h1>My Journey's</h1>
@@ -39,10 +53,10 @@ const Main = () => {
       <div className="border"></div>
 
       <h1>Persona's</h1>
-      <PersonaList currentJourney={currentJourney}/>
+      <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona}/>
 
       <h1>Steps</h1>
-      <StepList currentJourney={currentJourney} />
+      <StepList currentPersona={currentPersona} />
       <div className="border"></div>
       <div className="layout-distribution">
       </div>

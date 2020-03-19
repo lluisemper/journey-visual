@@ -7,22 +7,21 @@ import * as uiStateActions from '../../action/uiState';
 
 
 
-const StepList = ({ currentJourney, steps, setSteps}) => {
+const StepList = ({ currentPersona, steps, setSteps}) => {
   
   const createStep = (index) => {
-    ApiClient.postStep(currentJourney._id, {}, index).then(() => {
+    ApiClient.postStep(currentPersona._id, {}, index).then(() => {
       getSteps();
     })
   }
 
   const getSteps = () => {
-    ApiClient.getSteps(currentJourney._id).then(steps => {
+    ApiClient.getSteps(currentPersona._id).then(steps => {
       setSteps(steps);
     })
   }
- 
 
-  if (currentJourney) {
+  if (currentPersona) {
       getSteps();
     }
 

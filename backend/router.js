@@ -4,7 +4,7 @@ const controller = require('./controller');
 // router.post('/login', controller.loginOrg)
 // router.post('/registerOrg', controller.registerOrg)
 router.post('/journey', controller.postJourney)
-router.post('/:id/journey', controller.postJourney)
+router.post('/:id/persona', controller.postPersona)
 router.post('/:id/step', controller.postStep)
 router.post(`/steps/:id/update`, controller.updateStep);
 router.get('/journeys', controller.getJourneys)
