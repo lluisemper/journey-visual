@@ -11,8 +11,8 @@ import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer
 const Main = () => {
 
   const [journeys, setJourneys] = useState([]);
-  const [personas, setPersonas] = useState([]);
   const [currentJourney, setCurrentJourney] = useState(null);
+  const [personas, setPersonas] = useState([]);
   const [currentPersona, setCurrentPersona] = useState(null);
 
   useEffect(() => {
