@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import JourneyList from '../JourneyList/JourneyList';
 import ApiClient from '../../ApiClient';
 import PersonaList from '../../components/PersonaList/PersonaList';
+import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer';
 
 const Main = () => {
 
@@ -57,23 +58,26 @@ const Main = () => {
 
   return (
     <div className="Main">
-      <h1>My Journey's</h1>
-      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
-      <div className="border"></div>
-      <h1>Persona's</h1>
-      <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
-      <div className="border"></div>
-      <h1>Steps</h1>
-      {currentPersona && <StepList currentPersona={currentPersona} />}
-      <div className="border"></div>
-      <div className="layout-distribution">
-      </div>
-      <Chart></Chart>
-      <Link to="/review">
-        <button type="button" className="check-button">
-          ✓
+      <ResponsiveDrawer />
+      <div className="mainContainer">
+        <h1>My Journey's</h1>
+        <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
+        <div className="border"></div>
+        <h1>Persona's</h1>
+        <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
+        <div className="border"></div>
+        <h1>Steps</h1>
+        {currentPersona && <StepList currentPersona={currentPersona} />}
+        <div className="border"></div>
+        <div className="layout-distribution">
+        </div>
+        <Chart></Chart>
+        <Link to="/review">
+          <button type="button" className="check-button">
+            ✓
           </button>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
