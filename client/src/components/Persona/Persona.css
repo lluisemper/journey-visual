@@ -30,3 +30,11 @@
 .personIcon{
   width: 5em;
 }
+
+.popUp{
+  width: 50em;
+  height:  40em;
+  background-color: white;
+  z-index: 99;
+}
+

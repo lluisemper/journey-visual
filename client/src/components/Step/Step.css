@@ -1,8 +1,8 @@
 .Step {
   width: 15em;
   min-width: 15em;
-  height: 7em;
-  min-height: 7em;
+  height: 10em;
+  min-height: 10em;
   display: flex;
   flex-direction: column;
   align-items: center;
