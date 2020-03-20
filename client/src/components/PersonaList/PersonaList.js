@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './PersonaList.css';
 import Persona from '../../components/Persona/Persona';
 

@@ -4,7 +4,6 @@ const Persona = require('./models/model-personas');
 
 exports.postJourney = async (req, res) => {
   try {
-    console.log(req.body)
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
     res.status(201);
     res.json(journey);

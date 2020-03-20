@@ -2,9 +2,9 @@ const BASE_URL = 'http://localhost:4000';
 
 export default {
 
-  checkOrg: (loginOrg) => {  
+  checkOrg: (loginOrg) => {
     return fetchRequest(`/login`, {
-      credentials:'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -13,9 +13,9 @@ export default {
     })
   },
 
-  registerOrg: (loginOrg) => {  
+  registerOrg: (loginOrg) => {
     return fetchRequest(`/login`, {
-      credentials:'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,34 +23,34 @@ export default {
       body: JSON.stringify(loginOrg)
     })
   },
-  postJourney: (journey) => {  
+  postJourney: (journey) => {
     return fetchRequest(`/journey`, {
-      credentials:'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({journey})
+      body: JSON.stringify({ journey })
     })
   },
-  postPersona: (id, persona) => {  
+  postPersona: (id, persona) => {
     return fetchRequest(`/${id}/persona`, {
-      credentials:'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({persona})
+      body: JSON.stringify({ persona })
     })
   },
-  postStep: (id, step, index) => {  
+  postStep: (id, step, index) => {
     return fetchRequest(`/${id}/step`, {
-      credentials:'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ step, index})
+      body: JSON.stringify({ step, index })
     })
   },
   getJourneys: () => {
@@ -96,6 +96,11 @@ const fetchRequest = (url, options) => {
     .then(res => res.status <= 400 ? res : Promise.reject(res))
     .then(res => res.status === 204 ? res : res.json())
     .catch((err) => {
+      if (err.status === 401) {
+        console.log(' window.location', window.location);
+        
+        window.location.replace('/login')
+      }
       console.log(`${err.message} while fetching ${BASE_URL}${url}`)
     });
 };
