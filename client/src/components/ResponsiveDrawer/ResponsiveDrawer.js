@@ -73,6 +73,7 @@ function ResponsiveDrawer (props) {
           <ListItem button key={text} >
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
+            <ListItem component={Link}  to={`/${text}`}></ListItem>
           </ListItem>
         ))}
       </List>

@@ -35,7 +35,6 @@ const Main = () => {
 
   const addJourney = (e) => {
     e.preventDefault();
-    console.log('add ')
     ApiClient.postJourney(e.target.title.value).then(newJourney => {
       setJourneys((stateJourneys) => [...stateJourneys, newJourney])
       if (!currentJourney) {
