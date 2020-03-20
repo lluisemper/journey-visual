@@ -4,7 +4,6 @@ import FileSaver from 'file-saver';
 import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
 import { connect } from 'react-redux';
 
-
 const Chart = ({ steps }) => {
 
   const myRef = React.createRef();
