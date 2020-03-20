@@ -8,7 +8,7 @@ const session = require('express-session')
 
 const PORT = 4000;
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }}))
 
 app.use(passport.initialize());
 app.use(passport.session());
