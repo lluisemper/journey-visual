@@ -11,6 +11,6 @@ router.post(`/steps/:id/update`,authorization, controller.updateStep);
 router.get('/journeys',authorization, controller.getJourneys)
 router.get('/:id/personas',authorization, controller.getPersonas)
 router.get('/:id/steps',authorization, controller.getSteps)
-
+router.get('/me', authorization, controller.getUser)
 
 module.exports = router;

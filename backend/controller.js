@@ -1,10 +1,17 @@
 const Step = require('./models/model-steps');
 const Journey = require('./models/model-journey');
 const Persona = require('./models/model-personas');
+const User = require('./models/model-user');
+
 
 exports.postJourney = async (req, res) => {
-  try {
+  try {    
+    const user = await User.findById(req.user._id)
+    console.log('user', user);
+    
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
+    user.journeys.push(journey);
+    await user.save();
     res.status(201);
     res.json(journey);
   } catch (error) {
@@ -91,6 +98,15 @@ exports.updateStep = async (req, res) => {
     )
     res.status(204);
     res.json();
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+
+exports.getUser = async (req, res) => {
+  try {
+    res.json(req.user)
   } catch (error) {
     console.log(error)
     res.status(500).send();

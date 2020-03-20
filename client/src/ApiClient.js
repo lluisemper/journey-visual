@@ -92,13 +92,12 @@ export default {
 }
 
 const fetchRequest = (url, options) => {
-  return fetch(`${BASE_URL}${url}`, options)
+  return fetch(`${BASE_URL}${url}`, {...options, redirect: "follow"})
     .then(res => res.status <= 400 ? res : Promise.reject(res))
     .then(res => res.status === 204 ? res : res.json())
     .catch((err) => {
       if (err.status === 401) {
         console.log(' window.location', window.location);
-        
         window.location.replace('/')
       }
       console.log(`${err.message} while fetching ${BASE_URL}${url}`)

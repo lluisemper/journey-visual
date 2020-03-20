@@ -4,15 +4,11 @@ require('dotenv').config({ path: __dirname + '/.env' })
 const User = require('./models/model-user');
 
 
-passport.serializeUser(function (user, cb) {  
-  console.log('user', user);
-  
+passport.serializeUser(function (user, cb) {    
   cb(null, user);
 });
 
 passport.deserializeUser(function (obj, cb) {
-  console.log("deserialize", obj);
-
   cb(null, obj);
 });
 
@@ -22,14 +18,13 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.URL + "/auth/google/callback"
 },
 
-  function (accessToken, refreshToken, profile, cb) { 
-       
+  function (accessToken, refreshToken, profile, cb) {        
     User.findOne({id: profile.id}, function (err, user) {
       if (err) {
         return cb(err);
       }
       if(!user) {
-        user = new User({id: profile.id,  name: profile.displayName});
+        user = new User({id: profile.id,  name: profile.displayName, journeys: []});
         user.save((err) => {
           if (err) console.log(err);
           return cb(err ,user);
