@@ -27,7 +27,7 @@ const Chart = ({ steps }) => {
     <div>
       <div className="Chart" ref={myRef}>
           <LineChart
-            width={steps.length * 100}
+            width={steps.length * 225}
             height={300}
             data={steps}
             margin={{
