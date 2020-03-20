@@ -39,10 +39,10 @@ exports.postStep = async (req, res) => {
     const persona = await Persona.findById(req.params.id);
     const step = await Step.create({
       title: req.body.step.title,
+      comments: req.body.step.comments,
       emotion: req.body.step.emotion,
       score: req.body.step.score
     })
-    console.log(step)
     persona.steps.splice(req.body.index, 0, step._id);
     await persona.save();
     res.json(persona.steps);
@@ -92,6 +92,7 @@ exports.updateStep = async (req, res) => {
     await Step.findOneAndUpdate({ _id: req.params.id },
       {
         title: req.body.title,
+        comments: req.body.comments,
         emotion: req.body.emotion,
         score: req.body.score
       }

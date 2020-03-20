@@ -6,6 +6,10 @@ const Step = new Schema({
     type: String,
     allowNull: false,
   },
+  comments: {
+    type: String,
+    allowNull: false,
+  },
   emotion: {
     type: String,
     allowNull: false,
