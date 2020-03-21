@@ -6,9 +6,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Image from '../../assets/dino-reichmuth-A5rCN8626Ck-unsplash.jpg'
 
 
 const useStyles = makeStyles(theme => ({
+  main: {
+    backgroundImage: `url(${Image})`
+    
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -32,29 +37,31 @@ const SignIn = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
+    <div className={classes.main}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
         </Typography>
-        <div className={classes.form} noValidate>
-          <Button
-            href="http://localhost:4000/auth/google/"
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
+          <div className={classes.form} noValidate>
+            <Button
+              href="http://localhost:4000/auth/google/"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
           </Button>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 
