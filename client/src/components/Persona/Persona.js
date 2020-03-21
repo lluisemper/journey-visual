@@ -85,11 +85,7 @@ const Persona = ({ setCurrentPersona, persona }) => {
         title={persona.title}
       // subheader="September 14, 2016"
       />
-      <CardMedia
-        className={classes.media}
-        image={personIcon}
-        title="Paella dish"
-      />
+      
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {persona.title}

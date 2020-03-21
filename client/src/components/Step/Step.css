@@ -1,38 +1,6 @@
 .Step {
-  width: 15em;
-  min-width: 15em;
-  height: 10em;
-  min-height: 10em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: none;
-  background-color: white;
-  border-radius: 7px;
-  margin-left: 2px;
-  margin-right: 2px;
-  color: black;
-}
-
-.Step h1 {
-  font-size: 16px;
-}
-
-.stepForm {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px dotted lightgray;
-  border-radius: 7px;
-}
-
-.stepForm h4 {
-  margin: 5px;
-  font-size: 12px;
-}
-
-.step-active{
 
 }
+
