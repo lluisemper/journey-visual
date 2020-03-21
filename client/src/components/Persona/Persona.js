@@ -18,6 +18,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Persona = ({setCurrentPersona, persona}) => {
+const Persona = ({ setCurrentPersona, persona }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -66,13 +68,21 @@ const Persona = ({setCurrentPersona, persona}) => {
             R
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+        action={<div>
+          <IconButton aria-label="settings" onClick={() => {
+            console.log('edit')
+          }}>
+            <EditIcon />
           </IconButton>
+          <IconButton aria-label="delete" onClick={() => {
+            console.log('delete')
+          }} >
+            <DeleteIcon />
+          </IconButton>
+        </div>
         }
         title={persona.title}
-        // subheader="September 14, 2016"
+      // subheader="September 14, 2016"
       />
       <CardMedia
         className={classes.media}
@@ -81,7 +91,7 @@ const Persona = ({setCurrentPersona, persona}) => {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-         {persona.title}
+          {persona.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -89,7 +99,7 @@ const Persona = ({setCurrentPersona, persona}) => {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          {/* <ShareIcon /> */}
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
