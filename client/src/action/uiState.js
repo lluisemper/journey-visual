@@ -1,3 +1,4 @@
+import ApiClient from '../ApiClient';
 
 export const setSteps = (steps) => {
   return{
@@ -17,7 +18,26 @@ export const setCurrentPersona = (currentPersona) => {
     currentPersona
   }
 } 
+export const setJourneys = (journeys) => {
+  return{
+    type: 'SET_JOURNEYS',
+    journeys
+  }
+} 
+export const setCurrentJourney = (currentJourney) => {
+  return{
+    type: 'SET_CURRENT_JOURNEY',
+    currentJourney
+  }
+} 
 
+export const postJourney = (value) => {
+  return dispatch => {
+    ApiClient.postJourney(value).then(newJourney => {
+      dispatch({type:'ADD_JOURNEY', newJourney})
+    })
+  }  
+}
 
 //redux thunk example dispatching requests
 
