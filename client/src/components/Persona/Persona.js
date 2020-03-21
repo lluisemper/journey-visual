@@ -1,13 +1,8 @@
 import React from 'react';
 import './Persona.css';
-<<<<<<< HEAD
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 import personIcon from '../../assets/clipart2682703.png';
-=======
-import personIcon from '../../assets/persona.png';
-
->>>>>>> b120ce0d1a7d153614ef23a4d6c80cfc8f7b3169
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
