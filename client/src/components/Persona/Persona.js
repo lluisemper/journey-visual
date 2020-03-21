@@ -1,6 +1,6 @@
 import React from 'react';
 import './Persona.css';
-import personIcon from '../../assets/clipart2682703.png';
+import personIcon from '../../assets/persona.png';
 
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -21,14 +21,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 345,
-    minWidth: 345,
+    maxWidth: 250,
+    minWidth: 250,
+    maxHeight: 325,
+    minHeight: 325,
     margin: 20
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -78,8 +81,7 @@ const Persona = ({setCurrentPersona, persona}) => {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+         {persona.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
