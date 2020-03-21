@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Main.css';
 import Chart from '../Chart/Chart';
 import StepList from '../StepList/StepList';
@@ -10,7 +10,7 @@ import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJourney, journeys, setJourneys, currentJourney, setCurrentJourney}) => {
+const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJourney, journeys, setJourneys, currentJourney, setCurrentJourney, postPersona }) => {
 
 
   useEffect(() => {
@@ -31,60 +31,42 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJo
     }
   }, [currentJourney])
 
-  // const addJourney = (e) => {
-  //   e.preventDefault();
-  //   ApiClient.postJourney(e.target.title.value).then(newJourney => {
-  //     setJourneys((stateJourneys) => [...stateJourneys, newJourney])
-  //     if (!currentJourney) {
-  //       setCurrentJourney(newJourney);
-  //     }
-  //   }
-  //   );
-  // }
-// }
-    const addJourney = (e) => {
-      e.preventDefault();
-      postJourney(e.target.title.value);
-      // if (!currentJourney) {
-      //   setCurrentJourney(newJourney);
-      // }
-    }
 
-const addPersona = (id, e) => {
-  e.preventDefault();
-  ApiClient.postPersona(id, e.target.title.value).then((newPersona) => {
-    setPersonas((personas) => [...personas, newPersona])
-    if (!currentPersona) {
-      setCurrentPersona(newPersona);
-    }
+  const addJourney = (e) => {
+    e.preventDefault();
+    postJourney(e.target.title.value);
+
   }
-  );
-}
 
-return (
-  <div className="Main">
-    <ResponsiveDrawer />
-    <div className="mainContainer">
-      <h1>My Journey's</h1>
-      <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
-      <div className="border"></div>
-      <h1>Persona's</h1>
-      <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
-      <div className="border"></div>
-      <h1>Steps</h1>
-      {currentPersona && <StepList currentPersona={currentPersona} />}
-      <div className="border"></div>
-      <div className="layout-distribution">
-      </div>
-      <Chart></Chart>
-      <Link to="/review">
-        <button type="button" className="check-button">
-          ✓
+  const addPersona = (id, e) => {
+    e.preventDefault();
+    postPersona(id, e.target.title.value)
+  }
+
+  return (
+    <div className="Main">
+      <ResponsiveDrawer />
+      <div className="mainContainer">
+        <h1>My Journey's</h1>
+        <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
+        <div className="border"></div>
+        <h1>Persona's</h1>
+        <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
+        <div className="border"></div>
+        <h1>Steps</h1>
+        {currentPersona && <StepList currentPersona={currentPersona} />}
+        <div className="border"></div>
+        <div className="layout-distribution">
+        </div>
+        <Chart></Chart>
+        <Link to="/review">
+          <button type="button" className="check-button">
+            ✓
           </button>
-      </Link>
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 const mapDispatchToProps = {
@@ -93,6 +75,7 @@ const mapDispatchToProps = {
   setJourneys: uiStateActions.setJourneys,
   setCurrentJourney: uiStateActions.setCurrentJourney,
   postJourney: uiStateActions.postJourney,
+  postPersona: uiStateActions.postPersona,
 
 }
 
@@ -101,7 +84,7 @@ const mapStateToProps = (state) => ({
   currentPersona: state.uiState.currentPersona,
   journeys: state.uiState.journeys,
   currentJourney: state.uiState.currentJourney,
-  
+
 });
 
 export default connect(

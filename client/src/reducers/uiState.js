@@ -21,6 +21,12 @@ const uiState = (state = INITIAL_STATE, action) => {
         currentJourney: state.currentJourney ? state.currentJourney : action.newJourney,
         journeys: [...state.journeys, action.newJourney]
       };
+    case "ADD_PERSONA":
+      return {
+        ...state,
+        currentPersona: state.currentPersona ? state.currentPersona : action.newPersona,
+        journeys: [...state.personas, action.newPersona]
+      };
     case "SET_CURRENT_JOURNEY":
       return { ...state, currentJourney: action.currentJourney };
     default:

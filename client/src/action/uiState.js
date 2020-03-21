@@ -38,6 +38,13 @@ export const postJourney = (value) => {
     })
   }  
 }
+export const postPersona = (id, value) => {
+  return dispatch => {
+    ApiClient.postPersona(id, value).then(newPersona => {
+      dispatch({type:'ADD_PERSONA', newPersona})
+    })
+  }  
+}
 
 
 
