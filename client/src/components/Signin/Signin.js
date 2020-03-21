@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import './Signin.css';
+import googleLogo from '../../assets/googleLogo.png';
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -37,13 +39,13 @@ const SignIn = () => {
       <Container component="main" maxWidth="xs" className="signinContainer">
         <CssBaseline />
         <div className={classes.paper}>
-        <div className="payoff">
-        </div>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
+          <div className="googleLogo"></div>
+  
+          <Typography component="h1" variant="h4">
             Sign in
+        </Typography>
+          <Typography component="h1" variant="h6">
+            with your Google Account
         </Typography>
           <div className={classes.form} noValidate>
             <Button
