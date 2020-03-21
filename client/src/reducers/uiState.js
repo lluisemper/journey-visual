@@ -29,6 +29,8 @@ const uiState = (state = INITIAL_STATE, action) => {
       };
     case "SET_CURRENT_JOURNEY":
       return { ...state, currentJourney: action.currentJourney };
+    case "SET_CURRENT_PERSONA":
+      return { ...state, currentPersona: action.currentPersona };
     default:
       return state
   }

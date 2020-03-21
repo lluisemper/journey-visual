@@ -32,7 +32,7 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
         setSteps(newSteps)
       })
   }
-
+    
   return (
     <div className='StepList'>
       {steps !== undefined && steps.length ? steps.map((step, index) => {

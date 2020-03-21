@@ -43,6 +43,8 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJo
     postPersona(id, e.target.title.value)
   }
 
+  console.log('currentPersona', currentPersona);
+  
   return (
     <div className="Main">
       <ResponsiveDrawer />
