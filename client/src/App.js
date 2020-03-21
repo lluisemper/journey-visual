@@ -6,7 +6,6 @@ import {
   Route,
 } from "react-router-dom";
 import Main from './components/Main/Main';
-import Login from './components/Login/Login';
 import Signin from './components/Signin/Signin';
 
 const App = () => {
