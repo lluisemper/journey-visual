@@ -6,14 +6,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Image from '../../assets/dino-reichmuth-A5rCN8626Ck-unsplash.jpg'
+import './Signin.css';
 
 
 const useStyles = makeStyles(theme => ({
-  main: {
-    backgroundImage: `url(${Image})`
-    
-  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -37,10 +33,12 @@ const SignIn = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.main}>
-      <Container component="main" maxWidth="xs">
+    <div className="Signin">
+      <Container component="main" maxWidth="xs" className="signinContainer">
         <CssBaseline />
         <div className={classes.paper}>
+        <div className="payoff">
+        </div>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
@@ -61,8 +59,14 @@ const SignIn = () => {
           </div>
         </div>
       </Container>
+
     </div>
+
   );
 }
 
 export default SignIn;
+
+
+
+
