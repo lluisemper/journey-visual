@@ -1,7 +1,8 @@
 import React from 'react';
 import './Persona.css';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 import personIcon from '../../assets/clipart2682703.png';
-
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -130,4 +131,19 @@ const Persona = ({setCurrentPersona, persona}) => {
   );
 }
 
-export default Persona;
+const mapDispatchToProps = {
+  setPersonas: uiStateActions.setPersonas,
+  setCurrentPersona: uiStateActions.setCurrentPersona,
+  
+}
+
+const mapStateToProps = (state) => ({
+  personas: state.uiState.personas,
+  currentPersona: state.uiState.currentPersona,
+  
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Persona);

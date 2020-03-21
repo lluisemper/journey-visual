@@ -1,6 +1,8 @@
 import React from 'react';
 import './PersonaList.css';
 import Persona from '../../components/Persona/Persona';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 
 const PersonaList = ({ currentJourney, addPersona, setCurrentPersona, personas }) => {
 
@@ -30,5 +32,19 @@ const PersonaList = ({ currentJourney, addPersona, setCurrentPersona, personas }
     </div>
   )
 }
+const mapDispatchToProps = {
+  setPersonas: uiStateActions.setPersonas,
+  setCurrentPersona: uiStateActions.setCurrentPersona,
+  
+}
 
-export default PersonaList
+const mapStateToProps = (state) => ({
+  personas: state.uiState.personas,
+  currentPersona: state.uiState.currentPersona,
+  
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PersonaList);

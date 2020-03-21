@@ -7,6 +7,8 @@ import JourneyList from '../JourneyList/JourneyList';
 import ApiClient from '../../ApiClient';
 import PersonaList from '../../components/PersonaList/PersonaList';
 import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 
 const Main = () => {
 
@@ -81,4 +83,21 @@ const Main = () => {
   );
 }
 
-export default Main;
+const mapDispatchToProps = {
+  setPersonas: uiStateActions.setPersonas,
+  setCurrentPersona: uiStateActions.setCurrentPersona,
+  
+}
+
+const mapStateToProps = (state) => ({
+  personas: state.uiState.personas,
+  currentPersona: state.uiState.currentPersona,
+  
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);
+
+
