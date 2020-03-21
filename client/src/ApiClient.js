@@ -88,11 +88,41 @@ export default {
       },
       body: JSON.stringify(journey)
     })
+  },
+  deleteJourney: (journey) => {
+    return fetchRequest(`/journeys/${journey._id}/delete`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(journey)
+    })
+  },
+  deletePersona: (persona) => {
+    return fetchRequest(`/personas/${persona._id}/delete`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(persona)
+    })
+  },
+  deleteStep: (step) => {
+    return fetchRequest(`/steps/${step._id}/delete`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(step)
+    })
   }
 }
 
 const fetchRequest = (url, options) => {
-  return fetch(`${BASE_URL}${url}`, {...options, redirect: "follow"})
+  return fetch(`${BASE_URL}${url}`, { ...options, redirect: "follow" })
     .then(res => res.status <= 400 ? res : Promise.reject(res))
     .then(res => res.status === 204 ? res : res.json())
     .catch((err) => {

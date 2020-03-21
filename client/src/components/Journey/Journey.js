@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ApiClient from '../../ApiClient';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -68,7 +69,7 @@ const Journey = ({ journey, setCurrentJourney }) => {
             <EditIcon />
           </IconButton>
           <IconButton aria-label="delete" onClick={() => {
-            console.log('delete')
+            ApiClient.deleteJourney(journey);
           }} >
             <DeleteIcon />
           </IconButton>

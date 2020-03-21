@@ -5,10 +5,10 @@ const User = require('./models/model-user');
 
 
 exports.postJourney = async (req, res) => {
-  try {    
+  try {
     const user = await User.findById(req.user._id)
     console.log('user', user);
-    
+
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
     user.journeys.push(journey);
     await user.save();
@@ -110,6 +110,56 @@ exports.getUser = async (req, res) => {
     res.json(req.user)
   } catch (error) {
     console.log(error)
+    res.status(500).send();
+  }
+}
+
+exports.deleteJourney = async (req, res) => {
+  try {
+    const journey = await Journey.findById(req.params.id);
+    journey.personas.map(async (personaId) => {
+      const persona = await Persona.findById(personaId);
+      persona.steps.map(async stepId => {
+        await Step.deleteOne({ _id: stepId });
+      })
+      await Persona.deleteOne({ _id: personaId });
+    })
+    Journey.deleteOne({ _id: req.params.id }, function (err) {
+      if (err) console.log(err);
+      console.log("Successful deletion");
+    });
+    res.status(204).send();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+}
+exports.deletePersona = async (req, res) => {
+  try {
+    const persona = await Persona.findById(req.params.id);
+    persona.steps.map(async (id) => {
+      console.log(id)
+      await Step.deleteOne({ _id: id });
+    })
+    Persona.deleteOne({ _id: req.params.id }, function (err) {
+      if (err) console.log(err);
+      console.log("Successful deletion");
+    });
+    res.status(204).send();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+}
+exports.deleteStep = async (req, res) => {
+  try {
+    Step.deleteOne({ _id: req.params.id }, function (err) {
+      if (err) console.log(err);
+      console.log("Successful deletion");
+    });
+    res.status(204).send();
+  } catch (error) {
+    console.log(error);
     res.status(500).send();
   }
 }
