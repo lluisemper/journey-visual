@@ -1,0 +1,8 @@
+.PersonaList{
+  display: flex;
+  flex-direction: column;
+}
+
+.personaWrapper{
+  display: flex;
+}
