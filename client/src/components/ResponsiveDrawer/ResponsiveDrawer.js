@@ -17,6 +17,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
 
 const drawerWidth = 240;
 
@@ -106,6 +108,11 @@ function ResponsiveDrawer (props) {
           <Typography variant="h6" noWrap>
             JOURNEYS
           </Typography>
+          <Button
+              href="/"
+              variant="contained"
+              color="primary"
+            >Log Out</Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
