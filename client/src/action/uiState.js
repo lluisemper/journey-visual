@@ -5,6 +5,18 @@ export const setSteps = (steps) => {
     steps
   }
 } 
+export const setPersonas = (personas) => {
+  return{
+    type: 'SET_PERSONAS',
+    personas
+  }
+} 
+export const setCurrentPersona = (currentPersona) => {
+  return{
+    type: 'SET_CURRENT_PERSONA',
+    currentPersona
+  }
+} 
 
 
 //redux thunk example dispatching requests
