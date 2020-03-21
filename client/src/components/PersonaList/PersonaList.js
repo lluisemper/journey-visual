@@ -35,12 +35,15 @@ const PersonaList = ({ currentJourney, addPersona, setCurrentPersona, personas }
 const mapDispatchToProps = {
   setPersonas: uiStateActions.setPersonas,
   setCurrentPersona: uiStateActions.setCurrentPersona,
-  
+  setJourneys: uiStateActions.setJourneys,
+  setCurrentJourney: uiStateActions.setCurrentJourney,
 }
 
 const mapStateToProps = (state) => ({
   personas: state.uiState.personas,
   currentPersona: state.uiState.currentPersona,
+  journeys: state.uiState.journeys,
+  currentJourney: state.uiState.currentJourney,
   
 });
 
