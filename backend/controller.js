@@ -87,6 +87,21 @@ exports.getSteps = async (req, res) => {
   }
 }
 
+exports.updateJourney = async (req, res) => {
+  try {
+    await Journey.findOneAndUpdate({ _id: req.params.id },
+      {
+        title: req.body.title
+      }
+    )
+    res.status(204);
+    res.json();
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+
 exports.updateStep = async (req, res) => {
   try {
     await Step.findOneAndUpdate({ _id: req.params.id },

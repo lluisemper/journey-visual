@@ -19,6 +19,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
+import TextField from '@material-ui/core/TextField';
+import DoneIcon from '@material-ui/icons/Done';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,6 +54,8 @@ const useStyles = makeStyles(theme => ({
 const Journey = ({ journey, setCurrentJourney }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
+  const [title, setTitle] = React.useState('');
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -64,7 +68,7 @@ const Journey = ({ journey, setCurrentJourney }) => {
       <CardHeader
         action={<div>
           <IconButton aria-label="settings" onClick={() => {
-            console.log('edit')
+            setEdit(!edit);
           }}>
             <EditIcon />
           </IconButton>
@@ -75,7 +79,7 @@ const Journey = ({ journey, setCurrentJourney }) => {
           </IconButton>
         </div>
         }
-        // title={journey.title}
+      // title={journey.title}
       // subheader="September 14, 2016"
       />
       {/* <CardMedia
@@ -83,9 +87,25 @@ const Journey = ({ journey, setCurrentJourney }) => {
         title="journey"
       /> */}
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {journey.title}
-        </Typography>
+        {edit ?
+          <form className={classes.root} noValidate autoComplete="off">
+            <TextField id="standard-basic" label="title" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setTitle(e.target.value);
+            }} />
+            <IconButton aria-label="settings" onClick={() => {
+              journey.title = title;
+              ApiClient.updateJourney(journey);
+              setTitle('');
+              setEdit(!edit);
+            }}>
+              <DoneIcon />
+            </IconButton>
+          </form>
+          :
+          <Typography variant="body2" color="textSecondary" component="p">
+            {journey.title}
+          </Typography>}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton

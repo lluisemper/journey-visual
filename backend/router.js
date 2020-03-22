@@ -7,6 +7,8 @@ const authorization = require('./middlewares/authorization');
 router.post('/journey', authorization, controller.postJourney);
 router.post('/:id/persona', authorization, controller.postPersona);
 router.post('/:id/step', authorization, controller.postStep);
+
+router.post(`/journeys/:id/update`, authorization, controller.updateJourney);
 router.post(`/steps/:id/update`, authorization, controller.updateStep);
 
 router.post(`/journeys/:id/delete`, authorization, controller.deleteJourney);
