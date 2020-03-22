@@ -14,7 +14,7 @@ router.post(`/steps/:id/update`, authorization, controller.updateStep);
 
 router.post(`/journeys/:id/delete`, authorization, controller.deleteJourney);
 router.post(`/personas/:id/delete`, authorization, controller.deletePersona);
-router.post(`/steps/:id/delete`, authorization, controller.deleteStep); 
+router.post(`/steps/:id/delete`, authorization, controller.deleteStep);
 
 router.get('/journeys', authorization, controller.getJourneys);
 router.get('/:id/personas', authorization, controller.getPersonas);

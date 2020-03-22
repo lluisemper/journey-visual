@@ -68,9 +68,8 @@ export default {
       credentials: 'include',
     })
   },
-  updateStep: (id, step) => {
-    console.log(step._id)
-    return fetchRequest(`/steps/${id}/update`, {
+  updateStep: (step) => {
+    return fetchRequest(`/steps/${step._id}/update`, {
       credentials: 'include',
       method: 'POST',
       headers: {
