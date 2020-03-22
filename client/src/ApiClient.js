@@ -89,6 +89,16 @@ export default {
       body: JSON.stringify(journey)
     })
   },
+  updatePersona: (persona) => {
+    return fetchRequest(`/personas/${persona._id}/update`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(persona)
+    })
+  },
   deleteJourney: (journey) => {
     return fetchRequest(`/journeys/${journey._id}/delete`, {
       credentials: 'include',

@@ -101,6 +101,20 @@ exports.updateJourney = async (req, res) => {
     res.status(500).send();
   }
 }
+exports.updatePersona = async (req, res) => {
+  try {
+    await Persona.findOneAndUpdate({ _id: req.params.id },
+      {
+        title: req.body.title
+      }
+    )
+    res.status(204);
+    res.json();
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
 
 exports.updateStep = async (req, res) => {
   try {

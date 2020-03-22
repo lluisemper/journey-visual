@@ -9,6 +9,7 @@ router.post('/:id/persona', authorization, controller.postPersona);
 router.post('/:id/step', authorization, controller.postStep);
 
 router.post(`/journeys/:id/update`, authorization, controller.updateJourney);
+router.post(`/personas/:id/update`, authorization, controller.updatePersona);
 router.post(`/steps/:id/update`, authorization, controller.updateStep);
 
 router.post(`/journeys/:id/delete`, authorization, controller.deleteJourney);

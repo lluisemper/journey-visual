@@ -22,6 +22,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
+import TextField from '@material-ui/core/TextField';
+import DoneIcon from '@material-ui/icons/Done';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +57,8 @@ const useStyles = makeStyles(theme => ({
 const Persona = ({ setCurrentPersona, persona }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
+  const [title, setTitle] = React.useState('');
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -72,7 +76,7 @@ const Persona = ({ setCurrentPersona, persona }) => {
         }
         action={<div>
           <IconButton aria-label="settings" onClick={() => {
-            console.log('edit')
+            setEdit(!edit);
           }}>
             <EditIcon />
           </IconButton>
@@ -88,9 +92,25 @@ const Persona = ({ setCurrentPersona, persona }) => {
       />
       
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {persona.title}
-        </Typography>
+        {edit ?
+          <form className={classes.root} noValidate autoComplete="off">
+            <TextField id="standard-basic" label="title" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setTitle(e.target.value);
+            }} />
+            <IconButton aria-label="settings" onClick={() => {
+              persona.title = title;
+              ApiClient.updatePersona(persona);
+              setTitle('');
+              setEdit(!edit);
+            }}>
+              <DoneIcon />
+            </IconButton>
+          </form>
+          :
+          <Typography variant="body2" color="textSecondary" component="p">
+            {persona.title}
+          </Typography>}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
