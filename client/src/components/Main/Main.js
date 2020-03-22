@@ -3,24 +3,14 @@ import './Main.css';
 import Chart from '../Chart/Chart';
 import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
-import JourneyList from '../JourneyList/JourneyList';
 import ApiClient from '../../ApiClient';
 import PersonaList from '../../components/PersonaList/PersonaList';
 import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJourney, journeys, setJourneys, currentJourney, setCurrentJourney, postPersona }) => {
+const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, currentJourney,  postPersona }) => {
 
-
-  useEffect(() => {
-    ApiClient.getJourneys().then(journeys => {
-      setJourneys(journeys)
-      if (journeys.length) {
-        setCurrentJourney(journeys[0]);
-      }
-    });
-  }, []);
 
   useEffect(() => {
     if (currentJourney) {
@@ -31,12 +21,6 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJo
     }
   }, [currentJourney])
 
-
-  const addJourney = (e) => {
-    e.preventDefault();
-    postJourney(e.target.title.value);
-
-  }
 
   const addPersona = (id, e) => {
     e.preventDefault();
@@ -49,8 +33,6 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, postJo
     <div className="Main">
       <ResponsiveDrawer />
       <div className="mainContainer">
-        <h1>My Journey's</h1>
-        <JourneyList setCurrentJourney={setCurrentJourney} journeys={journeys} addJourney={addJourney} />
         <div className="border"></div>
         <h1>Persona's</h1>
         <PersonaList currentJourney={currentJourney} addPersona={addPersona} setCurrentPersona={setCurrentPersona} personas={personas} />
