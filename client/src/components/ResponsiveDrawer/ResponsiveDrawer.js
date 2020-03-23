@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -17,6 +17,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import ApiClient from '../../ApiClient';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
 
 
 const drawerWidth = 240;
@@ -54,11 +57,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer(props) {
+function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney }, props) {
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+
+  useEffect(() => {
+    ApiClient.getJourneys().then(journeys => {
+      setJourneys(journeys)
+      if (journeys.length) {
+        setCurrentJourney(journeys[0]);
+      }
+    });
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -141,4 +154,21 @@ function ResponsiveDrawer(props) {
   );
 }
 
-export default ResponsiveDrawer;
+
+const mapDispatchToProps = {
+  setJourneys: uiStateActions.setJourneys,
+  setCurrentJourney: uiStateActions.setCurrentJourney,
+ 
+}
+
+const mapStateToProps = (state) => ({
+  journeys: state.uiState.journeys,
+  currentJourney: state.uiState.currentJourney,
+
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResponsiveDrawer);
+

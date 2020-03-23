@@ -9,11 +9,14 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
 
   useEffect(() => {
     if (currentJourney) {
+
       ApiClient.getPersonas(currentJourney._id).then(personas => {
-        console.log('personas',personas)
         setPersonas(personas)
         setCurrentPersona(personas[0]);
       })
+    } else {
+      setPersonas([]);
+      setCurrentPersona(null);
     }
   }, [currentJourney])
 
@@ -24,35 +27,35 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
 
   return (
     <div className='PersonaList mainContainer'>
-        <form onSubmit={(e) => {
-          addPersona(currentJourney._id, e)
-        }
-        }>
-          <p>Create new persona</p>
-          <input className="textInput"
-            type='text'
-            name='title'
-          />
+      <form onSubmit={(e) => {
+        addPersona(currentJourney._id, e)
+      }
+      }>
+        <p>Create new persona</p>
+        <input className="textInput"
+          type='text'
+          name='title'
+        />
 
-          <input className="submitBtn"
-            type='submit'
-            value='create'
+        <input className="submitBtn"
+          type='submit'
+          value='create'
+        />
+      </form>
+      <div className="personaWrapper">
+        {personas.length ? personas.map((persona) => {
+          return <Persona key={persona._id} persona={persona} setCurrentPersona={setCurrentPersona}
           />
-        </form>
-        <div className="personaWrapper">
-          {personas.length ? personas.map((persona) => {
-            return <Persona key={persona._id} persona={persona} setCurrentPersona={setCurrentPersona}
-            />
-          }) : ''}
-        </div>
+        }) : ''}
       </div>
+    </div>
   )
 }
 const mapDispatchToProps = {
   setPersonas: uiStateActions.setPersonas,
   postPersona: uiStateActions.postPersona,
   setCurrentPersona: uiStateActions.setCurrentPersona,
-  
+
 }
 
 const mapStateToProps = (state) => ({
