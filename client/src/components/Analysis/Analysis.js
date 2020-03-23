@@ -44,17 +44,19 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
         <InputLabel htmlFor="grouped-select">Personas</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
+          console.log('personas', personas)
+          console.log('e.target.value', e.target.value)
           const selectedPersona = personas.find((persona) => {
-            return persona._id === e.target.value;
+            return persona._id === e.target.value._id;
           });
-          console.log('value', e.target.value)
+          console.log('selectedPersona', selectedPersona)
           setCurrentPersona(selectedPersona);
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);
           })
         }}>
             {currentPersona ? 
-          <MenuItem value="">
+          <MenuItem value={currentPersona}>
             <em>{currentPersona.title}</em> 
           </MenuItem> 
             : null}
