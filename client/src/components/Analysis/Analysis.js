@@ -24,7 +24,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
   return (
     <div className="mainContainer">
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">Journeys</InputLabel>
         <Select native defaultValue="" input={<Input id="grouped-native-select" onChange={(e) => {
           e.preventDefault();
           const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
@@ -41,7 +41,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
+        <InputLabel htmlFor="grouped-select">Personas</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
           const selectedPersona = personas.find((persona) => {
