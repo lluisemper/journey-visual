@@ -25,7 +25,6 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
     if (currentJourney) {
 
       ApiClient.getPersonas(currentJourney._id).then(personas => {
-        console.log('personas', personas)
         setPersonas(personas)
         setCurrentPersona(personas[0]);
       })
@@ -44,7 +43,8 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
           e.preventDefault();
-          const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
+          const selectedJourney = journeys.find((journey) => {            
+            return journey._id === e.target.value});          
           setCurrentJourney(selectedJourney);
         }} />}>
           <MenuItem value="">

@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas }) {
+function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas }) {
   const classes = useStyles();
 
   return (
@@ -29,7 +29,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
           e.preventDefault();
           const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
           setCurrentJourney(selectedJourney);
-
           ApiClient.getPersonas(selectedJourney._id).then(personas => {
             setPersonas(personas)
             setCurrentPersona(personas[0]);
@@ -50,26 +49,24 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         <InputLabel htmlFor="grouped-select">Personas</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
-  
           const selectedPersona = personas.find((persona) => {
-
-            return persona._id === e.target.value;
+            return persona._id === e.target.value._id;
           });
           setCurrentPersona(selectedPersona);
-   
-
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);
+            
           })
         }}>
-          {currentPersona ?
-            <MenuItem value={currentPersona}>
-              <em>{currentPersona.title}</em>
-            </MenuItem>
-            : null}
+          <MenuItem value="">
+            {currentPersona ? <em>{currentPersona.title}</em> : ''}
+          </MenuItem>
           {currentJourney &&
-            currentJourney.personas.map(persona => {
-              return <MenuItem value={persona}>{persona}</MenuItem>
+            personas.map(persona => {
+              console.log('persona',persona);
+              console.log('currentJourney',currentJourney);
+              
+              return <MenuItem value={persona}>{persona.title}</MenuItem>
             })}
         </Select>
       </FormControl>
