@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps }) {
+function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona }) {
   const classes = useStyles();
 
   return (
@@ -31,12 +31,12 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           setCurrentJourney(selectedJourney);
         }} />}>
           <MenuItem value="">
-            <em>None</em>
+            {currentJourney ? <em>{currentJourney.title}</em> : ''}
           </MenuItem>
-            {currentJourney &&
-              journeys.map(journey => {
-                return <MenuItem value={journey._id}>{journey.title}</MenuItem>
-              })}
+          {currentJourney &&
+            journeys.map(journey => {
+              return <MenuItem value={journey._id}>{journey.title}</MenuItem>
+            })}
 
         </Select>
       </FormControl>
@@ -54,7 +54,7 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           })
         }}>
           <MenuItem value="">
-            <em>None</em>
+            {currentJourney ? <em>{currentJourney.title}</em> : ''}
           </MenuItem>
           {currentJourney &&
             currentJourney.personas.map(persona => {
@@ -81,7 +81,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   journeys: state.uiState.journeys,
   personas: state.uiState.personas,
-
+  currentPersona: state.uiState.currentPersona,
   currentJourney: state.uiState.currentJourney,
 });
 
