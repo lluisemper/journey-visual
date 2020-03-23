@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer (props) {
+function ResponsiveDrawer(props) {
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -71,7 +71,7 @@ function ResponsiveDrawer (props) {
       <Divider />
       <List>
         {['Home', 'Journeys', 'Personas', 'Analysis'].map((text, index) => (
-          <ListItem button key={text} component={Link}  to={`/${text}`}>
+          <ListItem button key={text} component={Link} to={`/${text}`}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -98,10 +98,12 @@ function ResponsiveDrawer (props) {
             JOURNEYS
           </Typography>
           <Button
-              href="/"
-              variant="contained"
-              color="primary"
-            >Log Out</Button>
+            href="/"
+            variant="contained"
+            color="primary"
+            style={{left: '1100px'}}
+          >Log Out
+          </Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
