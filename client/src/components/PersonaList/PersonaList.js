@@ -6,13 +6,10 @@ import * as uiStateActions from '../../action/uiState';
 import ApiClient from '../../ApiClient';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
-
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-
-
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -24,18 +21,16 @@ const useStyles = makeStyles(theme => ({
 const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona, journeys, setCurrentJourney }) => {
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   if (currentJourney) {
+  useEffect(() => {
+    if (currentJourney) {
 
-  //     ApiClient.getPersonas(currentJourney._id).then(personas => {
-  //       setPersonas(personas)
-  //       setCurrentPersona(personas[0]);
-  //     })
-  //   } else {
-  //     setPersonas([]);
-  //     setCurrentPersona(null);
-  //   }
-  // }, [currentJourney])
+      ApiClient.getPersonas(currentJourney._id).then(personas => {
+        console.log('personas', personas)
+        setPersonas(personas)
+        setCurrentPersona(personas[0]);
+      })
+    }
+  }, [currentJourney])
 
   const addPersona = (id, e) => {
     e.preventDefault();
@@ -59,15 +54,10 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
             journeys.map(journey => {
               return <MenuItem value={journey._id}>{journey.title}</MenuItem>
             })}
-
         </Select>
       </FormControl>
-
-
-
-
       <form onSubmit={(e) => {
-        addPersona(currentJourney._id, e)
+        addPersona(currentJourney._id, e);
       }
       }>
         <p>Create new persona</p>

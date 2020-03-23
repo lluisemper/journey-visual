@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona }) {
+function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas }) {
   const classes = useStyles();
 
   return (
@@ -29,6 +29,12 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           e.preventDefault();
           const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
           setCurrentJourney(selectedJourney);
+
+          ApiClient.getPersonas(selectedJourney._id).then(personas => {
+            setPersonas(personas)
+            setCurrentPersona(personas[0]);
+          })
+
         }} />}>
           <MenuItem value="">
             {currentJourney ? <em>{currentJourney.title}</em> : ''}
@@ -44,21 +50,22 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
         <InputLabel htmlFor="grouped-select">Personas</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
-          console.log('personas', personas)
-          console.log('e.target.value', e.target.value)
+  
           const selectedPersona = personas.find((persona) => {
-            return persona._id === e.target.value._id;
+
+            return persona._id === e.target.value;
           });
-          console.log('selectedPersona', selectedPersona)
           setCurrentPersona(selectedPersona);
+   
+
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);
           })
         }}>
-            {currentPersona ? 
-          <MenuItem value={currentPersona}>
-            <em>{currentPersona.title}</em> 
-          </MenuItem> 
+          {currentPersona ?
+            <MenuItem value={currentPersona}>
+              <em>{currentPersona.title}</em>
+            </MenuItem>
             : null}
           {currentJourney &&
             currentJourney.personas.map(persona => {
@@ -76,11 +83,9 @@ const mapDispatchToProps = {
   postJourney: uiStateActions.postJourney,
   setCurrentJourney: uiStateActions.setCurrentJourney,
   setCurrentPersona: uiStateActions.setCurrentPersona,
-  setSteps: uiStateActions.setSteps
-
+  setSteps: uiStateActions.setSteps,
+  setPersonas: uiStateActions.setPersonas
 }
-
-
 
 const mapStateToProps = (state) => ({
   journeys: state.uiState.journeys,
