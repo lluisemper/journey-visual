@@ -51,9 +51,6 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, curren
 const mapDispatchToProps = {
   setPersonas: uiStateActions.setPersonas,
   setCurrentPersona: uiStateActions.setCurrentPersona,
-  setJourneys: uiStateActions.setJourneys,
-  setCurrentJourney: uiStateActions.setCurrentJourney,
-  postJourney: uiStateActions.postJourney,
   postPersona: uiStateActions.postPersona,
 
 }
@@ -61,7 +58,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   personas: state.uiState.personas,
   currentPersona: state.uiState.currentPersona,
-  journeys: state.uiState.journeys,
   currentJourney: state.uiState.currentJourney,
 
 });

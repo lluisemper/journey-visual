@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 import ApiClient from '../../ApiClient';
 
-const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney }) => {
+const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys }) => {
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
