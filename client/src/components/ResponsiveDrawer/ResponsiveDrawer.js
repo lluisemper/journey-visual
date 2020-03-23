@@ -57,14 +57,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney, setCurrentPersona, setPersonas }, props) {
+function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, setCurrentPersona, setPersonas }, props) {
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
 
-  useEffect(() => {
+  useEffect(() => {    
     ApiClient.getJourneys().then(journeys => {
       setJourneys(journeys)
       if (journeys.length) {
@@ -77,8 +77,8 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
           setCurrentPersona(personas[0]);
         })
       };
-    }, []);
-  });
+    });
+  }, []);
 
   // useEffect(() => {
   //   if (currentJourney) {
@@ -87,7 +87,7 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
   //       setCurrentPersona(personas[0]);
   //     })
   //   }
-  // }, [currentJourney])
+  // }, [])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

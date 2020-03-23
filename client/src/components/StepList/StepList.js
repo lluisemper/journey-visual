@@ -41,7 +41,7 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
 
     <div className='StepList mainContainer'>
       
-      {steps != undefined && steps.length ? steps.map((step, index) => {
+      {steps !== undefined && steps.length ? steps.map((step, index) => {
     
         return (
           <div key={step._id} className='stepContainer'>
