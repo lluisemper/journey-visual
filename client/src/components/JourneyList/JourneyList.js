@@ -3,11 +3,9 @@ import './JourneyList.css';
 import Journey from '../Journey/Journey';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
-import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer';
 import ApiClient from '../../ApiClient';
 
-
-const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys }) => {
+const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney }) => {
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
@@ -21,12 +19,9 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys }) 
   const addJourney = (e) => {
     e.preventDefault();
     postJourney(e.target.title.value);
-
   }
   return (
-    <div className='JourneyList'>
-      <ResponsiveDrawer />
-      <div className="mainContainer">
+    <div className='JourneyList mainContainer'>
         <form onSubmit={(e) => {
           addJourney(e)
         }
@@ -49,7 +44,6 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys }) 
           }) : ''}
         </div>
       </div>
-    </div>
   )
 }
 const mapDispatchToProps = {

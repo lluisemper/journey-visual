@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './PersonaList.css';
 import Persona from '../../components/Persona/Persona';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
+import ApiClient from '../../ApiClient';
 
-const PersonaList = ({ currentJourney, addPersona, setCurrentPersona, personas }) => {
+const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona }) => {
+
+  useEffect(() => {
+    if (currentJourney) {
+      ApiClient.getPersonas(currentJourney._id).then(personas => {
+        console.log('personas',personas)
+        setPersonas(personas)
+        setCurrentPersona(personas[0]);
+      })
+    }
+  }, [currentJourney])
+
+  const addPersona = (id, e) => {
+    e.preventDefault();
+    postPersona(id, e.target.title.value);
+  }
 
   return (
-    <div className='PersonaList'>
+    <div className='PersonaList mainContainer'>
         <form onSubmit={(e) => {
           addPersona(currentJourney._id, e)
         }
@@ -37,6 +53,7 @@ const mapDispatchToProps = {
   setCurrentPersona: uiStateActions.setCurrentPersona,
   setJourneys: uiStateActions.setJourneys,
   setCurrentJourney: uiStateActions.setCurrentJourney,
+  postPersona: uiStateActions.postPersona
 }
 
 const mapStateToProps = (state) => ({

@@ -5,13 +5,11 @@ import StepList from '../StepList/StepList';
 import { Link } from "react-router-dom";
 import ApiClient from '../../ApiClient';
 import PersonaList from '../../components/PersonaList/PersonaList';
-import ResponsiveDrawer from '../../components/ResponsiveDrawer/ResponsiveDrawer';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, currentJourney,  postPersona }) => {
-
-
+const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, currentJourney, postPersona }) => {
+  
   useEffect(() => {
     if (currentJourney) {
       ApiClient.getPersonas(currentJourney._id).then(personas => {
@@ -21,17 +19,14 @@ const Main = ({ personas, setPersonas, currentPersona, setCurrentPersona, curren
     }
   }, [currentJourney])
 
-
   const addPersona = (id, e) => {
     e.preventDefault();
     postPersona(id, e.target.title.value)
   }
-
-  console.log('currentPersona', currentPersona);
   
   return (
     <div className="Main">
-      <ResponsiveDrawer />
+     
       <div className="mainContainer">
         <div className="border"></div>
         <h1>Persona's</h1>

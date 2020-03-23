@@ -58,13 +58,6 @@ const Step = ({ step, addStep }) => {
   const [edit, setEdit] = React.useState(false);
   const [title, setTitle] = React.useState('');
 
-  // const [initialState, setinitialState] = React.useState({
-  //   title: '',
-  //   comments: '',
-  //   emotion: '',
-  //   score: ''
-  // })
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
