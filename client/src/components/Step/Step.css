@@ -1,6 +1,4 @@
-.Step {
-  display: flex;
-  flex-direction: column;
-
+#step{
+  margin-left: 0;
+  margin-right: 0;
 }
-

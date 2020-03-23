@@ -7,7 +7,6 @@
 .stepContainer {
   display: flex;
   align-items: center;
-  margin: 20px;
 }
 
 .plusBtn {
@@ -28,6 +27,8 @@
   border: none;
   width: 3em;
   height: 3em;
+  margin: 0;
+  margin: 5px;
 }
 
 .addStep:focus {

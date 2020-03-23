@@ -21,9 +21,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 250,
     minWidth: 250,
-    maxHeight: 150,
-    minHeight: 150,
-    margin: 20
+    maxHeight: 350,
+    minHeight: 350,
   },
   media: {
     height: 0,
@@ -51,13 +50,16 @@ const Step = ({ step }) => {
   const [expanded, setExpanded] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
   const [title, setTitle] = React.useState('');
+  const [comments, setComments] = React.useState('');
+  const [emotion, setEmotion] = React.useState('');
+  const [score, setScore] = React.useState('');
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id="step">
       <CardHeader
         action={<div>
           <IconButton aria-label="settings" onClick={() => {
@@ -86,19 +88,50 @@ const Step = ({ step }) => {
               e.preventDefault();
               setTitle(e.target.value);
             }} />
+            <TextField id="standard-basic" label="comments" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setComments(e.target.value);
+            }} />
+            <TextField id="standard-basic" label="emotion" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setEmotion(e.target.value);
+            }} />
+            <TextField id="standard-basic" label="score" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setScore(e.target.value);
+            }} />
             <IconButton aria-label="settings" onClick={() => {
               step.title = title;
+              step.comments = comments;
+              step.emotion = emotion;
+              step.score = score;
               ApiClient.updateStep(step);
               setTitle('');
+              setComments('');
+              setEmotion('');
+              setScore('');
               setEdit(!edit);
             }}>
               <DoneIcon />
             </IconButton>
+
           </form>
           :
-          <Typography variant="body2" color="textSecondary" component="p">
-            {step.title}
-          </Typography>}
+          <div>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.comments}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.emotion}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.score}
+            </Typography>
+          </div>
+        }
       </CardContent>
       <CardActions disableSpacing>
         <IconButton

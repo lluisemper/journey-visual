@@ -22,7 +22,7 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
   const classes = useStyles();
 
   return (
-    <div className="mainContainer">
+    <div className="mainContainer Analysis">
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
@@ -33,7 +33,6 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
             setPersonas(personas)
             setCurrentPersona(personas[0]);
           })
-
         }} />}>
           <MenuItem value="">
             {currentJourney ? <em>{currentJourney.title}</em> : ''}
@@ -42,7 +41,6 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
             journeys.map(journey => {
               return <MenuItem value={journey._id}>{journey.title}</MenuItem>
             })}
-
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
