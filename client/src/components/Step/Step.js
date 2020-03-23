@@ -51,13 +51,16 @@ const Step = ({ step }) => {
   const [expanded, setExpanded] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
   const [title, setTitle] = React.useState('');
+  const [comments, setComments] = React.useState('');
+  const [emotion, setEmotion] = React.useState('');
+  const [score, setScore] = React.useState('');
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id="step">
       <CardHeader
         action={<div>
           <IconButton aria-label="settings" onClick={() => {
@@ -86,6 +89,18 @@ const Step = ({ step }) => {
               e.preventDefault();
               setTitle(e.target.value);
             }} />
+            <TextField id="standard-basic" label="comments" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setComments(e.target.value);
+            }} />
+            <TextField id="standard-basic" label="emotion" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setEmotion(e.target.value);
+            }} />
+            <TextField id="standard-basic" label="score" variant="standard" onChange={(e) => {
+              e.preventDefault();
+              setScore(e.target.value);
+            }} />
             <IconButton aria-label="settings" onClick={() => {
               step.title = title;
               ApiClient.updateStep(step);
@@ -94,10 +109,14 @@ const Step = ({ step }) => {
             }}>
               <DoneIcon />
             </IconButton>
+
           </form>
           :
           <Typography variant="body2" color="textSecondary" component="p">
             {step.title}
+            {step.component}
+            {step.emotion}
+            {step.score}
           </Typography>}
       </CardContent>
       <CardActions disableSpacing>

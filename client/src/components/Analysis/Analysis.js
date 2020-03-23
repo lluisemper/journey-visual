@@ -22,7 +22,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
   const classes = useStyles();
 
   return (
-    <div className="mainContainer">
+    <div className="mainContainer Analysis">
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
@@ -34,7 +34,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
             setPersonas(personas)
             setCurrentPersona(personas[0]);
           })
-
         }} />}>
           <MenuItem value="">
             {currentJourney ? <em>{currentJourney.title}</em> : ''}
@@ -43,20 +42,19 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
             journeys.map(journey => {
               return <MenuItem value={journey._id}>{journey.title}</MenuItem>
             })}
-
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Personas</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
-  
+
           const selectedPersona = personas.find((persona) => {
 
             return persona._id === e.target.value;
           });
           setCurrentPersona(selectedPersona);
-   
+
 
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);

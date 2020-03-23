@@ -4,6 +4,9 @@ import Step from '../Step/Step';
 import ApiClient from '../../ApiClient';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import IconButton from '@material-ui/core/IconButton';
 
 const StepList = ({ currentPersona, steps, setSteps }) => {
 
@@ -32,20 +35,26 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
       })
   }
 
+
+
   return (
-    <div className='StepList mainContainer'>
+    <div className='StepList'>
       {steps !== undefined && steps.length ? steps.map((step, index) => {
         return (
           <div key={step._id} className='stepContainer'>
-            <button className='addStep' onClick={() => {
+            <IconButton aria-label="settings" onClick={() => {
               createStep(index)
             }
-            }></button>
+            }>
+              <ArrowLeftIcon />
+            </IconButton>
             <Step step={step} addStep={addStep} steps={steps} />
-            <button className='addStep' onClick={() => {
+            <IconButton aria-label="settings" onClick={() => {
               createStep(index + 1)
             }
-            }></button>
+            }>
+              <ArrowRightIcon />
+            </IconButton>
           </div>
         )
       }) : ''}
