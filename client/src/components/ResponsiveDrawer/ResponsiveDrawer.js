@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -85,10 +84,9 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
       <Divider />
       <List>
         {['Home', 'Journeys', 'Personas', 'Analysis'].map((text, index) => (
-          <ListItem button key={text} >
+          <ListItem button key={text} component={Link}  to={`/${text}`}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
-            <ListItem component={Link}  to={`/${text}`}></ListItem>
           </ListItem>
         ))}
       </List>
