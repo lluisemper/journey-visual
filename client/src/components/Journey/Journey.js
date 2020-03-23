@@ -16,6 +16,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
 import TextField from '@material-ui/core/TextField';
 import DoneIcon from '@material-ui/icons/Done';
+import { connect } from 'react-redux';
+import * as uiStateActions from '../../action/uiState';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Journey = ({ journey, setCurrentJourney }) => {
+const Journey = ({ journey, setCurrentJourney, journeys, setJourneys, currentJourney }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
@@ -68,19 +72,19 @@ const Journey = ({ journey, setCurrentJourney }) => {
             <EditIcon />
           </IconButton>
           <IconButton aria-label="delete" onClick={() => {
-            ApiClient.deleteJourney(journey);
+            ApiClient.deleteJourney(journey).then(() => {
+              const newJourneys = journeys.filter((el) => el._id !== journey._id);
+              if ( currentJourney._id === journey._id) {
+                setCurrentJourney(newJourneys[0])
+              }
+              setJourneys(newJourneys);
+            })
           }} >
             <DeleteIcon />
           </IconButton>
         </div>
         }
-      // title={journey.title}
-      // subheader="September 14, 2016"
       />
-      {/* <CardMedia
-        className={classes.media}
-        title="journey"
-      /> */}
       <CardContent>
         {edit ?
           <form className={classes.root} noValidate autoComplete="off">
@@ -145,4 +149,19 @@ const Journey = ({ journey, setCurrentJourney }) => {
   );
 }
 
-export default Journey
+const mapDispatchToProps = {
+  setJourneys: uiStateActions.setJourneys,
+ 
+}
+
+const mapStateToProps = (state) => ({
+  journeys: state.uiState.journeys,
+  currentJourney: state.uiState.currentJourney,
+
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Journey);
+

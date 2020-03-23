@@ -130,7 +130,9 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
             href="/"
             variant="contained"
             color="primary"
-          >Log Out</Button>
+            style={{left: '1100px'}}
+          >Log Out
+          </Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

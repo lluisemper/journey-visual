@@ -6,13 +6,10 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Main from './components/Main/Main';
 import Signin from './components/Signin/Signin';
 import JourneyList from './components/JourneyList/JourneyList';
 import ResponsiveDrawer from './components/ResponsiveDrawer/ResponsiveDrawer';
 import PersonaList from './components/PersonaList/PersonaList';
-import StepList from './components/StepList/StepList';
-import Chart from './components/Chart/Chart';
 import Analysis from './components/Analysis/Analysis';
 
 const SideBar = () => {
