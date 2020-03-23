@@ -21,7 +21,6 @@ import ApiClient from '../../ApiClient';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -77,8 +76,8 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
           setCurrentPersona(personas[0]);
         })
       };
-    }, []);
-  });
+    });
+  },[]);
 
   // useEffect(() => {
   //   if (currentJourney) {
