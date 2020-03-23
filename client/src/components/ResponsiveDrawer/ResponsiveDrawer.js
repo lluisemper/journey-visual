@@ -77,11 +77,7 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
         })
       };
     });
-<<<<<<< HEAD
-  }, []);
-=======
   },[]);
->>>>>>> 8ac509f7bfbe26aa9b0cdb51d0099c7a0023ea9e
 
   // useEffect(() => {
   //   if (currentJourney) {
