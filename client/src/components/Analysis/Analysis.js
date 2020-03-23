@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
+import StepList from '../../components/StepList/StepList';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,8 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney }) {
   const classes = useStyles();
-
-  const [state, setState] = React.useState(null);
 
   return (
     <div className="mainContainer">
@@ -32,27 +31,31 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         }} />}>
           <option aria-label="None" value="" />
           <optgroup label="Category 1">
-            { currentJourney &&
+            {currentJourney &&
               journeys.map(journey => {
-              return <option value={journey._id}>{journey.title}</option>
-            })}
+                return <option value={journey._id}>{journey.title}</option>
+              })}
           </optgroup>
 
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
-        <Select defaultValue="" input={<Input id="grouped-select" />}>
+        <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
+          e.preventDefault();
+          const selectedPersona = personas.filter((persona) => persona === e.target.value);
+          setCurrentPersona(selectedPersona);
+        }}>
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          { currentJourney &&
+          {currentJourney &&
             currentJourney.personas.map(persona => {
-              console.log(persona)
               return <MenuItem value={persona}>{persona}</MenuItem>
             })}
         </Select>
       </FormControl>
+      <StepList />
     </div>
   );
 }

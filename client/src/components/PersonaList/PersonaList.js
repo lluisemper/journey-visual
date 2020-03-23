@@ -7,14 +7,7 @@ import ApiClient from '../../ApiClient';
 
 const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona }) => {
 
-  useEffect(() => {
-    if (currentJourney) {
-      ApiClient.getPersonas(currentJourney._id).then(personas => {
-        setPersonas(personas)
-        setCurrentPersona(personas[0]);
-      })
-    }
-  }, [currentJourney])
+
 
   const addPersona = (id, e) => {
     e.preventDefault();

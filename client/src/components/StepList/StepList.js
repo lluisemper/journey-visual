@@ -15,6 +15,7 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
   }
 
   const getSteps = () => {
+    console.log('getsteps')
     ApiClient.getSteps(currentPersona._id).then(steps => {
       setSteps(steps);
     })
@@ -24,7 +25,7 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
     if (currentPersona) {
       getSteps();
     }
-  }, [currentPersona]);
+  }, []);
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
@@ -37,8 +38,11 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
   }
 
   return (
+
     <div className='StepList mainContainer'>
+      
       {steps != undefined && steps.length ? steps.map((step, index) => {
+    
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
@@ -54,7 +58,8 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
         )
       }) : ''}
       {!steps.length && <button className="plusBtn" onClick={() => {
-        createStep()
+        createStep();
+        // console.log('clicked')
       }
       }></button>
       }
@@ -70,7 +75,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   steps: state.uiState.steps,
   currentPersona: state.uiState.currentPersona,
-
 });
 
 export default connect(

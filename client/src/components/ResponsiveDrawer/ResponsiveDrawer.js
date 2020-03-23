@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney }, props) {
+function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney, setCurrentPersona, setPersonas }, props) {
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -70,8 +70,24 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
       }
-    });
-  }, []);
+
+      if (currentJourney) {
+        ApiClient.getPersonas(currentJourney._id).then(personas => {
+          setPersonas(personas)
+          setCurrentPersona(personas[0]);
+        })
+      };
+    }, []);
+  });
+
+  // useEffect(() => {
+  //   if (currentJourney) {
+  //     ApiClient.getPersonas(currentJourney._id).then(personas => {
+  //       setPersonas(personas)
+  //       setCurrentPersona(personas[0]);
+  //     })
+  //   }
+  // }, [currentJourney])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -84,7 +100,7 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
       <Divider />
       <List>
         {['Home', 'Journeys', 'Personas', 'Analysis'].map((text, index) => (
-          <ListItem button key={text} component={Link}  to={`/${text}`}>
+          <ListItem button key={text} component={Link} to={`/${text}`}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -111,10 +127,10 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
             JOURNEYS
           </Typography>
           <Button
-              href="/"
-              variant="contained"
-              color="primary"
-            >Log Out</Button>
+            href="/"
+            variant="contained"
+            color="primary"
+          >Log Out</Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -155,13 +171,16 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
 
 const mapDispatchToProps = {
   setJourneys: uiStateActions.setJourneys,
+  setPersonas: uiStateActions.setPersonas,
   setCurrentJourney: uiStateActions.setCurrentJourney,
- 
+  setCurrentPersona: uiStateActions.setCurrentPersona,
+
 }
 
 const mapStateToProps = (state) => ({
   journeys: state.uiState.journeys,
   currentJourney: state.uiState.currentJourney,
+  currentPersona: state.uiState.currentPersona,
 
 });
 

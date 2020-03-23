@@ -36,7 +36,6 @@ const App = () => {
           <Route exact path="/Journeys" component={JourneyList} />
           <Route exact path="/Personas" component={PersonaList} />
           <Route exact path="/Analysis" component={Analysis} />
-         
         </Switch>
       </Router>
     </div>
