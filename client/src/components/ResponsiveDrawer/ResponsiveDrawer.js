@@ -65,7 +65,6 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
 
   useEffect(() => {    
     ApiClient.getJourneys().then(journeys => {
-      console.log('journeys', journeys);
       
       setJourneys(journeys)
       if (journeys.length) {
