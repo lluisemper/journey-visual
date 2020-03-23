@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './JourneyList.css';
 import Journey from '../Journey/Journey';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
-import ApiClient from '../../ApiClient';
 
-const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys }) => {
+const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
 
   
 

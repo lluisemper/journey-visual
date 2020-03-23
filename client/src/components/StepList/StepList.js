@@ -34,7 +34,7 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
 
   return (
     <div className='StepList mainContainer'>
-      {steps != undefined && steps.length ? steps.map((step, index) => {
+      {steps !== undefined && steps.length ? steps.map((step, index) => {
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
