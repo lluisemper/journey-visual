@@ -4,21 +4,38 @@ import Persona from '../../components/Persona/Persona';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 import ApiClient from '../../ApiClient';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
 
-const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona }) => {
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
-  useEffect(() => {
-    if (currentJourney) {
 
-      ApiClient.getPersonas(currentJourney._id).then(personas => {
-        setPersonas(personas)
-        setCurrentPersona(personas[0]);
-      })
-    } else {
-      setPersonas([]);
-      setCurrentPersona(null);
-    }
-  }, [currentJourney])
+
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
+
+const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona, journeys, setCurrentJourney }) => {
+  const classes = useStyles();
+
+  // useEffect(() => {
+  //   if (currentJourney) {
+
+  //     ApiClient.getPersonas(currentJourney._id).then(personas => {
+  //       setPersonas(personas)
+  //       setCurrentPersona(personas[0]);
+  //     })
+  //   } else {
+  //     setPersonas([]);
+  //     setCurrentPersona(null);
+  //   }
+  // }, [currentJourney])
 
   const addPersona = (id, e) => {
     e.preventDefault();
@@ -27,6 +44,28 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
 
   return (
     <div className='PersonaList mainContainer'>
+
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
+        <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
+          e.preventDefault();
+          const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
+          setCurrentJourney(selectedJourney);
+        }} />}>
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {currentJourney &&
+            journeys.map(journey => {
+              return <MenuItem value={journey._id}>{journey.title}</MenuItem>
+            })}
+
+        </Select>
+      </FormControl>
+
+
+
+
       <form onSubmit={(e) => {
         addPersona(currentJourney._id, e)
       }
@@ -55,11 +94,12 @@ const mapDispatchToProps = {
   setPersonas: uiStateActions.setPersonas,
   postPersona: uiStateActions.postPersona,
   setCurrentPersona: uiStateActions.setCurrentPersona,
-
+  setCurrentJourney: uiStateActions.setCurrentJourney
 }
 
 const mapStateToProps = (state) => ({
   personas: state.uiState.personas,
+  journeys: state.uiState.journeys,
   currentJourney: state.uiState.currentJourney,
 });
 
