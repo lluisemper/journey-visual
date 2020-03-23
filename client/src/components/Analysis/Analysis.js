@@ -54,7 +54,7 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           })
         }}>
           <MenuItem value="">
-            {currentJourney ? <em>{currentJourney.title}</em> : ''}
+            {currentPersona ? <em>{currentPersona.title}</em> : null}
           </MenuItem>
           {currentJourney &&
             currentJourney.personas.map(persona => {
