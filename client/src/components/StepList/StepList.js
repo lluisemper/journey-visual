@@ -7,9 +7,6 @@ import * as uiStateActions from '../../action/uiState';
 
 const StepList = ({ currentPersona, steps, setSteps }) => {
   
-  useEffect(() => {
-    getSteps();
-  }, [currentPersona]);
   
   const createStep = (index) => {
     ApiClient.postStep(currentPersona._id, {}, index).then(() => {
@@ -22,6 +19,10 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
       setSteps(steps);
     })
   }
+
+  useEffect(() => {
+    getSteps();
+  }, [currentPersona]);
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
@@ -66,6 +67,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   steps: state.uiState.steps,
+  currentPersona: state.uiState.currentPersona,
   
 });
 
