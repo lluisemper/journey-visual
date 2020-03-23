@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -152,13 +152,7 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
+
 const mapDispatchToProps = {
   setJourneys: uiStateActions.setJourneys,
   setCurrentJourney: uiStateActions.setCurrentJourney,
