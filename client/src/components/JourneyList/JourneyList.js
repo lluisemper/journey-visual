@@ -7,14 +7,9 @@ import ApiClient from '../../ApiClient';
 
 const JourneyList = ({ journeys, setCurrentJourney, postJourney, setJourneys, currentJourney }) => {
 
-  useEffect(() => {
-    ApiClient.getJourneys().then(journeys => {
-      setJourneys(journeys)
-      if (journeys.length) {
-        setCurrentJourney(journeys[0]);
-      }
-    });
-  }, []);
+  
+
+  console.log('mounted')
 
   const addJourney = (e) => {
     e.preventDefault();

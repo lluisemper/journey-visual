@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
 const StepList = ({ currentPersona, steps, setSteps }) => {
-  
-  
+
+
   const createStep = (index) => {
     ApiClient.postStep(currentPersona._id, {}, index).then(() => {
       getSteps();
@@ -21,7 +21,9 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
   }
 
   useEffect(() => {
-    getSteps();
+    if (currentPersona) {
+      getSteps();
+    }
   }, [currentPersona]);
 
   const addStep = (id, stepObj) => {
@@ -33,10 +35,10 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
         setSteps(newSteps)
       })
   }
-    
+
   return (
     <div className='StepList mainContainer'>
-      {steps !== undefined && steps.length ? steps.map((step, index) => {
+      {steps != undefined && steps.length ? steps.map((step, index) => {
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
@@ -62,13 +64,13 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
 
 const mapDispatchToProps = {
   setSteps: uiStateActions.setSteps,
-  
+
 }
 
 const mapStateToProps = (state) => ({
   steps: state.uiState.steps,
   currentPersona: state.uiState.currentPersona,
-  
+
 });
 
 export default connect(

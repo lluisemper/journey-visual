@@ -24,7 +24,7 @@ const Chart = ({ steps }) => {
 
   return (
     <div>
-      <div className="Chart" ref={myRef}>
+      <div className="Chart mainContainer" ref={myRef}>
           <LineChart
             width={steps.length * 225}
             height={300}

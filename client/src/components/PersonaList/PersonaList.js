@@ -10,7 +10,6 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
   useEffect(() => {
     if (currentJourney) {
       ApiClient.getPersonas(currentJourney._id).then(personas => {
-        console.log('personas',personas)
         setPersonas(personas)
         setCurrentPersona(personas[0]);
       })
