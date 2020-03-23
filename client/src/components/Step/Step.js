@@ -21,9 +21,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 250,
     minWidth: 250,
-    maxHeight: 150,
-    minHeight: 150,
-    margin: 20
+    maxHeight: 350,
+    minHeight: 350,
   },
   media: {
     height: 0,
@@ -103,8 +102,14 @@ const Step = ({ step }) => {
             }} />
             <IconButton aria-label="settings" onClick={() => {
               step.title = title;
+              step.comments = comments;
+              step.emotion = emotion;
+              step.score = score;
               ApiClient.updateStep(step);
               setTitle('');
+              setComments('');
+              setEmotion('');
+              setScore('');
               setEdit(!edit);
             }}>
               <DoneIcon />
@@ -112,12 +117,21 @@ const Step = ({ step }) => {
 
           </form>
           :
-          <Typography variant="body2" color="textSecondary" component="p">
-            {step.title}
-            {step.component}
-            {step.emotion}
-            {step.score}
-          </Typography>}
+          <div>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.comments}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.emotion}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {step.score}
+            </Typography>
+          </div>
+        }
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
