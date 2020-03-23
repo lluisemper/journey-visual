@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 import StepList from '../../components/StepList/StepList';
+import ApiClient from '../../ApiClient';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney }) {
+function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps }) {
   const classes = useStyles();
 
   return (
@@ -26,8 +27,8 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
         <Select native defaultValue="" input={<Input id="grouped-native-select" onChange={(e) => {
           e.preventDefault();
-          const selectedJourney = journeys.filter((journey) => journey._id === e.target.value);
-          setCurrentJourney(selectedJourney[0]);
+          const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
+          setCurrentJourney(selectedJourney);
         }} />}>
           <option aria-label="None" value="" />
           <optgroup label="Category 1">
@@ -43,8 +44,14 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" />} onChange={(e) => {
           e.preventDefault();
-          const selectedPersona = personas.filter((persona) => persona === e.target.value);
+          const selectedPersona = personas.find((persona) => {
+            return persona._id === e.target.value;
+          });
+          console.log('value',e.target.value)
           setCurrentPersona(selectedPersona);
+          ApiClient.getSteps(selectedPersona._id).then(steps => {
+            setSteps(steps);
+          })
         }}>
           <MenuItem value="">
             <em>None</em>
@@ -65,6 +72,7 @@ const mapDispatchToProps = {
   postJourney: uiStateActions.postJourney,
   setCurrentJourney: uiStateActions.setCurrentJourney,
   setCurrentPersona: uiStateActions.setCurrentPersona,
+  setSteps: uiStateActions.setSteps
 
 }
 

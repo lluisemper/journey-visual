@@ -69,7 +69,6 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
       }
-
       if (currentJourney) {
         ApiClient.getPersonas(currentJourney._id).then(personas => {
           setPersonas(personas)
@@ -79,19 +78,9 @@ function ResponsiveDrawer ({ journeys, setCurrentJourney, postJourney, setJourne
     });
   },[]);
 
-  // useEffect(() => {
-  //   if (currentJourney) {
-  //     ApiClient.getPersonas(currentJourney._id).then(personas => {
-  //       setPersonas(personas)
-  //       setCurrentPersona(personas[0]);
-  //     })
-  //   }
-  // }, [currentJourney])
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
 
   const drawer = (
     <div>

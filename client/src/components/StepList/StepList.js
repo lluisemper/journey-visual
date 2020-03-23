@@ -9,23 +9,18 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
 
 
   const createStep = (index) => {
+    console.log(currentPersona)
     ApiClient.postStep(currentPersona._id, {}, index).then(() => {
       getSteps();
     })
   }
 
   const getSteps = () => {
-    console.log('getsteps')
     ApiClient.getSteps(currentPersona._id).then(steps => {
       setSteps(steps);
     })
   }
 
-  useEffect(() => {
-    if (currentPersona) {
-      getSteps();
-    }
-  }, []);
 
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
@@ -38,11 +33,8 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
   }
 
   return (
-
     <div className='StepList mainContainer'>
-      
       {steps != undefined && steps.length ? steps.map((step, index) => {
-    
         return (
           <div key={step._id} className='stepContainer'>
             <button className='addStep' onClick={() => {
@@ -59,7 +51,6 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
       }) : ''}
       {!steps.length && <button className="plusBtn" onClick={() => {
         createStep();
-        // console.log('clicked')
       }
       }></button>
       }
