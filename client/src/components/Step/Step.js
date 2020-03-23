@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './Step.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -47,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Step = ({ step, addStep }) => {
+const Step = ({ step }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
