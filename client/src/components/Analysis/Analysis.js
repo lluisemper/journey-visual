@@ -27,7 +27,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
           e.preventDefault();
-          const selectedJourney = journeys.find((journey) => journey._id === e.target.value._id);
+          const selectedJourney = journeys.find((journey) => journey._id === e.target.value);
           setCurrentJourney(selectedJourney);
 
           ApiClient.getPersonas(selectedJourney._id).then(personas => {
