@@ -26,6 +26,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
   const classes = useStyles();
   const [chartActive, setChartActive] = useState(false);
   const [comparisonActive, setComparisonActive] = useState(false);
+  const [comparedPersona, setComparedPersona] = useState('');
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -33,6 +34,17 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
     setFirstSteps(steps);
   }
 
+<<<<<<< HEAD
+=======
+  // const index = personas.indexOf(currentPersona)
+  // const actualPersona = [...personas];
+  // if (index >= 0) personas.splice(index, 1);
+  // else actualPersona.push(currentPersona)
+  
+console.log('chartActive', chartActive);
+
+
+>>>>>>> 5d21e65282f32cd26b31f10ae69dadc40682062d
   return (
     <div className="mainContainer Analysis">
       <h3>Select a journey and persona</h3>
@@ -90,11 +102,29 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
       }}>
         Generate Customer Journey
       </Button>
-      <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
-        setSecondtSteps(steps);
-      }}>
-        Compare Journeys
-      </Button>
+      {chartActive ?
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="grouped-select">Compare Journeys</InputLabel>
+        <Select value={comparedPersona} onChange={(e) => {
+          e.preventDefault();
+          const selectedPersona = personas.find((persona) => {
+            return persona.title === e.target.value;
+          });
+          setComparedPersona(e.target.value)
+          ApiClient.getSteps(selectedPersona._id).then(steps => {
+            setSecondtSteps(steps);
+          })
+        }}>
+          <MenuItem value="">
+            {/* {currentPersona ? <em>{currentPersona.title}</em> : ''} */}
+          </MenuItem>
+          {currentJourney &&
+            personas.filter((persona) => persona.title !== currentPersona.title).map((persona) => {
+              return <MenuItem value={persona.title}>{persona.title}</MenuItem>
+            })}
+        </Select>
+      </FormControl>
+         : null}
       <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
         setComparisonActive(!comparisonActive);
       }}>
