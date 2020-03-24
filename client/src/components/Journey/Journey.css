@@ -1,27 +1,14 @@
-.Journey {
-  width: 15em;
-  height: 10em;
-  border-radius: 7px;
-  border: none;
-  margin-right: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: lightsteelblue;
+#Journey {
+  height: 200px;
 }
 
-.Journey:focus {
-  outline: none;
-  background-color: rgb(141, 178, 226);
+#Journey:focus {
+  background-color: rgb(211, 226, 247);
   color: white;
 }
 
-.Journey:hover {
-  background-color: rgb(141, 178, 226);
+#Journey:hover {
+  background-color: rgba(64, 82, 181, 0.493);
+  color: white;
 }
 
-.Journey h1 {
-  font-size: 16px;
-}

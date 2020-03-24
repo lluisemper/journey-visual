@@ -53,6 +53,15 @@ export default {
       body: JSON.stringify({ step, index })
     })
   },
+  postFile: (id, file) => {
+    console.log('api',file)
+ 
+    return fetchRequest(`/${id}/upload`, {
+      credentials: 'include',
+      method: 'POST',
+      body: file
+    })
+  },
   getJourneys: () => {
     return fetchRequest(`/journeys`, {
       credentials: 'include',

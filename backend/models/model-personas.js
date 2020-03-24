@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const Persona = new Schema({
   title: { type: String },
+  imagePath: {type: String},
   steps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Step' }]
 })
 

@@ -21,16 +21,5 @@
 }
 
 .addStep {
-  background-image: url('../../assets/plus.png');
-  background-color: transparent;
-  background-size: cover;
-  border: none;
-  width: 3em;
-  height: 3em;
-  margin: 0;
-  margin: 5px;
-}
-
-.addStep:focus {
-  outline: none;
+  margin-bottom: 10px;
 }

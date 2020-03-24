@@ -7,8 +7,6 @@ const User = require('./models/model-user');
 exports.postJourney = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
-    console.log('user', user);
-
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
     user.journeys.push(journey);
     await user.save();
@@ -46,6 +44,18 @@ exports.postStep = async (req, res) => {
     persona.steps.splice(req.body.index, 0, step._id);
     await persona.save();
     res.json(persona.steps);
+    res.status(201);
+  } catch (error) {
+    console.log(error)
+    res.status(500).send();
+  }
+}
+
+exports.postFile = async (req, res) => {
+  try {
+    await Persona.findOneAndUpdate({ _id: req.params.id }, {
+      imagePath: `http://localhost:4000/${req.file.path}`
+    });
     res.status(201);
   } catch (error) {
     console.log(error)

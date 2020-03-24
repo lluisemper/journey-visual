@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './StepList.css';
 import Step from '../Step/Step';
 import ApiClient from '../../ApiClient';
@@ -7,9 +7,9 @@ import * as uiStateActions from '../../action/uiState';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
 
 const StepList = ({ currentPersona, steps, setSteps }) => {
-
 
   const createStep = (index) => {
     console.log(currentPersona)
@@ -24,7 +24,6 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
     })
   }
 
-
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
       .then(() => {
@@ -34,8 +33,6 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
         setSteps(newSteps)
       })
   }
-
-
 
   return (
     <div className='StepList'>
@@ -58,12 +55,15 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
           </div>
         )
       }) : ''}
-      {!steps.length && <button className="plusBtn" onClick={() => {
-        createStep();
+      {!steps.length &&
+        <IconButton  onClick={() => {
+          createStep();
+        }
+        }>
+        <AddIcon className="addStep"/>
+        </IconButton >
       }
-      }></button>
-      }
-    </div>
+    </div >
   )
 }
 

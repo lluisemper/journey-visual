@@ -22,7 +22,6 @@ import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
 const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -45,7 +44,6 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
@@ -61,7 +59,6 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
 
   useEffect(() => {    
     ApiClient.getJourneys().then(journeys => {

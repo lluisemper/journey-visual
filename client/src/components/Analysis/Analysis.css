@@ -1,5 +1,5 @@
 .Analysis {
-
+  margin-top: 40px;
 }
 
 .border {
@@ -8,6 +8,17 @@
   background-color: rgb(182, 182, 182);
 }
 
-#chartButton{
+#chartButton {
   margin-top: 25px;
 }
+
+.persona-img-analysis {
+  width: 125px;
+  height: 125px;
+  border-radius: 60%;
+  position: relative;
+  left: 50px;
+  bottom: 25px;
+  border: 1px solid lightgray;
+}
+
