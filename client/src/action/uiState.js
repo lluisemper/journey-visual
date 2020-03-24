@@ -12,6 +12,12 @@ export const setFirstSteps = (firstSteps) => {
     firstSteps
   }
 }
+export const setSecondtSteps = (secondSteps) => {
+  return {
+    type: 'SET_SECOND_STEP',
+    secondSteps
+  }
+}
 export const setPersonas = (personas) => {
   return {
     type: 'SET_PERSONAS',

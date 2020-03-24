@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas, steps, setFirstSteps }) {
+function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas, steps, setFirstSteps, setSecondtSteps }) {
 
   const classes = useStyles();
   const [chartActive, setChartActive] = useState(false);
@@ -30,9 +30,10 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
 
   const handleClick = (e) => {
     e.preventDefault();
-    setChartActive(!comparisonActive);
+    setChartActive(!chartActive);
     setFirstSteps(steps);
   }
+
 
   return (
     <div className="mainContainer Analysis">
@@ -87,7 +88,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         Generate Customer Journey
       </Button>
       <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
-        console.log('clicked')
+        setSecondtSteps(steps);
       }}>
         Compare Journeys
       </Button>
@@ -110,7 +111,8 @@ const mapDispatchToProps = {
   setCurrentPersona: uiStateActions.setCurrentPersona,
   setSteps: uiStateActions.setSteps,
   setPersonas: uiStateActions.setPersonas,
-  setFirstSteps: uiStateActions.setFirstSteps
+  setFirstSteps: uiStateActions.setFirstSteps,
+  setSecondtSteps: uiStateActions.setSecondtSteps
 }
 
 const mapStateToProps = (state) => ({
