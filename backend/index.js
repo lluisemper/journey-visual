@@ -4,14 +4,18 @@ const cors = require('cors');
 const router = require('./router');
 require('./database');
 const passport = require('./configAuth');
-const session = require('express-session')
+const session = require('express-session');
+
 
 const PORT = 4000;
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 } }))
+
+app.use('/uploads', express.static('./uploads'))
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 require("./middlewares/middlewares")(app, passport)
 
