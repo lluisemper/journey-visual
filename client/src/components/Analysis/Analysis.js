@@ -34,17 +34,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
     setFirstSteps(steps);
   }
 
-<<<<<<< HEAD
-=======
-  // const index = personas.indexOf(currentPersona)
-  // const actualPersona = [...personas];
-  // if (index >= 0) personas.splice(index, 1);
-  // else actualPersona.push(currentPersona)
-  
-console.log('chartActive', chartActive);
-
-
->>>>>>> 5d21e65282f32cd26b31f10ae69dadc40682062d
   return (
     <div className="mainContainer Analysis">
       <h3>Select a journey and persona</h3>
