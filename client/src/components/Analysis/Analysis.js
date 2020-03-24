@@ -60,7 +60,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
           setCurrentPersona(selectedPersona);
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);
-
           })
         }}>
           <MenuItem value="">
@@ -68,9 +67,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
           </MenuItem>
           {currentJourney &&
             personas.map(persona => {
-              console.log('persona', persona);
-              console.log('currentJourney', currentJourney);
-
               return <MenuItem value={persona}>{persona.title}</MenuItem>
             })}
         </Select>

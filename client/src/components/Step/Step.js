@@ -54,76 +54,65 @@ const Step = ({ step }) => {
   const [emotion, setEmotion] = React.useState('');
   const [score, setScore] = React.useState('');
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+
+  const InputProps = {
+    disabled: edit ? false : true
   };
 
   return (
-    <div  id="step">
-    
-        <div className="iconWrapper">
-          <IconButton aria-label="settings" onClick={() => {
-            setEdit(!edit);
-          }}>
-            <EditIcon />
-          </IconButton>
-          <IconButton aria-label="delete" onClick={() => {
-            ApiClient.deleteStep(step);
-          }} >
-            <DeleteIcon />
-          </IconButton>
-        </div>
-        
-        {edit ?
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="standard-basic" label="title" variant="standard" onChange={(e) => {
-              e.preventDefault();
-              setTitle(e.target.value);
-            }} />
-            <TextField id="standard-basic" label="comments" variant="standard" onChange={(e) => {
-              e.preventDefault();
-              setComments(e.target.value);
-            }} />
-            <TextField id="standard-basic" label="emotion" variant="standard" onChange={(e) => {
-              e.preventDefault();
-              setEmotion(e.target.value);
-            }} />
-            <TextField id="standard-basic" label="score" variant="standard" onChange={(e) => {
-              e.preventDefault();
-              setScore(e.target.value);
-            }} />
-            <IconButton aria-label="settings" onClick={() => {
-              step.title = title;
-              step.comments = comments;
-              step.emotion = emotion;
-              step.score = score;
-              ApiClient.updateStep(step);
-              setTitle('');
-              setComments('');
-              setEmotion('');
-              setScore('');
-              setEdit(!edit);
-            }}>
-              <DoneIcon />
-            </IconButton>
+    <div id="step">
 
-          </form>
-          :
-          <div>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {step.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {step.comments}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {step.emotion}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {step.score}
-            </Typography>
-          </div>
-        }
+      <div className="iconWrapper">
+        <IconButton aria-label="settings" onClick={() => {
+          setEdit(!edit);
+        }}>
+          <EditIcon />
+        </IconButton>
+        <IconButton aria-label="delete" onClick={() => {
+          ApiClient.deleteStep(step);
+        }} >
+          <DeleteIcon />
+        </IconButton>
+      </div>
+
+
+
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField id="standard-basic" label="title" value={step.title} variant="standard" InputProps={InputProps} onChange={(e) => {
+          e.preventDefault();
+          setTitle(e.target.value);
+        }} />
+        <TextField id="standard-basic" label="comments" value={step.comments} variant="standard" InputProps={InputProps}  onChange={(e) => {
+          e.preventDefault();
+          setComments(e.target.value);
+        }} />
+        <TextField id="standard-basic" label="emotion" value={step.emotion} variant="standard" InputProps={InputProps}  onChange={(e) => {
+          e.preventDefault();
+          setEmotion(e.target.value);
+        }} />
+        <TextField id="standard-basic" label="score" value={step.score} variant="standard" InputProps={InputProps}  onChange={(e) => {
+          e.preventDefault();
+          setScore(e.target.value);
+        }} />
+        <IconButton aria-label="settings" onClick={() => {
+          step.title = title;
+          step.comments = comments;
+          step.emotion = emotion;
+          step.score = score;
+          ApiClient.updateStep(step);
+          setTitle('');
+          setComments('');
+          setEmotion('');
+          setScore('');
+          setEdit(!edit);
+        }}>
+          <DoneIcon />
+        </IconButton>
+
+      </form>
+
+
+
 
     </div >
   );

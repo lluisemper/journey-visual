@@ -1,11 +1,12 @@
 #step {
   background-color: white;
   width: 250px;
-  height: 200px;
+  height: 300px;
   border-radius: 7px;
   margin-left: 0;
   margin-right: 0;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
 }
 
 .iconWrapper{
