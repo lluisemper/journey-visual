@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { connect } from 'react-redux';
@@ -33,7 +32,6 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
     setChartActive(!chartActive);
     setFirstSteps(steps);
   }
-
 
   return (
     <div className="mainContainer Analysis">

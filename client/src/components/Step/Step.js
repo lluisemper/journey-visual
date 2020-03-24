@@ -8,6 +8,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
 import TextField from '@material-ui/core/TextField';
 import DoneIcon from '@material-ui/icons/Done';
+import Emoji from '../Emoji/Emoji';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,16 +49,59 @@ const Step = ({ step }) => {
   const [edit, setEdit] = React.useState(false);
   const [title, setTitle] = React.useState(step.title);
   const [comments, setComments] = React.useState(step.comments);
-  const [emotion, setEmotion] = React.useState(step.emotion);
-  const [score, setScore] = React.useState(step.score);
+  const [score, setScore] = React.useState('');
 
   const InputProps = {
     disabled: edit ? false : true
   };
 
+  const emotion_score = [
+    {
+      score: 1,
+      symbol: "🤯"
+    },
+    {
+      score: 2,
+      symbol: "😤"
+    },
+    {
+      score: 3,
+      symbol: "😠"
+    },
+    {
+      score: 4,
+      symbol: "😟"
+    },
+    {
+      score: 5,
+      symbol: "🤨"
+    },
+    {
+      score: 6,
+      symbol: "😐"
+    },
+    {
+      score: 7,
+      symbol: "🙂"
+    },
+    {
+      score: 8,
+      symbol: "😁"
+    },
+    {
+      score: 9,
+      symbol: "😍"
+    },
+    {
+      score: 10,
+      symbol: "🤩"
+    },
+  ]
+
+ 
+
   return (
     <div className="card">
-
       <div className="card-icon-wrapper">
         <IconButton aria-label="settings" onClick={() => {
           setEdit(!edit);
@@ -73,18 +123,26 @@ const Step = ({ step }) => {
           e.preventDefault();
           setComments(e.target.value);
         }} />
-        <TextField id="standard-basic" label="emotion" value={emotion} variant="standard" InputProps={InputProps} onChange={(e) => {
-          e.preventDefault();
-          setEmotion(e.target.value);
-        }} />
-        <TextField id="standard-basic" label="score" value={score} variant="standard" InputProps={InputProps} onChange={(e) => {
+        <FormControl disabled={edit ? false : true} >
+          <InputLabel htmlFor="grouped-select">Emotion</InputLabel>
+          <Select value={step.score} onChange={(e) => {
+            setScore(e.target.value);
+          }}>
+            <MenuItem value=''>
+              {/* <Emoji symbol={emotion_score.find(emoji=> emoji.score === step.score).symbol} label="" /> */}
+            </MenuItem>
+            {emotion_score.map(emoji => {
+              return <MenuItem value={emoji.score}> <Emoji symbol={emoji.symbol} label="" /></MenuItem>
+            })}
+          </Select>
+        </FormControl >
+        <TextField id="standard-basic" label="score" value={score} variant="standard" disabled={true} onChange={(e) => {
           e.preventDefault();
           setScore(e.target.value);
         }} />
         {edit && <IconButton className="card-save-btn" aria-label="settings" onClick={() => {
           step.title = title;
           step.comments = comments;
-          step.emotion = emotion;
           step.score = score;
           ApiClient.updateStep(step);
           setEdit(!edit);
