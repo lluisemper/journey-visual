@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 import StepList from '../../components/StepList/StepList';
 import ApiClient from '../../ApiClient';
+import Chart from '../Chart/Chart';
+import Button from '@material-ui/core/Button';
+import './Analysis.css';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,11 +21,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas }) {
+function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, currentJourney, setSteps, currentPersona, setPersonas }) {
   const classes = useStyles();
+  const [chartActive, setChartActive] = useState(false);
 
   return (
     <div className="mainContainer Analysis">
+      <h3>Select a journey and persona</h3>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
@@ -53,7 +58,7 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           setCurrentPersona(selectedPersona);
           ApiClient.getSteps(selectedPersona._id).then(steps => {
             setSteps(steps);
-            
+
           })
         }}>
           <MenuItem value="">
@@ -61,14 +66,22 @@ function Analysis({ journeys, personas, setCurrentJourney, setCurrentPersona, cu
           </MenuItem>
           {currentJourney &&
             personas.map(persona => {
-              console.log('persona',persona);
-              console.log('currentJourney',currentJourney);
-              
+              console.log('persona', persona);
+              console.log('currentJourney', currentJourney);
+
               return <MenuItem value={persona}>{persona.title}</MenuItem>
             })}
         </Select>
       </FormControl>
+      <h3>Create steps</h3>
       <StepList />
+      <div className="border"></div>
+      <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
+        setChartActive(!chartActive);
+      }}>
+        Generate Customer Journey
+      </Button>
+      {chartActive && <Chart />}
     </div>
   );
 }

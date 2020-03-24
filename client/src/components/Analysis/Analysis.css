@@ -1,4 +1,13 @@
-.Analysis{
-  display: flex;
-  flex-direction: column;
+.Analysis {
+
+}
+
+.border {
+  width: 100%;
+  height: 5px;
+  background-color: rgb(182, 182, 182);
+}
+
+#chartButton{
+  margin-top: 25px;
 }
