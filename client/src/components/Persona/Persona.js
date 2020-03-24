@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Persona.css';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
@@ -52,7 +52,6 @@ const Persona = ({ setCurrentPersona, persona }) => {
     <div className="card" onClick={() => {
       setCurrentPersona(persona)
     }} >
-
       <div className="card-icon-wrapper">
         <IconButton aria-label="settings" onClick={() => {
           setEdit(!edit);
@@ -70,13 +69,13 @@ const Persona = ({ setCurrentPersona, persona }) => {
           e.preventDefault();
           setTitle(e.target.value);
         }} />
-        <IconButton aria-label="settings" onClick={() => {
+        {edit && <IconButton aria-label="settings" onClick={() => {
           persona.title = title;
           ApiClient.updatePersona(persona);
           setEdit(!edit);
         }}>
           <DoneIcon />
-        </IconButton>
+        </IconButton>}
       </form>
     </div >
   );

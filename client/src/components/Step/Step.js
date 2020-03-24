@@ -1,16 +1,8 @@
 import React from 'react';
 import './Step.css';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
@@ -47,13 +39,11 @@ const useStyles = makeStyles(theme => ({
 
 const Step = ({ step }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
   const [title, setTitle] = React.useState(step.title);
   const [comments, setComments] = React.useState(step.comments);
   const [emotion, setEmotion] = React.useState(step.emotion);
   const [score, setScore] = React.useState(step.score);
-
 
   const InputProps = {
     disabled: edit ? false : true
@@ -101,13 +91,7 @@ const Step = ({ step }) => {
         }}>
           <DoneIcon />
         </IconButton>}
-
-
       </form>
-
-
-
-
     </div >
   );
 }

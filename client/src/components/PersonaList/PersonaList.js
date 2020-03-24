@@ -65,7 +65,6 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
           type='text'
           name='title'
         />
-
         <input className="submitBtn"
           type='submit'
           value='create'

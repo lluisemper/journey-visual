@@ -6,10 +6,6 @@ import * as uiStateActions from '../../action/uiState';
 
 const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
 
-  
-
-  console.log('mounted')
-
   const addJourney = (e) => {
     e.preventDefault();
     postJourney(e.target.title.value);
@@ -26,7 +22,6 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
             type='text'
             name='title'
           />
-
           <input className="submitBtn"
             type='submit'
             value='create'
@@ -44,7 +39,6 @@ const mapDispatchToProps = {
   setJourneys: uiStateActions.setJourneys,
   postJourney: uiStateActions.postJourney,
   setCurrentJourney: uiStateActions.setCurrentJourney,
-
 }
 
 const mapStateToProps = (state) => ({

@@ -4,7 +4,8 @@ import FileSaver from 'file-saver';
 import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
 import { connect } from 'react-redux';
 
-const Chart = ({ steps }) => {
+const Chart = ({ steps, firstSteps }) => {
+
 
   const myRef = React.createRef();
 
@@ -28,7 +29,7 @@ const Chart = ({ steps }) => {
           <LineChart
             width={steps.length * 225}
             height={300}
-            data={steps}
+            data={firstSteps}
             margin={{
               top: 5, right: 30, left: 20, bottom: 5,
             }}
@@ -38,8 +39,8 @@ const Chart = ({ steps }) => {
             <YAxis type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
-            <Line className="line" type="monotone" dataKey="score" stroke="white" activeDot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 3, r: 11, className: "boxShadow" }}
-              dot={{ fill: '#3F99F7', stroke: '#fff', strokeWidth: 2, r: 7, className: "boxShadow" }} ></Line>
+            <Line className="line" type="monotone" dataKey="score" stroke="#3F99F7" activeDot={{ fill: '#3F99F7', stroke: '#3F99F7', strokeWidth: 3, r: 11, className: "boxShadow" }}
+              dot={{ fill: '#3F99F7', stroke: '#3F99F7', strokeWidth: 2, r: 7, className: "boxShadow" }} ></Line>
           </LineChart>
 
       </div>
@@ -51,6 +52,7 @@ const Chart = ({ steps }) => {
 
 const mapStateToProps = (state) => ({
   steps: state.uiState.steps,
+  firstSteps: state.uiState.firstSteps,
   
 });
 

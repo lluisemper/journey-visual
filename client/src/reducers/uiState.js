@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   steps: [],
+  firstSteps: [],
   personas: [],
   currentPersona: null,
   journeys: [],
@@ -11,6 +12,8 @@ const uiState = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "SET_STEP":
       return { ...state, steps: action.steps };
+    case "SET_FIRST_STEP":
+      return { ...state, firstSteps: action.firstSteps };
     case "SET_PERSONAS":
       return { ...state, personas: action.personas };
     case "SET_JOURNEYS":

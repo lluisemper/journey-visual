@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 const StepList = ({ currentPersona, steps, setSteps }) => {
 
-
   const createStep = (index) => {
     console.log(currentPersona)
     ApiClient.postStep(currentPersona._id, {}, index).then(() => {
@@ -24,7 +23,6 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
     })
   }
 
-
   const addStep = (id, stepObj) => {
     ApiClient.updateStep(id, stepObj)
       .then(() => {
@@ -34,8 +32,6 @@ const StepList = ({ currentPersona, steps, setSteps }) => {
         setSteps(newSteps)
       })
   }
-
-
 
   return (
     <div className='StepList'>
