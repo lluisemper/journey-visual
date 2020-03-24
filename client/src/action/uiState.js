@@ -6,6 +6,12 @@ export const setSteps = (steps) => {
     steps
   }
 }
+export const setFirstSteps = (firstSteps) => {
+  return {
+    type: 'SET_FIRST_STEP',
+    firstSteps
+  }
+}
 export const setPersonas = (personas) => {
   return {
     type: 'SET_PERSONAS',
