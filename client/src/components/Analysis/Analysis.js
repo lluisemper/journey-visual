@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -80,9 +80,14 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         Generate Customer Journey
       </Button>
       <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
+        console.log('clicked')
+      }}>
+        Compare Journeys
+      </Button>
+      <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
         setComparisonActive(!comparisonActive);
       }}>
-       Compare personas
+        Compare personas
       </Button>
       {chartActive && <Chart />}
       {comparisonActive && <Comparison />}
