@@ -4,3 +4,24 @@
   margin: 20px;
   top: 50px;
 }
+
+.card {
+  background-color: white;
+  width: 250px;
+  height: 300px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  margin: 10px;
+}
+
+.card-icon-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-save-btn {
+  position: relative;
+  top: 45px;
+  right: 75px;
+}

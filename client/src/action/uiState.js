@@ -47,6 +47,14 @@ export const postPersona = (id, value) => {
   }
 }
 
+// export const deletePersona = (persona) => {
+//   return dispatch => {
+//     ApiClient.deletePersona(persona).then(deletedPersona => {
+//       dispatch({ type: 'DELETE_PERSONA', deletedPersona })
+//     })
+//   }
+// }
+
 
 
 
