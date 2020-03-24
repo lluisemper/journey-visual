@@ -10,6 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ApiClient from '../../ApiClient';
 import TextField from '@material-ui/core/TextField';
 import DoneIcon from '@material-ui/icons/Done';
+import FileUpload from '../FileUpload/FileUpload';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,14 +70,21 @@ const Persona = ({ setCurrentPersona, persona }) => {
           e.preventDefault();
           setTitle(e.target.value);
         }} />
-        {edit && <IconButton aria-label="settings" onClick={() => {
-          persona.title = title;
-          ApiClient.updatePersona(persona);
-          setEdit(!edit);
-        }}>
-          <DoneIcon />
-        </IconButton>}
+        {
+          edit &&
+          <div>
+            <FileUpload />
+            <IconButton aria-label="settings" onClick={() => {
+              persona.title = title;
+              ApiClient.updatePersona(persona);
+              setEdit(!edit);
+            }}>
+              <DoneIcon />
+            </IconButton>
+          </div>
+        }
       </form>
+      {!edit && <img className="persona-img" src={persona.imagePath}></img>}
     </div >
   );
 }

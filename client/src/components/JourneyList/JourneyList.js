@@ -31,7 +31,7 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
           {journeys.length ? journeys.map((journey) => {
             return <Journey key={journey._id} journey={journey} setCurrentJourney={setCurrentJourney} />
           }) : ''}
-        </div>
+      </div>
       </div>
   )
 }

@@ -11,6 +11,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 250,
@@ -84,6 +85,7 @@ const Journey = ({ journey, setCurrentJourney, journeys, setJourneys, currentJou
           <DoneIcon />
         </IconButton>}
       </form>
+
     </div>
   );
 }

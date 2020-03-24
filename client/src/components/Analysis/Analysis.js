@@ -30,7 +30,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
 
   const handleClick = (e) => {
     e.preventDefault();
-    setChartActive(!comparisonActive);
+    setChartActive(!chartActive);
     setFirstSteps(steps);
   }
 
@@ -78,6 +78,11 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
             })}
         </Select>
       </FormControl>
+      {
+        currentPersona &&
+          <img className="persona-img-analysis" src={currentPersona.imagePath}></img>
+      }
+
       <h3>Create steps</h3>
       <StepList />
       <div className="border"></div>
@@ -99,7 +104,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
       {chartActive && <Chart />}
       {comparisonActive && <Comparison />}
 
-    </div>
+    </div >
   );
 }
 
