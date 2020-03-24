@@ -9,7 +9,13 @@
   padding: 10px;
 }
 
-.iconWrapper{
+.iconWrapper {
   justify-content: flex-end;
   display: flex;
+}
+
+#saveBtn{
+  position: relative;
+  top: 45px;
+  right: 75px;
 }

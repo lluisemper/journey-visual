@@ -74,27 +74,24 @@ const Step = ({ step }) => {
           <DeleteIcon />
         </IconButton>
       </div>
-
-
-
       <form className={classes.root} noValidate autoComplete="off">
         <TextField id="standard-basic" label="title" value={step.title} variant="standard" InputProps={InputProps} onChange={(e) => {
           e.preventDefault();
           setTitle(e.target.value);
         }} />
-        <TextField id="standard-basic" label="comments" value={step.comments} variant="standard" InputProps={InputProps}  onChange={(e) => {
+        <TextField id="standard-basic" label="comments" value={step.comments} variant="standard" InputProps={InputProps} onChange={(e) => {
           e.preventDefault();
           setComments(e.target.value);
         }} />
-        <TextField id="standard-basic" label="emotion" value={step.emotion} variant="standard" InputProps={InputProps}  onChange={(e) => {
+        <TextField id="standard-basic" label="emotion" value={step.emotion} variant="standard" InputProps={InputProps} onChange={(e) => {
           e.preventDefault();
           setEmotion(e.target.value);
         }} />
-        <TextField id="standard-basic" label="score" value={step.score} variant="standard" InputProps={InputProps}  onChange={(e) => {
+        <TextField id="standard-basic" label="score" value={step.score} variant="standard" InputProps={InputProps} onChange={(e) => {
           e.preventDefault();
           setScore(e.target.value);
         }} />
-        <IconButton aria-label="settings" onClick={() => {
+        <IconButton id="saveBtn" aria-label="settings" onClick={() => {
           step.title = title;
           step.comments = comments;
           step.emotion = emotion;
