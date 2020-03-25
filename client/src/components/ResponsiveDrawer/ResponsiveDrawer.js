@@ -84,7 +84,7 @@ function ResponsiveDrawer ({ setCurrentJourney, setJourneys, currentJourney, set
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Journeys', 'Personas', 'Analysis'].map((text, index) => (
+        {['Home', 'Journeys', 'Personas', 'Analysis', 'Questionnaire'].map((text, index) => (
           <ListItem button key={text} component={Link} to={`/${text}`}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
