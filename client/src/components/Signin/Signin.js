@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import './Signin.css';
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -33,11 +32,11 @@ const SignIn = () => {
 
   return (
     <div className="Signin">
+      <h1 className="title">JOURNEY VISUALIZER</h1>
       <Container component="main" maxWidth="xs" className="signinContainer">
         <CssBaseline />
         <div className={classes.paper}>
           <div className="googleLogo"></div>
-  
           <Typography component="h1" variant="h4">
             Sign in
         </Typography>
@@ -46,7 +45,7 @@ const SignIn = () => {
         </Typography>
           <div className={classes.form} noValidate>
             <Button
-              href="http://localhost:4000/auth/google/"
+              href="/auth/google/"
               type="submit"
               fullWidth
               variant="contained"
@@ -58,9 +57,7 @@ const SignIn = () => {
           </div>
         </div>
       </Container>
-
     </div>
-
   );
 }
 
