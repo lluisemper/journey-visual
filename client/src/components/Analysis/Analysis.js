@@ -116,11 +116,11 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         </Select>
       </FormControl>
          : null}
-      <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
+      {/* <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
         setComparisonActive(!comparisonActive);
       }}>
         Compare personas
-      </Button >
+      </Button > */}
       <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
         setSpiderChartActive(!spiderChartActive);
       }}>
