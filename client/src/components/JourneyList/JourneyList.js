@@ -26,7 +26,7 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
     <div className='JourneyList mainContainer'>
       <h1>My Journey´s</h1>
       <h3>Create new journey</h3>
-      <p>Describe the main topic of your customer journey. <br />
+      <p className="description">Describe the main topic of your customer journey. <br />
          After creating a journey you can start adding persona's to that journey
         </p>
       <form className={classes.root} noValidate autoComplete="off" onSubmit={() => {
@@ -37,7 +37,7 @@ const JourneyList = ({ journeys, setCurrentJourney, postJourney }) => {
           e.preventDefault();
           setTitle(e.target.value);
         }} />
-        <Button className="save-btn"
+        <Button id="save-btn-journey"
           variant="contained"
           color="primary"
           size="small"

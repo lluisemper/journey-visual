@@ -30,6 +30,12 @@
   height: 2em;
 }
 
-.save-btn{
+#save-btn-journey {
   position: relative;
+  top: 10px;
+  width: 100px;
+}
+
+.description{
+  margin: 0;
 }

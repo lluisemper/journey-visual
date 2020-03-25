@@ -17,7 +17,10 @@ import SaveIcon from '@material-ui/icons/Save';
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
+    marginBottom: 20,
+    marginTop: 0,
     minWidth: 120,
+    width: 100
   },
 }));
 
@@ -44,12 +47,19 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
   return (
     <div className='PersonaList mainContainer'>
 
+      <h1>My Persona's</h1>
+      <h3>Create new persona</h3>
+      <p className="description"> Select a journey<br />
+         Now you can create specific persona's that belong to that journey.
+        </p>
+
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-select">Journeys</InputLabel>
         <Select defaultValue="" input={<Input id="grouped-select" onChange={(e) => {
           e.preventDefault();
-          const selectedJourney = journeys.find((journey) => {            
-            return journey._id === e.target.value});          
+          const selectedJourney = journeys.find((journey) => {
+            return journey._id === e.target.value
+          });
           setCurrentJourney(selectedJourney);
         }} />}>
           <MenuItem value="">
@@ -71,7 +81,7 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
           e.preventDefault();
           setTitle(e.target.value);
         }} />
-        <Button className="save-btn"
+        <Button id="save-btn-persona"
           variant="contained"
           color="primary"
           size="small"
