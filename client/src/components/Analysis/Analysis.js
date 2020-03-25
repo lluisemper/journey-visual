@@ -124,7 +124,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
       <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
         setSpiderChartActive(!spiderChartActive);
       }}>
-        Compare personas
+        Score rates
       </Button >
       {chartActive && <Chart />}
       {comparisonActive && <Comparison />}
