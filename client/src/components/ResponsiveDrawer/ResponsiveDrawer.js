@@ -62,7 +62,6 @@ function ResponsiveDrawer ({ setCurrentJourney, setJourneys, currentJourney, set
 
   useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
-
       setJourneys(journeys)
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
@@ -156,15 +155,12 @@ function ResponsiveDrawer ({ setCurrentJourney, setJourneys, currentJourney, set
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = {
     setJourneys: uiStateActions.setJourneys,
-    setPersonas: (personas) => {
-      return dispatch(uiStateActions.setPersonas(personas))
-    },
+    setPersonas: uiStateActions.setPersonas,
     setCurrentJourney: uiStateActions.setCurrentJourney,
     setCurrentPersona: uiStateActions.setCurrentPersona
-  }
+  
 }
 
 const mapStateToProps = (state) => ({

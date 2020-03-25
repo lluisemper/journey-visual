@@ -13,6 +13,7 @@ import Chart from '../Chart/Chart';
 import Button from '@material-ui/core/Button';
 import './Analysis.css';
 import Comparison from '../Comparison/Comparison';
+import SpiderChart from '../../components/SpiderChart/SpiderChart'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -26,6 +27,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
   const classes = useStyles();
   const [chartActive, setChartActive] = useState(false);
   const [comparisonActive, setComparisonActive] = useState(false);
+  const [spiderChartActive, setSpiderChartActive] = useState(false);
   const [comparedPersona, setComparedPersona] = useState('');
 
   const handleClick = (e) => {
@@ -119,8 +121,14 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
       }}>
         Compare personas
       </Button >
+      <Button id="chartButton" variant="outlined" color="primary" onClick={() => {
+        setSpiderChartActive(!spiderChartActive);
+      }}>
+        Compare personas
+      </Button >
       {chartActive && <Chart />}
       {comparisonActive && <Comparison />}
+      {spiderChartActive && <SpiderChart />}
 
     </div >
   );
