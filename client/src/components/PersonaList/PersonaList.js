@@ -10,6 +10,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -20,6 +23,8 @@ const useStyles = makeStyles(theme => ({
 
 const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas, postPersona, journeys, setCurrentJourney }) => {
   const classes = useStyles();
+
+  const [title, setTitle] = React.useState('');
 
   useEffect(() => {
     if (currentJourney) {
@@ -56,20 +61,29 @@ const PersonaList = ({ currentJourney, setCurrentPersona, personas, setPersonas,
             })}
         </Select>
       </FormControl>
-      <form onSubmit={(e) => {
-        addPersona(currentJourney._id, e);
-      }
-      }>
-        <p>Create new persona</p>
-        <input className="textInput"
-          type='text'
-          name='title'
-        />
-        <input className="submitBtn"
+
+
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {
+        postPersona(currentJourney._id, title);
+        setTitle('');
+      }}>
+        <TextField id="outlined-basic" label="Title" variant="outlined" onChange={(e) => {
+          e.preventDefault();
+          setTitle(e.target.value);
+        }} />
+        <Button className="save-btn"
+          variant="contained"
+          color="primary"
+          size="small"
+          className={classes.button}
+          startIcon={<SaveIcon />}
           type='submit'
-          value='create'
-        />
+        >
+          Save
+      </Button>
       </form>
+
+
       <div className="personaWrapper">
         {personas.length ? personas.map((persona) => {
           return <Persona key={persona._id} persona={persona} setCurrentPersona={setCurrentPersona}

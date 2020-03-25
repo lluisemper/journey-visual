@@ -21,7 +21,7 @@ import ApiClient from '../../ApiClient';
 import { connect } from 'react-redux';
 import * as uiStateActions from '../../action/uiState';
 
-const drawerWidth = 240;
+const drawerWidth = '15vw';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -95,7 +95,8 @@ function ResponsiveDrawer ({ setCurrentJourney, setJourneys, currentJourney, set
   );
 
   return (
-    <div className={classes.root, 'ResponsiveDrawer'}>
+    
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>

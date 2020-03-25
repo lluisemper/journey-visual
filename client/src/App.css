@@ -1,8 +1,8 @@
 .mainContainer {
   position: relative;
-  left: 250px;
-  margin: 10px;
-  top: 50px;
+  width: 85vw;
+  margin-left: 16vw;
+  margin-top: 5vw;
   font-family: 'Roboto';
 }
 

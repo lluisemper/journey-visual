@@ -14,15 +14,33 @@
   background-color: lightgrey;
 }
 
-.mainContainer {
+.tutorial-img {
   position: relative;
-  left: 240px;
-  margin: 20px;
+  align-self: center;
+  height: 800px;
+  bottom: 200px;
+  z-index: -1;
 }
 
-.tutorial-img{
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Home h1 {
+  font-size: 40px;
+  font-weight: bold;
+ 
+}
+
+.popup-tutorial{
+  position: relative;
+  right: 200px;
   background-image: url('../../assets/tutorial.png');
   background-size: cover;
-  height: 800px;
-  width: 75%;
+  height: 600px;
+  width: 800px;
+  border: 1px solid lightgray;
+  border-radius: 7px;
 }

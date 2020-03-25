@@ -22,11 +22,14 @@
   margin-right: 10px;
 }
 
-.textInput:focus{
-outline: none;
+.textInput:focus {
+  outline: none;
 }
 
-.submitBtn{
+.submitBtn {
   height: 2em;
 }
 
+.save-btn{
+  position: relative;
+}
