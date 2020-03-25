@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ],
   "dependencies": {
     "reactjs-popup": "^1.5.0"
   },
