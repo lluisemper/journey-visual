@@ -80,7 +80,7 @@ export default {
   updateStep: (step) => {
     return fetchRequest(`/steps/${step._id}/update`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -90,7 +90,7 @@ export default {
   updateJourney: (journey) => {
     return fetchRequest(`/journeys/${journey._id}/update`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -100,7 +100,7 @@ export default {
   updatePersona: (persona) => {
     return fetchRequest(`/personas/${persona._id}/update`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -110,7 +110,7 @@ export default {
   deleteJourney: (journey) => {
     return fetchRequest(`/journeys/${journey._id}/delete`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -120,7 +120,7 @@ export default {
   deletePersona: (persona) => {
     return fetchRequest(`/personas/${persona._id}/delete`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -130,7 +130,7 @@ export default {
   deleteStep: (step) => {
     return fetchRequest(`/steps/${step._id}/delete`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },

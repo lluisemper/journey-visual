@@ -11,13 +11,13 @@ router.post('/journey', authorization, controller.postJourney);
 router.post('/:id/persona', authorization, controller.postPersona);
 router.post('/:id/step', authorization, controller.postStep);
 
-router.post(`/journeys/:id/update`, authorization, controller.updateJourney);
-router.post(`/personas/:id/update`, authorization, controller.updatePersona);
-router.post(`/steps/:id/update`, authorization, controller.updateStep);
+router.put(`/journeys/:id/update`, authorization, controller.updateJourney);
+router.put(`/personas/:id/update`, authorization, controller.updatePersona);
+router.put(`/steps/:id/update`, authorization, controller.updateStep);
 
-router.post(`/journeys/:id/delete`, authorization, controller.deleteJourney);
-router.post(`/personas/:id/delete`, authorization, controller.deletePersona);
-router.post(`/steps/:id/delete`, authorization, controller.deleteStep);
+router.delete(`/journeys/:id/delete`, authorization, controller.deleteJourney);
+router.delete(`/personas/:id/delete`, authorization, controller.deletePersona);
+router.delete(`/steps/:id/delete`, authorization, controller.deleteStep);
 
 router.post(`/:id/upload`, multer({dest:'./uploads'}).single('file'), controller.postFile);
 

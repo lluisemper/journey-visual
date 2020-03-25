@@ -58,7 +58,8 @@ const Chart = ({ steps, firstSteps, secondSteps }) => {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="title" />
+              {doubleLine[0].map((el, i) => {
+                return <XAxis dataKey={(x) => x[i].name}></XAxis>})}
               <YAxis type="number" domain={[0, 5]} />
               <Tooltip />
               <Legend />
