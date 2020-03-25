@@ -59,6 +59,9 @@ export const postPersona = (id, value) => {
   }
 }
 
+
+
+
 // export const deletePersona = (persona) => {
 //   return dispatch => {
 //     ApiClient.deletePersona(persona).then(deletedPersona => {

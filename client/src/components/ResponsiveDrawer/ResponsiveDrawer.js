@@ -54,15 +54,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, setCurrentPersona, setPersonas }, props) {
+function ResponsiveDrawer ({ setCurrentJourney, setJourneys, currentJourney, setCurrentPersona, setPersonas }, props) {
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  useEffect(() => {    
+  useEffect(() => {
     ApiClient.getJourneys().then(journeys => {
-      
+
       setJourneys(journeys)
       if (journeys.length) {
         setCurrentJourney(journeys[0]);
@@ -74,7 +74,7 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
         })
       };
     });
-  },[]);
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -96,7 +96,7 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
   );
 
   return (
-    <div className={classes.root , 'ResponsiveDrawer'}>
+    <div className={classes.root, 'ResponsiveDrawer'}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
@@ -116,7 +116,7 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
             href="/"
             variant="contained"
             color="primary"
-            style={{left: '1100px'}}
+            style={{ left: '1100px' }}
           >Log Out
           </Button>
         </Toolbar>
@@ -156,13 +156,15 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
   );
 }
 
-
-const mapDispatchToProps = {
-  setJourneys: uiStateActions.setJourneys,
-  setPersonas: uiStateActions.setPersonas,
-  setCurrentJourney: uiStateActions.setCurrentJourney,
-  setCurrentPersona: uiStateActions.setCurrentPersona,
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setJourneys: uiStateActions.setJourneys,
+    setPersonas: (personas) => {
+      return dispatch(uiStateActions.setPersonas(personas))
+    },
+    setCurrentJourney: uiStateActions.setCurrentJourney,
+    setCurrentPersona: uiStateActions.setCurrentPersona
+  }
 }
 
 const mapStateToProps = (state) => ({
