@@ -7,6 +7,6 @@ module.exports = function (app, passport) {
   app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function (req, res) {    
-        res.redirect(`${process.env.URL}/home`);
+        res.redirect(`${process.env.URI}/home`);
     });
 }

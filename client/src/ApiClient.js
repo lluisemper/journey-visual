@@ -1,4 +1,6 @@
-const BASE_URL = process.env.URL;
+console.log('process.env.URL', process.env.REACT_APP_URL);
+
+const BASE_URL = process.env.REACT_APP_URL || process.env.URL;
 
 export default {
 

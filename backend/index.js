@@ -19,7 +19,7 @@ app.use(passport.session());
 
 require("./middlewares/middlewares")(app, passport)
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: process.env.URI, credentials: true }));
 
 app.use(express.json());
 
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(clientPath, 'index.html'));
   });
-} 
+}
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);

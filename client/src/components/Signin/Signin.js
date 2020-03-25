@@ -27,6 +27,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const BASE_URL = process.env.REACT_APP_URL || process.env.URL;
+
 const SignIn = () => {
   const classes = useStyles();
 
@@ -45,7 +47,7 @@ const SignIn = () => {
         </Typography>
           <div className={classes.form} noValidate>
             <Button
-              href="/auth/google/"
+              href={BASE_URL + "/auth/google/"}
               type="submit"
               fullWidth
               variant="contained"
