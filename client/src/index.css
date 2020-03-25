@@ -1,6 +1,14 @@
-body {
-  margin: 0;
-  background-color: #497ee9;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
+
+@font-face {
+  font-family: 'FiraSans';
+  src: local('Roboto'), 
+  url('./fonts/Roboto-Regular.ttf') format('truetype');
 }
+
+
+        body {
+          margin: 0;
+          background-color: #497ee9;
+          font-family: 'Courier New', Courier, monospace;
+          color: white;
+        }
