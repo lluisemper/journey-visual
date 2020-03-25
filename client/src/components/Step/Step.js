@@ -123,7 +123,7 @@ const Step = ({ step }) => {
           e.preventDefault();
           setComments(e.target.value);
         }} />
-        <FormControl disabled={edit ? false : true} >
+        <FormControl id="emotion-select"  disabled={edit ? false : true} >
           <InputLabel htmlFor="grouped-select">Emotion</InputLabel>
           <Select value={step.score} onChange={(e) => {
             setScore(e.target.value);

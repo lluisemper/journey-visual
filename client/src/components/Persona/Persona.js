@@ -11,6 +11,8 @@ import ApiClient from '../../ApiClient';
 import TextField from '@material-ui/core/TextField';
 import DoneIcon from '@material-ui/icons/Done';
 import FileUpload from '../FileUpload/FileUpload';
+import Popup from "reactjs-popup";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,6 +66,25 @@ const Persona = ({ setCurrentPersona, persona }) => {
         }} >
           <DeleteIcon />
         </IconButton>
+      </div>
+      <div className="popup-btn" >
+        <Popup className="popup-content" trigger={<Button variant="outlined" color="primary">
+          Profile
+</Button>} position="top left">
+          {close => (
+            <div >
+              <h3>{`Profile ${persona.title}`}</h3>
+              <h5>{`Age: ${persona.age}`}</h5>
+              <h5>{`Marital status: ${persona.marital_status}`}</h5>
+              <h5>{`Occupation: ${persona.occupation}`}</h5>
+              <h5>{`Income: ${persona.income}`}</h5>
+              <h5>{`Hobby's: ${persona.hobbys}`}</h5>
+              <a className="close" onClick={close}>
+                &times;
+        </a>
+            </div>
+          )}
+        </Popup>
       </div>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField id="standard-basic" label="title" variant="standard" value={title} InputProps={InputProps} onChange={(e) => {

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './FileUpload.css';
 import ApiClient from '../../ApiClient';
 import { connect } from 'react-redux';
-import * as uiStateActions from '../../action/uiState';
+import Button from '@material-ui/core/Button';
+
 
 const FileUpload = ({ currentPersona }) => {
 
@@ -29,9 +30,11 @@ const FileUpload = ({ currentPersona }) => {
   return (
     <div className="FileUpload">
       <input type="file" onChange={fileSelectedHandler} />
-      <button onClick={(e) => {
+      <Button variant="outlined" size="small" color="primary" onClick={(e) => {
         fileUploadHandler(e)
-      }}>upload</button>
+      }}>
+        upload
+</Button>
     </div>
   )
 }

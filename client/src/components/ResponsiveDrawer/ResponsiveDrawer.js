@@ -96,7 +96,7 @@ function ResponsiveDrawer ({ setCurrentJourney,  setJourneys, currentJourney, se
   );
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root , 'ResponsiveDrawer'}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>

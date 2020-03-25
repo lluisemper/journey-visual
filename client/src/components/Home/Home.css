@@ -19,3 +19,10 @@
   left: 240px;
   margin: 20px;
 }
+
+.tutorial-img{
+  background-image: url('../../assets/tutorial.png');
+  background-size: cover;
+  height: 800px;
+  width: 75%;
+}

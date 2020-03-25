@@ -6,3 +6,24 @@
   height: 140px;
   border: 7px;
 }
+
+.popup-btn {
+  position: absolute;
+  top: 190px;
+}
+
+.popup-content {
+  width: 200px;
+  height: 170px;
+  border-radius: 7px;
+}
+
+.popup-content h5 {
+  line-height: 1px;
+  font-weight: lighter;
+}
+
+.popup-content h3 {
+  padding-bottom: 5px;
+  line-height: 1px;
+}

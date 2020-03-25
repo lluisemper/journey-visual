@@ -93,7 +93,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
       </Button>
       {chartActive ?
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-select">Compare Journeys</InputLabel>
+        <InputLabel id="compare-btn" htmlFor="grouped-select">Compare Personas</InputLabel>
         <Select value={comparedPersona} onChange={(e) => {
           e.preventDefault();
           const selectedPersona = personas.find((persona) => {
@@ -118,7 +118,7 @@ function Analysis ({ journeys, personas, setCurrentJourney, setCurrentPersona, c
         setComparisonActive(!comparisonActive);
       }}>
         Compare personas
-      </Button>
+      </Button >
       {chartActive && <Chart />}
       {comparisonActive && <Comparison />}
 
