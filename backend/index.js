@@ -9,6 +9,7 @@ const session = require('express-session');
 const path = require('path');
 
 
+
 const PORT = process.env.PORT;
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 } }))
@@ -25,6 +26,14 @@ app.use(cors({ origin: process.env.URI, credentials: true }));
 app.use(express.json());
 
 app.use(router);
+app.use((err, req, res, next) => {
+  if (err) {
+    console.log(err)
+    res.status(500).send()
+  }
+  else return next();
+  
+});
 
 if (process.env.NODE_ENV === 'production') {
   const clientPath = path.join(__dirname, '..', 'client', 'build');

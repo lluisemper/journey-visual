@@ -5,18 +5,17 @@ const User = require('./models/model-user');
 
 
 exports.postJourney = async (req, res) => {
-  // try {
+
+  //Example of the controller with error handler middleware
+
+    // throw new Error('foo------------------------------------------')
     const user = await User.findById(req.user._id)
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
-    // throw new Error('foo------------------------------------------')
     user.journeys.push(journey);
     await user.save();
     res.status(201);
     res.json(journey);
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(500).send();
-  // }
+  
 }
 
 exports.postPersona = async (req, res) => {

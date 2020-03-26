@@ -7,7 +7,7 @@ const authorization = require('./middlewares/authorization');
 
 const router = toAsyncRouter(express.Router());
 
-router.post('/journey', authorization, controller.postJourney);
+router.post('/journey',authorization, controller.postJourney);
 router.post('/:id/persona', authorization, controller.postPersona);
 router.post('/:id/step', authorization, controller.postStep);
 
