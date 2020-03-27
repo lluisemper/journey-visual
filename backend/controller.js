@@ -5,10 +5,6 @@ const User = require('./models/model-user');
 
 
 exports.postJourney = async (req, res) => {
-
-  //Example of the controller with error handler middleware
-
-    // throw new Error('foo------------------------------------------')
     const user = await User.findById(req.user._id)
     const journey = await Journey.create({ title: req.body.journey, personas: [] });
     user.journeys.push(journey);
@@ -19,21 +15,15 @@ exports.postJourney = async (req, res) => {
 }
 
 exports.postPersona = async (req, res) => {
-  try {
     const journey = await Journey.findById(req.params.id);
     const persona = await Persona.create({ title: req.body.persona, steps: [] });
     journey.personas.push(persona);
     await journey.save();
     res.status(201);
     res.json(persona);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send();
-  }
 }
 
 exports.postStep = async (req, res) => {
-  try {
     const persona = await Persona.findById(req.params.id);
     const step = await Step.create({
       title: req.body.step.title,
@@ -45,60 +35,35 @@ exports.postStep = async (req, res) => {
     await persona.save();
     res.json(persona.steps);
     res.status(201);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.postFile = async (req, res) => {
-  try {
     await Persona.findOneAndUpdate({ _id: req.params.id }, {
-      imagePath: `http://localhost:4000/${req.file.path}`
+      imagePath: `${process.env.URL}/${req.file.path}`
     });
     res.status(201);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.getJourneys = async (req, res) => {
-  try {
     const journeys = await Journey.find()
     res.status(201);
     res.json(journeys);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.getPersonas = async (req, res) => {
-  try {
     const journey = await Journey.findById(req.params.id);
     const personas = await journey.populate('personas').execPopulate();
     res.status(201);
     res.json(personas.personas);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 exports.getSteps = async (req, res) => {
-  try {
     const persona = await Persona.findById(req.params.id);
     const steps = await persona.populate('steps').execPopulate();
     res.status(201);
     res.json(steps.steps);
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.updateJourney = async (req, res) => {
-  try {
     await Journey.findOneAndUpdate({ _id: req.params.id },
       {
         title: req.body.title
@@ -106,13 +71,8 @@ exports.updateJourney = async (req, res) => {
     )
     res.status(204);
     res.json();
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 exports.updatePersona = async (req, res) => {
-  try {
     await Persona.findOneAndUpdate({ _id: req.params.id },
       {
         title: req.body.title
@@ -120,14 +80,9 @@ exports.updatePersona = async (req, res) => {
     )
     res.status(204);
     res.json();
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.updateStep = async (req, res) => {
-  try {
     await Step.findOneAndUpdate({ _id: req.params.id },
       {
         title: req.body.title,
@@ -138,23 +93,13 @@ exports.updateStep = async (req, res) => {
     )
     res.status(204);
     res.json();
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.getUser = async (req, res) => {
-  try {
     res.json(req.user)
-  } catch (error) {
-    console.log(error)
-    res.status(500).send();
-  }
 }
 
 exports.deleteJourney = async (req, res) => {
-  try {
     const journey = await Journey.findById(req.params.id);
     journey.personas.map(async (personaId) => {
       const persona = await Persona.findById(personaId);
@@ -168,13 +113,8 @@ exports.deleteJourney = async (req, res) => {
       console.log("Successful deletion");
     });
     res.status(204).send();
-  } catch (error) {
-    console.log(error);
-    res.status(500).send();
-  }
 }
 exports.deletePersona = async (req, res) => {
-  try {
     const persona = await Persona.findById(req.params.id);
     persona.steps.map(async (id) => {
       console.log(id)
@@ -185,20 +125,11 @@ exports.deletePersona = async (req, res) => {
       console.log("Successful deletion");
     });
     res.status(204).send();
-  } catch (error) {
-    console.log(error);
-    res.status(500).send();
-  }
 }
 exports.deleteStep = async (req, res) => {
-  try {
     Step.deleteOne({ _id: req.params.id }, function (err) {
       if (err) console.log(err);
       console.log("Successful deletion");
     });
     res.status(204).send();
-  } catch (error) {
-    console.log(error);
-    res.status(500).send();
-  }
 }
