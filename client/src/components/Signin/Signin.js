@@ -51,7 +51,7 @@ const SignIn = () => {
         </Typography>
           <div className={classes.form} noValidate>
             <Button
-              href={BASE_URL + "/auth/google/"}
+              href={BASE_URL + "auth/google/"}
               type="submit"
               fullWidth
               variant="contained"
