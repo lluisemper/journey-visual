@@ -26,10 +26,12 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-console.log('enbbbb', process.env.REACT_APP_URL);
 
 
 const BASE_URL = process.env.REACT_APP_URL || process.env.URL;
+
+console.log('BASE_URL',BASE_URL);
+
 
 const SignIn = () => {
   const classes = useStyles();
