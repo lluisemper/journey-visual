@@ -65,7 +65,7 @@ export default {
     })
   },
   getJourneys: () => {
-    return fetchRequest(`/journeys`, {
+    return fetchRequest(`/journey`, {
       credentials: 'include',
     })
   },

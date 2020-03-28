@@ -21,7 +21,7 @@ router.delete(`/steps/:id/delete`, authorization, controller.deleteStep);
 
 router.post(`/:id/upload`, multer({dest:'./uploads'}).single('file'), controller.postFile);
 
-router.get('/journeys', authorization, controller.getJourneys);
+router.get('/journey', authorization, controller.getJourneys);
 router.get('/:id/personas', authorization, controller.getPersonas);
 router.get('/:id/steps', authorization, controller.getSteps);
 router.get('/me', authorization, controller.getUser);
