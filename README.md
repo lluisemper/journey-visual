@@ -11,3 +11,39 @@ Great app for Marketers! The main propouse of the app is to analize the process 
 The app is deployed in this url: https://marketvisual.herokuapp.com/
 
 You can have a look in this Youtube video: https://www.youtube.com/watch?v=9Uf7KwzoLgM&feature=youtu.be
+
+### How to start!
+
+Npm install front-end and backend dependecies. Run database, node index.js, and npm start in the frontend and you will be ready to start!.
+
+Anyway, open http://localhost:3000 to view it in your browser, and get Analazing!
+
+
+### Tech Stack
+
+Frontend:
+
+  -Material UI
+  -React
+  -Redux
+  -Recharts
+ 
+Backend:
+
+  -Express
+  -Mongoose
+  -Mongodb
+  -Passport
+  -Multer
+
+### Observations
+
+😉Room for improvement
+
+* Improvement of the UI, responsivines
+* Whole refactor to Redux
+* Testing
+
+
+
+
