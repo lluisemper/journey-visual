@@ -43,13 +43,10 @@ Anyway, open http://localhost:3000 to view it in your browser, and get Analazing
   
   -Multer
 
-### Observations
+### Contributors
 
-😉Room for improvement
-
-* Improvement of the UI, responsivenes
-* Whole refactor to Redux
-* Testing
+Lluis Semper Lloret
+Micha van Eeden https://github.com/eeden01
 
 
 
