@@ -9,4 +9,5 @@ Great app for Marketers! The main propouse of the app is to analize the process 
 ### Getting deeper
 
 The app is deployed in this url: https://marketvisual.herokuapp.com/
-or you can have a look in this Youtube video: https://www.youtube.com/watch?v=9Uf7KwzoLgM&feature=youtu.be
+
+You can have a look in this Youtube video: https://www.youtube.com/watch?v=9Uf7KwzoLgM&feature=youtu.be
