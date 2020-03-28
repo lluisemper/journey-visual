@@ -1,5 +1,4 @@
 import React from 'react';
-import './Chart.css';
 import FileSaver from 'file-saver';
 import { XAxis, Tooltip, CartesianGrid, YAxis, Legend, LineChart, Line, } from 'recharts';
 import { connect } from 'react-redux';

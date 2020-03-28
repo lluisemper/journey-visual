@@ -14,11 +14,17 @@
   background-color: lightgrey;
 }
 
-.tutorial-img {
+.home-img {
   position: relative;
   align-self: center;
   height: 800px;
   bottom: 200px;
+  z-index: -1;
+}
+.tutorial-img {
+  position: relative;
+  align-self: center;
+  height: 600px;
   z-index: -1;
 }
 

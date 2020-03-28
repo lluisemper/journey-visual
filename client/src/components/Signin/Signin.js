@@ -8,7 +8,7 @@ import './Signin.css';
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -29,8 +29,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const BASE_URL = process.env.REACT_APP_URL || process.env.URL;
-
-console.log('BASE_URL',BASE_URL);
 
 
 const SignIn = () => {

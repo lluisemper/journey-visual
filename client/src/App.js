@@ -12,7 +12,6 @@ import ResponsiveDrawer from './components/ResponsiveDrawer/ResponsiveDrawer';
 import PersonaList from './components/PersonaList/PersonaList';
 import Analysis from './components/Analysis/Analysis';
 import Home from './components/Home/Home';
-import Questionnaire from './components/Questionnaire/Questionnaire';
 
 const SideBar = () => {
   let location = useLocation();
@@ -35,7 +34,6 @@ const App = () => {
           <Route exact path="/Journeys" component={JourneyList} />
           <Route exact path="/Personas" component={PersonaList} />
           <Route exact path="/Analysis" component={Analysis} />
-          <Route exact path="/Questionnaire" component={Questionnaire} />
         </Switch>
       </Router>
     </div>
