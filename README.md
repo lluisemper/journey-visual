@@ -21,7 +21,7 @@ Anyway, open http://localhost:3000 to view it in your browser, and get Analazing
 
 ### Tech Stack
 
-Frontend:
+#### Frontend:
 
   -Material UI
   
@@ -31,7 +31,7 @@ Frontend:
   
   -Recharts
  
-Backend:
+#### Backend:
 
   -Express
   
