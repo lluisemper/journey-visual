@@ -1,11 +1,12 @@
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
-const express = require('express')
+// const express = require('express')
 const toAsyncRouter = require('./middlewares/errorHandler')
 const controller = require('./controller');
 const authorization = require('./middlewares/authorization');
 
-const router = toAsyncRouter(express.Router());
+const router = require('express').Router();
+// const router = toAsyncRouter(express.Router());
 
 router.post('/journey',authorization, controller.postJourney);
 router.post('/:id/persona', authorization, controller.postPersona);
