@@ -46,6 +46,7 @@ Anyway, open http://localhost:3000 to view it in your browser, and get Analazing
 ### Contributors
 
 Lluis Semper Lloret
+
 Micha van Eeden https://github.com/eeden01
 
 
