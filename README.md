@@ -47,7 +47,7 @@ Anyway, open http://localhost:3000 to view it in your browser, and get Analazing
 
 😉Room for improvement
 
-* Improvement of the UI, responsivines
+* Improvement of the UI, responsivenes
 * Whole refactor to Redux
 * Testing
 
