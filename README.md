@@ -24,16 +24,23 @@ Anyway, open http://localhost:3000 to view it in your browser, and get Analazing
 Frontend:
 
   -Material UI
+  
   -React
+  
   -Redux
+  
   -Recharts
  
 Backend:
 
   -Express
+  
   -Mongoose
+  
   -Mongodb
+  
   -Passport
+  
   -Multer
 
 ### Observations
