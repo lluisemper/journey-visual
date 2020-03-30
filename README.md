@@ -14,7 +14,13 @@ You can have a look in this Youtube video: https://www.youtube.com/watch?v=9Uf7K
 
 ### How to start!
 
-Npm install front-end and backend dependecies. Run database, node index.js, and npm start in the frontend and you will be ready to start!.
+`cd client npm install && cd ../backend npm install`
+
+`mongod`
+
+`cd backend node index.js`
+
+`cd client npm start`
 
 Anyway, open http://localhost:3000 to view it in your browser, and get Analazing!
 
